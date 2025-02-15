@@ -1,0 +1,23 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Godot自动生成文件
+.import/
+export.cfg
+export_presets.cfg
+*.translation
+
+# 编辑器缓存（所有用户不同步）
+.user/
+
+# 系统生成文件（macOS/Windows）
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log
+
+# deepseek知识库文件
+Resource/deepseek
+Resource/GdToTxt.bat
+Resource/TscnToTxt.bat

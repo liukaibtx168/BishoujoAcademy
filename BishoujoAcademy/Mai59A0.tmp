@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyfpo04sqtgap"]
+
+[ext_resource type="Script" path="res://MainScene.gd" id="1_fxt85"]
+[ext_resource type="Texture2D" uid="uid://31m3ppt3kbdy" path="res://Resource/res/changjing/login_3.png" id="1_mm3d8"]
+[ext_resource type="Texture2D" uid="uid://cpwmlvqbuhqf1" path="res://Resource/res/UI/denglu/login_logo.png" id="2_vlk2i"]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_fxt85")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(360, 800)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+size = Vector2i(720, 1600)
+
+[node name="LoginScreen" type="Control" parent="SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="SubViewportContainer/SubViewport/LoginScreen"]
+layout_mode = 0
+offset_left = -179.0
+offset_top = -380.0
+offset_right = 999.0
+offset_bottom = 1780.0
+texture = ExtResource("1_mm3d8")
+
+[node name="Logo" type="TextureRect" parent="SubViewportContainer/SubViewport/LoginScreen"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 204.0
+offset_right = 702.0
+offset_bottom = 612.0
+texture = ExtResource("2_vlk2i")
+
+[node name="StartButton" type="Button" parent="SubViewportContainer/SubViewport/LoginScreen"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="ExitButton" type="Button" parent="SubViewportContainer/SubViewport/LoginScreen"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="SaveScreen" type="Control" parent="SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
