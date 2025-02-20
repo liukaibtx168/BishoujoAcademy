@@ -1,0 +1,179 @@
+{
+  "99": {
+    "ID": 99,
+    "nextID": {
+      "[1]": 100
+    },
+    "name": "女主1",
+    "modle": "res://Resource/res/role/xx_001.png",
+    "sence": "res://Resource/res/changjing/login_1.png",
+    "text": "文本100",
+    "bgm": "res://Resource/sound/bgm/BGM1.mp3",
+    "sound": "",
+    "voice": "res://Resource/sound/voice/xx_dialogue_001.mp3",
+    "isend": 0,
+    "drop": {}
+  },
+  "100": {
+    "ID": 100,
+    "nextID": {
+      "[1]": 101,
+      "[2]": 102
+    },
+    "name": "女主1",
+    "modle": "res://Resource/res/role/xx_001.png",
+    "sence": "res://Resource/res/changjing/login_1.png",
+    "text": "文本100",
+    "bgm": "res://Resource/sound/bgm/BGM1.mp3",
+    "sound": "",
+    "voice": "res://Resource/sound/voice/xx_dialogue_001.mp3",
+    "isend": 0,
+    "drop": {}
+  },
+  "101": {
+    "ID": 101,
+    "nextID": {
+      "[1]": 103
+    },
+    "name": "",
+    "modle": "",
+    "sence": "",
+    "text": "文本101选项1",
+    "bgm": "",
+    "sound": "",
+    "voice": "",
+    "isend": 0,
+    "drop": {}
+  },
+  "102": {
+    "ID": 102,
+    "nextID": {
+      "[1]": 107
+    },
+    "name": "",
+    "modle": "",
+    "sence": "",
+    "text": "文本102选项2",
+    "bgm": "",
+    "sound": "",
+    "voice": "",
+    "isend": 0,
+    "drop": {}
+  },
+  "103": {
+    "ID": 103,
+    "nextID": {
+      "[1]": 104
+    },
+    "name": "女主2",
+    "modle": "res://Resource/res/role/xx_002.png",
+    "sence": "",
+    "text": "文本103",
+    "bgm": "",
+    "sound": "",
+    "voice": "res://Resource/sound/voice/xx_dialogue_002.mp3",
+    "isend": 0,
+    "drop": {}
+  },
+  "104": {
+    "ID": 104,
+    "nextID": {
+      "[1]": 105
+    },
+    "name": "女主1",
+    "modle": "res://Resource/res/role/xx_001.png",
+    "sence": "",
+    "text": "文本104",
+    "bgm": "",
+    "sound": "",
+    "voice": "res://Resource/sound/voice/xx_dialogue_001.mp3",
+    "isend": 0,
+    "drop": {}
+  },
+  "105": {
+    "ID": 105,
+    "nextID": {
+      "[1]": 106
+    },
+    "name": "女主2",
+    "modle": "res://Resource/res/role/xx_002.png",
+    "sence": "",
+    "text": "文本105",
+    "bgm": "",
+    "sound": "res://Resource/sound/effect/click_001.mp3",
+    "voice": "res://Resource/sound/voice/xx_dialogue_002.mp3",
+    "isend": 0,
+    "drop": {}
+  },
+  "106": {
+    "ID": 106,
+    "nextID": [],
+    "name": "",
+    "modle": "",
+    "sence": "",
+    "text": "文本106结束",
+    "bgm": "",
+    "sound": "",
+    "voice": "",
+    "isend": 1,
+    "drop": {}
+  },
+  "107": {
+    "ID": 107,
+    "nextID": {
+      "[1]": 108
+    },
+    "name": "女主2",
+    "modle": "res://Resource/res/role/xx_002.png",
+    "sence": "",
+    "text": "文本107",
+    "bgm": "res://Resource/sound/bgm/BGM2.mp3",
+    "sound": "",
+    "voice": "res://Resource/sound/voice/xx_dialogue_002.mp3",
+    "isend": 0,
+    "drop": {}
+  },
+  "108": {
+    "ID": 108,
+    "nextID": {
+      "[1]": 109
+    },
+    "name": "女主1",
+    "modle": "res://Resource/res/role/xx_001.png",
+    "sence": "",
+    "text": "文本108",
+    "bgm": "",
+    "sound": "",
+    "voice": "res://Resource/sound/voice/xx_dialogue_001.mp3",
+    "isend": 0,
+    "drop": {}
+  },
+  "109": {
+    "ID": 109,
+    "nextID": {
+      "[1]": 110
+    },
+    "name": "女主2",
+    "modle": "res://Resource/res/role/xx_002.png",
+    "sence": "",
+    "text": "文本109",
+    "bgm": "",
+    "sound": "res://Resource/sound/effect/click_002.mp3",
+    "voice": "res://Resource/sound/voice/xx_dialogue_002.mp3",
+    "isend": 0,
+    "drop": {}
+  },
+  "110": {
+    "ID": 110,
+    "nextID": [],
+    "name": "",
+    "modle": "",
+    "sence": "",
+    "text": "文本110结束",
+    "bgm": "",
+    "sound": "",
+    "voice": "",
+    "isend": 1,
+    "drop": {}
+  }
+}
