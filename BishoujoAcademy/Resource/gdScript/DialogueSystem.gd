@@ -29,6 +29,10 @@ var pressed_style: StyleBoxFlat
 
 func _ready():
 	print("DialogueSystem: Starting initialization...")
+	# 检查父节点是否为CanvasLayer
+	if not get_parent() is CanvasLayer:
+		print("DialogueSystem: Warning - This node should be a child of a CanvasLayer")
+	
 	# 创建按钮样式
 	create_button_styles()
 	# 加载对话数据
@@ -118,6 +122,19 @@ func display_current_dialogue():
 	print("DialogueSystem: Displaying dialogue ID: ", current_dialogue_id)
 	var current = dialogue_data[str(current_dialogue_id)]
 	print("DialogueSystem: Current dialogue data: ", current)
+	
+	# 处理屏幕特效
+	if current.has("screenEffects"):
+		print("DialogueSystem: Processing screen effect: ", current.screenEffects)
+		match current.screenEffects:
+			1: # 震动效果
+				print("DialogueSystem: Starting screen shake effect")
+				await screen_shake()
+				print("DialogueSystem: Screen shake effect completed")
+			2: # 黑屏淡出效果
+				print("DialogueSystem: Starting screen fade effect")
+				await screen_fade()
+				print("DialogueSystem: Screen fade effect completed")
 	
 	# 更新角色名
 	name_label.text = current.name if current.has("name") else ""
@@ -359,3 +376,62 @@ func _input(event):
 				# 如果有多个选项且选项未显示，显示选项
 				elif not choices_container.visible:
 					choices_container.show() 
+
+# 屏幕震动效果
+func screen_shake(duration: float = 0.3, strength: float = 15.0):
+	print("DialogueSystem: Playing screen shake effect")
+	
+	# 获取对话系统的根节点（应该是一个CanvasLayer）
+	var root = get_parent()
+	if not root is CanvasLayer:
+		print("DialogueSystem: Warning - Parent is not a CanvasLayer, screen shake may not work correctly")
+		return
+	
+	var original_offset = root.offset
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	
+	# 创建一系列的震动移动
+	var shake_steps = 8
+	for i in range(shake_steps):
+		var current_strength = strength if i == 0 else strength * (1.0 - float(i) / shake_steps)
+		var offset = Vector2(
+			randf_range(-current_strength, current_strength),
+			randf_range(-current_strength, current_strength)
+		)
+		
+		# 使用CanvasLayer的offset属性来实现整体位移
+		tween.tween_property(root, "offset", original_offset + offset, duration / (shake_steps * 2))
+		tween.tween_property(root, "offset", original_offset, duration / (shake_steps * 2))
+	
+	# 等待动画完成
+	await tween.finished
+	# 确保回到原始位置
+	root.offset = original_offset
+
+# 屏幕淡入淡出效果
+func screen_fade(duration: float = 1.0):
+	print("DialogueSystem: Playing screen fade effect")
+	
+	# 创建一个新的CanvasLayer来确保遮罩在最上层
+	var overlay_layer = CanvasLayer.new()
+	overlay_layer.layer = 128  # 设置一个较高的层级
+	get_tree().get_root().add_child(overlay_layer)
+	
+	# 创建黑色遮罩
+	var fade_overlay = ColorRect.new()
+	fade_overlay.color = Color(0, 0, 0, 1)
+	fade_overlay.size = get_viewport().get_visible_rect().size
+	fade_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
+	# 将遮罩添加到新的CanvasLayer
+	overlay_layer.add_child(fade_overlay)
+	
+	# 创建淡出效果
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.tween_property(fade_overlay, "modulate:a", 0.0, duration)
+	
+	# 等待动画完成并清理
+	await tween.finished
+	overlay_layer.queue_free()

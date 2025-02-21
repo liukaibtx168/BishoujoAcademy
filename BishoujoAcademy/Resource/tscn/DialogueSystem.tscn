@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctkoyawmm3vpj"]
+[gd_scene load_steps=4 format=3 uid="uid://ctkoyawmm3vpj"]
 
 [ext_resource type="Script" path="res://Resource/gdScript/DialogueSystem.gd" id="1_rk4wd"]
+[ext_resource type="Script" path="res://Resource/gdScript/DialogueSystemRoot.gd" id="1_w4k2d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8p2v"]
 bg_color = Color(0.121569, 0.121569, 0.121569, 0.901961)
@@ -14,7 +15,11 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="DialogueSystem" type="Control"]
+[node name="DialogueSystemRoot" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_w4k2d")
+
+[node name="DialogueSystem" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rk4wd")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="DialogueSystem"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,7 +38,7 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 6
 
-[node name="CharacterSprite" type="TextureRect" parent="."]
+[node name="CharacterSprite" type="TextureRect" parent="DialogueSystem"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -49,7 +54,7 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="DialogueBox" type="Panel" parent="."]
+[node name="DialogueBox" type="Panel" parent="DialogueSystem"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -62,7 +67,7 @@ grow_vertical = 0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_u8p2v")
 
-[node name="NameLabel" type="Label" parent="DialogueBox"]
+[node name="NameLabel" type="Label" parent="DialogueSystem/DialogueBox"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -75,7 +80,7 @@ theme_override_colors/font_color = Color(1, 0.921569, 0.815686, 1)
 theme_override_font_sizes/font_size = 24
 text = "角色名称"
 
-[node name="TextLabel" type="Label" parent="DialogueBox"]
+[node name="TextLabel" type="Label" parent="DialogueSystem/DialogueBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,7 +96,7 @@ theme_override_font_sizes/font_size = 20
 text = "这里是对话内容"
 autowrap_mode = 2
 
-[node name="ChoicesContainer" type="VBoxContainer" parent="."]
+[node name="ChoicesContainer" type="VBoxContainer" parent="DialogueSystem"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -109,8 +114,8 @@ mouse_filter = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="DialogueSystem"]
 
-[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="DialogueSystem"]
 
-[node name="VoicePlayer" type="AudioStreamPlayer" parent="."]
+[node name="VoicePlayer" type="AudioStreamPlayer" parent="DialogueSystem"]
