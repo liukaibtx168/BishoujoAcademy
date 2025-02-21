@@ -7,11 +7,13 @@
     "name": "女主1",
     "modle": "res://Resource/res/role/xx_001.png",
     "sence": "res://Resource/res/changjing/login_1.png",
-    "text": "文本100",
+    "text": "文本99（测试用废话一大堆，测试用废话一大堆，测试用废话一大堆，测试用废话一大堆，测试用废话一大堆）",
     "bgm": "res://Resource/sound/bgm/BGM1.mp3",
     "sound": "",
     "voice": "res://Resource/sound/voice/xx_dialogue_001.mp3",
     "isend": 0,
+    "screenEffects": 0,
+    "roleEffects": 0,
     "drop": {}
   },
   "100": {
@@ -22,12 +24,14 @@
     },
     "name": "女主1",
     "modle": "res://Resource/res/role/xx_001.png",
-    "sence": "res://Resource/res/changjing/login_1.png",
-    "text": "文本100",
+    "sence": "",
+    "text": "文本100（测试用废话一大堆，测试用废话一大堆，测试用废话一大堆）",
     "bgm": "res://Resource/sound/bgm/BGM1.mp3",
     "sound": "",
     "voice": "res://Resource/sound/voice/xx_dialogue_001.mp3",
     "isend": 0,
+    "screenEffects": 0,
+    "roleEffects": 0,
     "drop": {}
   },
   "101": {
@@ -43,6 +47,8 @@
     "sound": "",
     "voice": "",
     "isend": 0,
+    "screenEffects": 0,
+    "roleEffects": 0,
     "drop": {}
   },
   "102": {
@@ -58,6 +64,8 @@
     "sound": "",
     "voice": "",
     "isend": 0,
+    "screenEffects": 0,
+    "roleEffects": 0,
     "drop": {}
   },
   "103": {
@@ -68,11 +76,13 @@
     "name": "女主2",
     "modle": "res://Resource/res/role/xx_002.png",
     "sence": "",
-    "text": "文本103",
+    "text": "文本103（测试用废话一大堆，测试用废话一大堆，测试用废话一大堆，测试用废话一大堆，测试用废话一大堆）",
     "bgm": "",
     "sound": "",
     "voice": "res://Resource/sound/voice/xx_dialogue_002.mp3",
     "isend": 0,
+    "screenEffects": 1,
+    "roleEffects": 1,
     "drop": {}
   },
   "104": {
@@ -83,11 +93,13 @@
     "name": "女主1",
     "modle": "res://Resource/res/role/xx_001.png",
     "sence": "",
-    "text": "文本104",
+    "text": "文本104（测试用废话一大堆，测试用废话一大堆）",
     "bgm": "",
     "sound": "",
     "voice": "res://Resource/sound/voice/xx_dialogue_001.mp3",
     "isend": 0,
+    "screenEffects": 0,
+    "roleEffects": 0,
     "drop": {}
   },
   "105": {
@@ -98,11 +110,13 @@
     "name": "女主2",
     "modle": "res://Resource/res/role/xx_002.png",
     "sence": "",
-    "text": "文本105",
+    "text": "文本105（测试用废话一大堆，测试用废话一大堆，测试用废话一大堆）",
     "bgm": "",
     "sound": "res://Resource/sound/effect/click_001.mp3",
     "voice": "res://Resource/sound/voice/xx_dialogue_002.mp3",
     "isend": 0,
+    "screenEffects": 0,
+    "roleEffects": 0,
     "drop": {}
   },
   "106": {
@@ -116,6 +130,8 @@
     "sound": "",
     "voice": "",
     "isend": 1,
+    "screenEffects": 0,
+    "roleEffects": 0,
     "drop": {}
   },
   "107": {
@@ -125,12 +141,14 @@
     },
     "name": "女主2",
     "modle": "res://Resource/res/role/xx_002.png",
-    "sence": "",
-    "text": "文本107",
+    "sence": "res://Resource/res/changjing/login_1.png",
+    "text": "文本107（测试用废话一大堆，测试用废话一大堆）",
     "bgm": "res://Resource/sound/bgm/BGM2.mp3",
     "sound": "",
     "voice": "res://Resource/sound/voice/xx_dialogue_002.mp3",
     "isend": 0,
+    "screenEffects": 2,
+    "roleEffects": 1,
     "drop": {}
   },
   "108": {
@@ -141,11 +159,13 @@
     "name": "女主1",
     "modle": "res://Resource/res/role/xx_001.png",
     "sence": "",
-    "text": "文本108",
+    "text": "文本108（测试用废话一大堆，测试用废话一大堆，测试用废话一大堆，测试用废话一大堆）",
     "bgm": "",
     "sound": "",
     "voice": "res://Resource/sound/voice/xx_dialogue_001.mp3",
     "isend": 0,
+    "screenEffects": 0,
+    "roleEffects": 0,
     "drop": {}
   },
   "109": {
@@ -156,11 +176,13 @@
     "name": "女主2",
     "modle": "res://Resource/res/role/xx_002.png",
     "sence": "",
-    "text": "文本109",
+    "text": "文本109（测试用废话一大堆，测试用废话一大堆，测试用废话一大堆，测试用废话一大堆，测试用废话一大堆）",
     "bgm": "",
     "sound": "res://Resource/sound/effect/click_002.mp3",
     "voice": "res://Resource/sound/voice/xx_dialogue_002.mp3",
     "isend": 0,
+    "screenEffects": 0,
+    "roleEffects": 0,
     "drop": {}
   },
   "110": {
@@ -174,6 +196,8 @@
     "sound": "",
     "voice": "",
     "isend": 1,
+    "screenEffects": 0,
+    "roleEffects": 0,
     "drop": {}
   }
 }
