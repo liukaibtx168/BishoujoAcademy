@@ -2,7 +2,7 @@ extends Node2D
 
 var target_width = 720.0
 var target_height = 1600.0
-var dialogue_system
+@onready var dialogue_system = $SubViewportContainer/DialogueSystem
 
 func _ready():
 	# 设置初步窗口大小并调整视口
@@ -16,21 +16,18 @@ func _ready():
 	test_button.pressed.connect(_on_test_button_pressed)
 	add_child(test_button)
 	
-	# 加载对话系统场景
-	var dialogue_scene = load("res://Resource/tscn/DialogueSystem.tscn")
-	if dialogue_scene:
-		dialogue_system = dialogue_scene.instantiate()
-		# 设置对话系统的大小和位置
-		dialogue_system.set_anchors_preset(Control.PRESET_FULL_RECT)
-		dialogue_system.position = Vector2.ZERO
-		dialogue_system.size = Vector2(target_width, target_height)
-		add_child(dialogue_system)
+	# 初始化对话系统
+	if dialogue_system:
 		dialogue_system.hide()  # 初始时隐藏对话系统
+	else:
+		print("错误：找不到对话系统节点！")
 
 func _on_test_button_pressed():
 	if dialogue_system:
 		dialogue_system.show()  # 显示对话系统
 		dialogue_system.start_dialogue(99)  # 从ID为99的对话开始
+	else:
+		print("错误：对话系统未初始化！")
 
 #func _process(delta):
 #	# 定期更新窗口大小

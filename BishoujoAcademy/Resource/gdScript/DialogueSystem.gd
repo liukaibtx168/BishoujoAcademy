@@ -224,224 +224,98 @@ func display_text_with_typing(text: String):
 		await get_tree().create_timer(typing_speed).timeout
 	
 	is_typing = false
-	# 文字显示完成后，处理选项
+	text_label.text = text  # 确保文本完全显示
+	
+	# 文字显示完成后，检查是否需要显示选项
 	if current_dialogue_id != -1:  # 确保对话还在进行
 		var current = dialogue_data[str(current_dialogue_id)]
-		if current.has("nextID"):
-			handle_choices(current.nextID)
+		if current.get("isend", 0) == 1:
+			# 如果是结束对话，等待点击
+			return
+		elif current.has("nextID"):
+			# 如果有下一段对话，准备选项
+			prepare_choices(current.nextID)
 
-func handle_choices(next_ids):
-	print("DialogueSystem: Handling choices: ", next_ids)
+func prepare_choices(next_ids):
+	print("DialogueSystem: Preparing choices: ", next_ids)
 	# 清除现有选项
 	for child in choices_container.get_children():
 		child.queue_free()
 	
 	# 如果next_ids是空数组或空字典
 	if (next_ids is Array and next_ids.is_empty()) or (next_ids is Dictionary and next_ids.is_empty()):
-		# 如果没有下一个对话，则设置标记等待点击结束
-		print("DialogueSystem: No next dialogue, waiting for click to end")
-		current_dialogue_id = 0  # 使用0作为等待结束的标记
-		choices_container.hide()
 		return
 	
 	# 如果next_ids是数组，转换为字典格式
 	var next_ids_dict = {}
 	if next_ids is Array:
 		print("DialogueSystem: Converting array to dictionary")
-		if next_ids.size() == 1:
-			next_ids_dict["[1]"] = next_ids[0]
-		else:
-			for i in range(next_ids.size()):
-				next_ids_dict["[" + str(i + 1) + "]"] = next_ids[i]
+		for i in range(next_ids.size()):
+			next_ids_dict["[" + str(i + 1) + "]"] = next_ids[i]
 	else:
 		next_ids_dict = next_ids
 	
+	# 如果只有一个选项，不显示选项框
 	if next_ids_dict.size() == 1:
-		# 如果只有一个选项，不显示选项UI
-		print("DialogueSystem: Single choice, hiding choices container")
 		choices_container.hide()
 		return
-	
-	# 显示多个选项
-	print("DialogueSystem: Showing multiple choices")
+		
+	# 如果有多个选项，创建选项按钮
 	choices_container.show()
 	for key in next_ids_dict.keys():
-		var next_id = next_ids_dict[key]
-		if !dialogue_data.has(str(next_id)):
-			print("DialogueSystem: Choice option ID not found: ", next_id)
+		var choice_id = next_ids_dict[key]
+		if not dialogue_data.has(str(choice_id)):
 			continue
 			
-		var choice_text = dialogue_data[str(next_id)].text
+		var choice_dialogue = dialogue_data[str(choice_id)]
 		var button = Button.new()
-		button.text = choice_text
-		button.custom_minimum_size = Vector2(300, 50)
+		button.text = choice_dialogue.text
+		button.custom_minimum_size = Vector2(200, 40)
 		
 		# 设置按钮样式
-		if normal_style:
-			button.add_theme_stylebox_override("normal", normal_style)
-		if hover_style:
-			button.add_theme_stylebox_override("hover", hover_style)
-		if pressed_style:
-			button.add_theme_stylebox_override("pressed", pressed_style)
+		button.add_theme_stylebox_override("normal", normal_style)
+		button.add_theme_stylebox_override("hover", hover_style)
+		button.add_theme_stylebox_override("pressed", pressed_style)
 		
-		# 设置文字颜色
-		button.add_theme_color_override("font_color", Color(1, 1, 1, 1))
-		button.add_theme_color_override("font_hover_color", Color(1, 0.9, 0.8, 1))
-		button.add_theme_color_override("font_pressed_color", Color(0.9, 0.8, 0.7, 1))
-		
-		# 设置字体大小
-		button.add_theme_font_size_override("font_size", 18)
-		
-		choices_container.add_child(button)
-		# 连接按钮信号
-		button.pressed.connect(_on_choice_selected.bind(next_id))
+		# 如果选项有下一段对话，连接到下一段
+		if choice_dialogue.has("nextID"):
+			var next_id = null
+			if choice_dialogue.nextID is Array and choice_dialogue.nextID.size() > 0:
+				next_id = choice_dialogue.nextID[0]
+			elif choice_dialogue.nextID is Dictionary and choice_dialogue.nextID.has("[1]"):
+				next_id = choice_dialogue.nextID["[1]"]
+			
+			if next_id != null:
+				# 连接信号，直接跳转到选项的下一段对话
+				button.pressed.connect(_on_choice_selected.bind(next_id))
+				choices_container.add_child(button)
 
-func _on_choice_selected(next_id: int):
-	print("DialogueSystem: Choice selected: ", next_id)
-	
-	# 获取选中选项对应的下一句对话
-	if dialogue_data.has(str(next_id)):
-		var selected_dialogue = dialogue_data[str(next_id)]
-		if selected_dialogue.has("nextID"):
-			var next_dialogue_id = null
-			
-			# 处理nextID可能是数组或字典的情况
-			if selected_dialogue.nextID is Array:
-				if selected_dialogue.nextID.size() > 0:
-					next_dialogue_id = selected_dialogue.nextID[0]
-			elif selected_dialogue.nextID is Dictionary:
-				if selected_dialogue.nextID.has("[1]"):
-					next_dialogue_id = selected_dialogue.nextID["[1]"]
-			
-			if next_dialogue_id != null and dialogue_data.has(str(next_dialogue_id)):
-				# 直接跳转到下一句对话
-				current_dialogue_id = next_dialogue_id
-				choices_container.hide()
-				display_current_dialogue()
-			else:
-				# 如果没有有效的下一句对话，设置为等待结束状态
-				print("DialogueSystem: No valid next dialogue after choice")
-				current_dialogue_id = 0
-		else:
-			# 如果选项没有下一句对话，设置为等待结束状态
-			print("DialogueSystem: Choice has no nextID")
-			current_dialogue_id = 0
+func _on_choice_selected(next_id):
+	print("DialogueSystem: Choice selected, next ID: ", next_id)
+	if str(next_id) in dialogue_data:
+		current_dialogue_id = next_id
+		choices_container.hide()
+		display_current_dialogue()
 	else:
-		# 如果选项ID无效，设置为等待结束状态
-		print("DialogueSystem: Invalid choice ID")
-		current_dialogue_id = 0
+		print("DialogueSystem: Invalid next dialogue ID: ", next_id)
+		hide_dialogue_system()
+		emit_signal("dialogue_ended")
 
-func end_dialogue():
-	print("DialogueSystem: Ending dialogue")
-	current_dialogue_id = -1
+func hide_dialogue_system():
+	print("DialogueSystem: Hiding dialogue system")
+	# 确保所有UI元素都被隐藏
+	dialogue_box.hide()
+	choices_container.hide()
+	character_sprite.hide()
 	
 	# 停止所有音频
-	if bgm_player.playing:
-		bgm_player.stop()
-	if sound_player.playing:
-		sound_player.stop()
-	if voice_player.playing:
-		voice_player.stop()
+	bgm_player.stop()
+	sound_player.stop()
+	voice_player.stop()
 	
-	# 清理UI
-	text_label.text = ""
-	name_label.text = ""
-	
-	# 清除立绘和背景
-	if character_sprite.texture:
-		character_sprite.texture = null
-		character_sprite.hide()
-	if background.texture:
-		background.texture = null
-	
-	# 清除选项
-	for child in choices_container.get_children():
-		child.queue_free()
-	choices_container.hide()
-	
-	# 隐藏对话系统
-	hide_dialogue_system()
-	
-	# 发出对话结束信号
-	print("DialogueSystem: Emitting dialogue_ended signal")
-	dialogue_ended.emit()
-
-func _input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		print("DialogueSystem: Mouse click detected")
-		if current_dialogue_id == -1:
-			print("DialogueSystem: No active dialogue")
-			return
-			
-		if is_typing:
-			print("DialogueSystem: Skipping typing animation")
-			# 如果正在打字，则立即显示完整文本
-			is_typing = false
-			if dialogue_data.has(str(current_dialogue_id)) and dialogue_data[str(current_dialogue_id)].has("text"):
-				text_label.text = dialogue_data[str(current_dialogue_id)].text
-				# 文字显示完成后，处理选项
-				var current = dialogue_data[str(current_dialogue_id)]
-				if current.has("nextID"):
-					handle_choices(current.nextID)
-			return  # 重要：在快进文字显示时不处理其他点击逻辑
-		elif choices_container.visible:
-			print("DialogueSystem: Choices are visible, ignoring click")
-			# 如果显示选项，则不进行处理
-			return
-		elif current_dialogue_id == 0:  # 等待结束的状态
-			print("DialogueSystem: Ending dialogue after final click")
-			end_dialogue()
-			return
-		else:
-			print("DialogueSystem: Processing next dialogue")
-			# 如果有下一句对话，则继续
-			if not dialogue_data.has(str(current_dialogue_id)):
-				print("DialogueSystem: Current dialogue ID not found: ", current_dialogue_id)
-				end_dialogue()
-				return
-				
-			var current = dialogue_data[str(current_dialogue_id)]
-			print("DialogueSystem: Current dialogue data: ", current)
-			
-			if not current.has("nextID"):
-				print("DialogueSystem: No nextID field in current dialogue")
-				end_dialogue()
-				return
-				
-			var next_ids = current.nextID
-			print("DialogueSystem: Next IDs: ", next_ids)
-			
-			if next_ids is Array:
-				if next_ids.size() == 1:
-					var next_id = next_ids[0]
-					if dialogue_data.has(str(next_id)):
-						current_dialogue_id = next_id
-						display_current_dialogue()
-					else:
-						print("DialogueSystem: Next dialogue ID not found: ", next_id)
-						current_dialogue_id = 0  # 设置为等待结束状态
-				elif next_ids.is_empty():
-					print("DialogueSystem: Dialogue ready to end, waiting for click")
-					current_dialogue_id = 0  # 设置为等待结束状态
-				else:
-					print("DialogueSystem: Multiple choices available in array")
-			elif next_ids is Dictionary:
-				if next_ids.size() == 1 and next_ids.has("[1]"):
-					var next_id = next_ids["[1]"]
-					if dialogue_data.has(str(next_id)):
-						current_dialogue_id = next_id
-						display_current_dialogue()
-					else:
-						print("DialogueSystem: Next dialogue ID not found: ", next_id)
-						current_dialogue_id = 0  # 设置为等待结束状态
-				elif next_ids.is_empty():
-					print("DialogueSystem: Dialogue ready to end, waiting for click")
-					current_dialogue_id = 0  # 设置为等待结束状态
-				else:
-					print("DialogueSystem: Multiple choices available in dictionary")
-			else:
-				print("DialogueSystem: Invalid nextID type: ", typeof(next_ids))
-				current_dialogue_id = 0  # 设置为等待结束状态
+	# 最后隐藏整个系统
+	hide()
+	print("DialogueSystem: Dialogue system is now hidden")
 
 func show_dialogue_system():
 	print("DialogueSystem: Showing dialogue system")
@@ -454,13 +328,34 @@ func show_dialogue_system():
 	dialogue_box.modulate = Color(1, 1, 1, 1)
 	print("DialogueSystem: Dialogue system is now visible")
 
-func hide_dialogue_system():
-	print("DialogueSystem: Hiding dialogue system")
-	# 确保所有UI元素都被隐藏
-	dialogue_box.hide()
-	choices_container.hide()
-	character_sprite.hide()
-	
-	# 最后隐藏整个系统
-	hide()
-	print("DialogueSystem: Dialogue system is now hidden") 
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if is_typing:
+			# 如果正在打字，点击会立即显示完整文本
+			is_typing = false
+		elif current_dialogue_id == -1:
+			# 如果没有激活的对话，忽略点击
+			return
+		else:
+			var current = dialogue_data[str(current_dialogue_id)]
+			
+			# 如果是结束对话且文本已显示完成
+			if current.get("isend", 0) == 1 and not is_typing:
+				print("DialogueSystem: Ending dialogue")
+				hide_dialogue_system()
+				emit_signal("dialogue_ended")
+				current_dialogue_id = -1
+				return
+			
+			# 如果有选项且文本已显示完成
+			if current.has("nextID") and not is_typing:
+				var next_ids = current.nextID
+				# 如果只有一个选项，点击后直接进入下一段对话
+				if (next_ids is Array and next_ids.size() == 1) or (next_ids is Dictionary and next_ids.size() == 1 and next_ids.has("[1]")):
+					var next_id = next_ids[0] if next_ids is Array else next_ids["[1]"]
+					if str(next_id) in dialogue_data:
+						current_dialogue_id = next_id
+						display_current_dialogue()
+				# 如果有多个选项且选项未显示，显示选项
+				elif not choices_container.visible:
+					choices_container.show() 

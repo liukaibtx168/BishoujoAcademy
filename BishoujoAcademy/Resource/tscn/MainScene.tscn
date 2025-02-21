@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cyfpo04sqtgap"]
+[gd_scene load_steps=18 format=3 uid="uid://cyfpo04sqtgap"]
 
 [ext_resource type="Script" path="res://Resource/gdScript/MainScene.gd" id="1_7k46g"]
 [ext_resource type="Texture2D" uid="uid://31m3ppt3kbdy" path="res://Resource/res/changjing/login_3.png" id="2_ht03o"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://58cdrwdw8cwl" path="res://Resource/res/UI/denglu/exit_1.png" id="13_vxkrl"]
 [ext_resource type="Texture2D" uid="uid://be4u45sw61tf1" path="res://Resource/res/UI/denglu/exit_3.png" id="14_ugq4r"]
 [ext_resource type="Texture2D" uid="uid://bmpc1dfufvs5e" path="res://Resource/res/UI/denglu/exit_2.png" id="15_ase01"]
+[ext_resource type="PackedScene" uid="uid://ctkoyawmm3vpj" path="res://Resource/tscn/DialogueSystem.tscn" id="17_xxxxx"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_7k46g")
@@ -86,3 +87,6 @@ texture_normal = ExtResource("12_58v0a")
 texture_pressed = ExtResource("13_vxkrl")
 texture_hover = ExtResource("14_ugq4r")
 texture_disabled = ExtResource("15_ase01")
+
+[node name="DialogueSystem" parent="SubViewportContainer" instance=ExtResource("17_xxxxx")]
+layout_mode = 2
