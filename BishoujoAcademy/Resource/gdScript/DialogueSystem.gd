@@ -425,7 +425,7 @@ func mask_change(color_type: int = 1, stay_duration: float = 0.3):
 	# 第二阶段：淡出（1.0 -> 0.0，持续0.2秒）
 	var tween_fade_out = create_tween()
 	tween_fade_out.set_trans(Tween.TRANS_LINEAR)
-	tween_fade_out.tween_property(mask_overlay, "color:a", 0.0, 0.2)
+	tween_fade_out.tween_property(mask_overlay, "color:a", 0.0, 0.0)
 	
 	# 同时显示新的对话内容
 	dialogue_box.show()
