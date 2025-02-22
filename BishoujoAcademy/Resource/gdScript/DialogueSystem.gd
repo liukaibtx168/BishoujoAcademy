@@ -8,6 +8,7 @@ var dialogue_data = {}
 var current_dialogue_id = -1  # 将初始值改为-1，表示没有激活的对话
 var is_typing = false
 var typing_speed = 0.05  # 打字机效果的速度
+var is_mask_playing = false  # 添加遮罩动画状态标记
 
 # 节点引用
 @onready var dialogue_box = $DialogueBox
@@ -356,6 +357,9 @@ func show_dialogue_system():
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if is_mask_playing:  # 如果遮罩动画正在播放，不响应点击
+			return
+			
 		if is_typing:
 			# 如果正在打字，点击会立即显示完整文本
 			is_typing = false
@@ -391,6 +395,8 @@ func _input(event):
 func mask_change(color_type: int = 1, stay_duration: float = 0.3):
 	print("DialogueSystem: Playing mask change effect")
 	print("DialogueSystem: Color type: ", color_type, ", Stay duration: ", stay_duration)
+	
+	is_mask_playing = true  # 设置遮罩动画开始播放
 	
 	# 创建遮罩
 	var mask_overlay = ColorRect.new()
@@ -435,4 +441,5 @@ func mask_change(color_type: int = 1, stay_duration: float = 0.3):
 	# 等待淡出完成后清理遮罩
 	await tween_fade_out.finished
 	mask_overlay.queue_free()
+	is_mask_playing = false  # 设置遮罩动画播放结束
 	print("DialogueSystem: Mask change effect completed")
