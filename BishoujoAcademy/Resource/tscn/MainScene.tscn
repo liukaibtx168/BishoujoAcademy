@@ -89,3 +89,4 @@ texture_hover = ExtResource("14_ugq4r")
 texture_disabled = ExtResource("15_ase01")
 
 [node name="DialogueSystem" parent="SubViewportContainer" instance=ExtResource("17_xxxxx")]
+visible = false

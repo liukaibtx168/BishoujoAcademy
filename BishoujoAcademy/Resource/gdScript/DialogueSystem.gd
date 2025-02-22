@@ -124,17 +124,26 @@ func display_current_dialogue():
 	print("DialogueSystem: Current dialogue data: ", current)
 	
 	# 处理屏幕特效
+	print("DialogueSystem: Checking for screen effects...")
 	if current.has("screenEffects"):
-		print("DialogueSystem: Processing screen effect: ", current.screenEffects)
-		match current.screenEffects:
+		print("DialogueSystem: Found screenEffects field: ", current.screenEffects)
+		print("DialogueSystem: screenEffects type: ", typeof(current.screenEffects))
+		
+		# 将效果值转换为整数
+		var effect_value = int(current.screenEffects)
+		print("DialogueSystem: Effect value (converted to int): ", effect_value)
+		
+		match effect_value:
 			1: # 震动效果
-				print("DialogueSystem: Starting screen shake effect")
+				print("DialogueSystem: Matched shake effect (1)")
 				await screen_shake()
-				print("DialogueSystem: Screen shake effect completed")
 			2: # 黑屏淡出效果
-				print("DialogueSystem: Starting screen fade effect")
+				print("DialogueSystem: Matched fade effect (2)")
 				await screen_fade()
-				print("DialogueSystem: Screen fade effect completed")
+			_:
+				print("DialogueSystem: No matching effect found for value: ", effect_value)
+	else:
+		print("DialogueSystem: No screen effects found")
 	
 	# 更新角色名
 	name_label.text = current.name if current.has("name") else ""
@@ -381,57 +390,75 @@ func _input(event):
 func screen_shake(duration: float = 0.3, strength: float = 15.0):
 	print("DialogueSystem: Playing screen shake effect")
 	
-	# 获取对话系统的根节点（应该是一个CanvasLayer）
-	var root = get_parent()
-	if not root is CanvasLayer:
-		print("DialogueSystem: Warning - Parent is not a CanvasLayer, screen shake may not work correctly")
-		return
+	# 保存原始位置
+	var original_position = position
 	
-	var original_offset = root.offset
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_parallel(true)  # 允许同时进行多个属性的动画
 	
 	# 创建一系列的震动移动
 	var shake_steps = 8
 	for i in range(shake_steps):
-		var current_strength = strength if i == 0 else strength * (1.0 - float(i) / shake_steps)
+		var current_strength = strength * (1.0 - float(i) / shake_steps)
 		var offset = Vector2(
 			randf_range(-current_strength, current_strength),
 			randf_range(-current_strength, current_strength)
 		)
 		
-		# 使用CanvasLayer的offset属性来实现整体位移
-		tween.tween_property(root, "offset", original_offset + offset, duration / (shake_steps * 2))
-		tween.tween_property(root, "offset", original_offset, duration / (shake_steps * 2))
+		# 使用相对位置移动
+		var target_pos = original_position + offset
+		tween.tween_property(self, "position", target_pos, duration / shake_steps)
 	
 	# 等待动画完成
 	await tween.finished
+	
 	# 确保回到原始位置
-	root.offset = original_offset
+	position = original_position
 
 # 屏幕淡入淡出效果
 func screen_fade(duration: float = 1.0):
 	print("DialogueSystem: Playing screen fade effect")
 	
-	# 创建一个新的CanvasLayer来确保遮罩在最上层
-	var overlay_layer = CanvasLayer.new()
-	overlay_layer.layer = 128  # 设置一个较高的层级
-	get_tree().get_root().add_child(overlay_layer)
-	
 	# 创建黑色遮罩
 	var fade_overlay = ColorRect.new()
-	fade_overlay.color = Color(0, 0, 0, 1)
-	fade_overlay.size = get_viewport().get_visible_rect().size
+	add_child(fade_overlay)
+	
+	# 设置遮罩属性
+	fade_overlay.color = Color(0, 0, 0, 0)  # 初始为透明
 	fade_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
-	# 将遮罩添加到新的CanvasLayer
-	overlay_layer.add_child(fade_overlay)
+	# 设置遮罩大小为全屏
+	var viewport_size = get_viewport_rect().size
+	fade_overlay.size = viewport_size
+	fade_overlay.position = Vector2.ZERO
+	fade_overlay.z_index = 100
 	
-	# 创建淡出效果
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.tween_property(fade_overlay, "modulate:a", 0.0, duration)
+	# 第一阶段：淡入（0.5 -> 1.0，持续0.2秒）
+	var tween_fade_in = create_tween()
+	tween_fade_in.set_trans(Tween.TRANS_LINEAR)
+	tween_fade_in.tween_property(fade_overlay, "color:a", 1.0, 0.3).from(0.5)
+	await tween_fade_in.finished
 	
-	# 等待动画完成并清理
-	await tween.finished
-	overlay_layer.queue_free()
+	# 隐藏所有对话元素
+	dialogue_box.hide()
+	character_sprite.hide()
+	choices_container.hide()
+	
+	# 停留0.5秒
+	await get_tree().create_timer(0.5).timeout
+	
+	# 第二阶段：淡出（1.0 -> 0.0，持续0.2秒）
+	var tween_fade_out = create_tween()
+	tween_fade_out.set_trans(Tween.TRANS_LINEAR)
+	tween_fade_out.tween_property(fade_overlay, "color:a", 0.0, 0.0)
+	
+	# 同时显示新的对话内容
+	dialogue_box.show()
+	if character_sprite.texture != null:
+		character_sprite.show()
+	
+	# 等待淡出完成后清理遮罩
+	await tween_fade_out.finished
+	fade_overlay.queue_free()
+	print("DialogueSystem: Fade effect completed")

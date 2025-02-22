@@ -47,7 +47,7 @@
     "sound": "",
     "voice": "",
     "isend": 0,
-    "screenEffects": 0,
+    "screenEffects": 2,
     "roleEffects": 0,
     "drop": {}
   },
@@ -81,7 +81,7 @@
     "sound": "",
     "voice": "res://Resource/sound/voice/xx_dialogue_002.mp3",
     "isend": 0,
-    "screenEffects": 1,
+    "screenEffects": 0,
     "roleEffects": 1,
     "drop": {}
   },
