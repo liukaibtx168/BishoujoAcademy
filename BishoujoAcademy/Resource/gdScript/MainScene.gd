@@ -25,7 +25,7 @@ func _ready():
 func _on_test_button_pressed():
 	if dialogue_system:
 		dialogue_system.show()  # 显示对话系统
-		dialogue_system.start_dialogue(99)  # 从ID为99的对话开始
+		dialogue_system.start_dialogue(100)  # 从ID为99的对话开始
 	else:
 		print("错误：对话系统未初始化！")
 

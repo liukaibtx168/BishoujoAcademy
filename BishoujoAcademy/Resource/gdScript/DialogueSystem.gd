@@ -124,26 +124,17 @@ func display_current_dialogue():
 	print("DialogueSystem: Current dialogue data: ", current)
 	
 	# 处理屏幕特效
-	print("DialogueSystem: Checking for screen effects...")
-	if current.has("screenEffects"):
-		print("DialogueSystem: Found screenEffects field: ", current.screenEffects)
-		print("DialogueSystem: screenEffects type: ", typeof(current.screenEffects))
-		
-		# 将效果值转换为整数
-		var effect_value = int(current.screenEffects)
-		print("DialogueSystem: Effect value (converted to int): ", effect_value)
-		
-		match effect_value:
-			1: # 震动效果
-				print("DialogueSystem: Matched shake effect (1)")
-				await screen_shake()
-			2: # 黑屏淡出效果
-				print("DialogueSystem: Matched fade effect (2)")
-				await screen_fade()
-			_:
-				print("DialogueSystem: No matching effect found for value: ", effect_value)
-	else:
-		print("DialogueSystem: No screen effects found")
+	print("DialogueSystem: Checking for mask change...")
+	if current.has("maskChange"):
+		print("DialogueSystem: Found maskChange field: ", current.maskChange)
+		var mask_params = current.maskChange
+		if mask_params is Dictionary and mask_params.has("[1]") and mask_params.has("[2]"):
+			var color_type = int(mask_params["[1]"])
+			var duration = float(mask_params["[2]"])
+			print("DialogueSystem: Mask change with color type: ", color_type, " and duration: ", duration)
+			await mask_change(color_type, duration)
+		else:
+			print("DialogueSystem: Invalid maskChange parameters")
 	
 	# 更新角色名
 	name_label.text = current.name if current.has("name") else ""
@@ -259,8 +250,11 @@ func display_text_with_typing(text: String):
 			# 如果是结束对话，等待点击
 			return
 		elif current.has("nextID"):
-			# 如果有下一段对话，准备选项
-			prepare_choices(current.nextID)
+			# 如果有下一段对话，检查是否需要显示选项
+			var next_ids = current.nextID
+			if (next_ids is Array and next_ids.size() > 1) or (next_ids is Dictionary and next_ids.size() > 1):
+				# 如果有多个选项，显示选项按钮
+				prepare_choices(next_ids)
 
 func prepare_choices(next_ids):
 	print("DialogueSystem: Preparing choices: ", next_ids)
@@ -268,11 +262,12 @@ func prepare_choices(next_ids):
 	for child in choices_container.get_children():
 		child.queue_free()
 	
-	# 如果next_ids是空数组或空字典
+	# 如果next_ids是空数组或空字典，直接返回
 	if (next_ids is Array and next_ids.is_empty()) or (next_ids is Dictionary and next_ids.is_empty()):
+		choices_container.hide()
 		return
 	
-	# 如果next_ids是数组，转换为字典格式
+	# 将next_ids统一转换为字典格式
 	var next_ids_dict = {}
 	if next_ids is Array:
 		print("DialogueSystem: Converting array to dictionary")
@@ -281,20 +276,34 @@ func prepare_choices(next_ids):
 	else:
 		next_ids_dict = next_ids
 	
-	# 如果只有一个选项，不显示选项框
+	# 如果只有一个选项，不显示选项按钮
 	if next_ids_dict.size() == 1:
 		choices_container.hide()
 		return
-		
+	
 	# 如果有多个选项，创建选项按钮
 	choices_container.show()
 	for key in next_ids_dict.keys():
 		var choice_id = next_ids_dict[key]
 		if not dialogue_data.has(str(choice_id)):
 			continue
-			
+		
 		var choice_dialogue = dialogue_data[str(choice_id)]
 		var button = Button.new()
+		
+		# 获取选项的下一个对话ID
+		var next_dialogue_id = null
+		if choice_dialogue.has("nextID"):
+			if choice_dialogue.nextID is Array and choice_dialogue.nextID.size() > 0:
+				next_dialogue_id = choice_dialogue.nextID[0]
+			elif choice_dialogue.nextID is Dictionary and choice_dialogue.nextID.has("[1]"):
+				next_dialogue_id = choice_dialogue.nextID["[1]"]
+		
+		# 如果没有下一个对话ID，使用选项本身的ID
+		if next_dialogue_id == null:
+			print("DialogueSystem: Warning - Choice has no nextID, using choice ID: ", choice_id)
+			next_dialogue_id = choice_id
+		
 		button.text = choice_dialogue.text
 		button.custom_minimum_size = Vector2(200, 40)
 		
@@ -303,18 +312,9 @@ func prepare_choices(next_ids):
 		button.add_theme_stylebox_override("hover", hover_style)
 		button.add_theme_stylebox_override("pressed", pressed_style)
 		
-		# 如果选项有下一段对话，连接到下一段
-		if choice_dialogue.has("nextID"):
-			var next_id = null
-			if choice_dialogue.nextID is Array and choice_dialogue.nextID.size() > 0:
-				next_id = choice_dialogue.nextID[0]
-			elif choice_dialogue.nextID is Dictionary and choice_dialogue.nextID.has("[1]"):
-				next_id = choice_dialogue.nextID["[1]"]
-			
-			if next_id != null:
-				# 连接信号，直接跳转到选项的下一段对话
-				button.pressed.connect(_on_choice_selected.bind(next_id))
-				choices_container.add_child(button)
+		# 使用选项的下一个对话ID
+		button.pressed.connect(_on_choice_selected.bind(next_dialogue_id))
+		choices_container.add_child(button)
 
 func _on_choice_selected(next_id):
 	print("DialogueSystem: Choice selected, next ID: ", next_id)
@@ -373,71 +373,45 @@ func _input(event):
 				current_dialogue_id = -1
 				return
 			
-			# 如果有选项且文本已显示完成
+			# 如果有下一个对话ID且文本已显示完成
 			if current.has("nextID") and not is_typing:
 				var next_ids = current.nextID
-				# 如果只有一个选项，点击后直接进入下一段对话
-				if (next_ids is Array and next_ids.size() == 1) or (next_ids is Dictionary and next_ids.size() == 1 and next_ids.has("[1]")):
+				# 如果只有一个选项，直接进入下一段对话
+				if (next_ids is Array and next_ids.size() == 1) or (next_ids is Dictionary and next_ids.size() == 1):
 					var next_id = next_ids[0] if next_ids is Array else next_ids["[1]"]
 					if str(next_id) in dialogue_data:
+						print("DialogueSystem: Moving to next dialogue: ", next_id)
 						current_dialogue_id = next_id
 						display_current_dialogue()
-				# 如果有多个选项且选项未显示，显示选项
+				# 如果有多个选项，确保选项已显示
 				elif not choices_container.visible:
-					choices_container.show() 
+					prepare_choices(next_ids)
 
-# 屏幕震动效果
-func screen_shake(duration: float = 0.3, strength: float = 15.0):
-	print("DialogueSystem: Playing screen shake effect")
+# 屏幕遮罩切换效果
+func mask_change(color_type: int = 1, stay_duration: float = 0.3):
+	print("DialogueSystem: Playing mask change effect")
+	print("DialogueSystem: Color type: ", color_type, ", Stay duration: ", stay_duration)
 	
-	# 保存原始位置
-	var original_position = position
+	# 创建遮罩
+	var mask_overlay = ColorRect.new()
+	add_child(mask_overlay)
 	
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.set_parallel(true)  # 允许同时进行多个属性的动画
-	
-	# 创建一系列的震动移动
-	var shake_steps = 8
-	for i in range(shake_steps):
-		var current_strength = strength * (1.0 - float(i) / shake_steps)
-		var offset = Vector2(
-			randf_range(-current_strength, current_strength),
-			randf_range(-current_strength, current_strength)
-		)
-		
-		# 使用相对位置移动
-		var target_pos = original_position + offset
-		tween.tween_property(self, "position", target_pos, duration / shake_steps)
-	
-	# 等待动画完成
-	await tween.finished
-	
-	# 确保回到原始位置
-	position = original_position
-
-# 屏幕淡入淡出效果
-func screen_fade(duration: float = 1.0):
-	print("DialogueSystem: Playing screen fade effect")
-	
-	# 创建黑色遮罩
-	var fade_overlay = ColorRect.new()
-	add_child(fade_overlay)
-	
-	# 设置遮罩属性
-	fade_overlay.color = Color(0, 0, 0, 0)  # 初始为透明
-	fade_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# 设置遮罩颜色
+	var mask_color = Color.BLACK if color_type == 1 else Color.WHITE
+	mask_overlay.color = mask_color
+	mask_overlay.color.a = 0  # 初始透明
+	mask_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	# 设置遮罩大小为全屏
 	var viewport_size = get_viewport_rect().size
-	fade_overlay.size = viewport_size
-	fade_overlay.position = Vector2.ZERO
-	fade_overlay.z_index = 100
+	mask_overlay.size = viewport_size
+	mask_overlay.position = Vector2.ZERO
+	mask_overlay.z_index = 100
 	
 	# 第一阶段：淡入（0.5 -> 1.0，持续0.2秒）
 	var tween_fade_in = create_tween()
 	tween_fade_in.set_trans(Tween.TRANS_LINEAR)
-	tween_fade_in.tween_property(fade_overlay, "color:a", 1.0, 0.3).from(0.5)
+	tween_fade_in.tween_property(mask_overlay, "color:a", 1.0, 0.2).from(0.5)
 	await tween_fade_in.finished
 	
 	# 隐藏所有对话元素
@@ -445,13 +419,13 @@ func screen_fade(duration: float = 1.0):
 	character_sprite.hide()
 	choices_container.hide()
 	
-	# 停留0.5秒
-	await get_tree().create_timer(0.5).timeout
+	# 停留指定时间
+	await get_tree().create_timer(stay_duration).timeout
 	
 	# 第二阶段：淡出（1.0 -> 0.0，持续0.2秒）
 	var tween_fade_out = create_tween()
 	tween_fade_out.set_trans(Tween.TRANS_LINEAR)
-	tween_fade_out.tween_property(fade_overlay, "color:a", 0.0, 0.0)
+	tween_fade_out.tween_property(mask_overlay, "color:a", 0.0, 0.2)
 	
 	# 同时显示新的对话内容
 	dialogue_box.show()
@@ -460,5 +434,5 @@ func screen_fade(duration: float = 1.0):
 	
 	# 等待淡出完成后清理遮罩
 	await tween_fade_out.finished
-	fade_overlay.queue_free()
-	print("DialogueSystem: Fade effect completed")
+	mask_overlay.queue_free()
+	print("DialogueSystem: Mask change effect completed")
