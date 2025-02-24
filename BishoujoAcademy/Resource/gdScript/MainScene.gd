@@ -38,22 +38,22 @@ func _update_window_size():
 	print("当前设备像素: ", screen_size)  # 打印窗口大小
 
 	# 计算缩放比例
-	var scale_x = screen_size.x / target_width
-	var scale_y = screen_size.y / target_height
-	var scale = min(scale_x, scale_y)
+	var scale_value_x = screen_size.x / target_width
+	var scale_value_y = screen_size.y / target_height
+	var scale_value = min(scale_value_x, scale_value_y)
 	print("当前窗口缩放比例: ", scale)
 
 	# 调整窗口大小
-	var new_size = Vector2(target_width * scale, target_height * scale)
+	var new_size = Vector2(target_width * scale_value, target_height * scale_value)
 	DisplayServer.window_set_size(new_size)  # 设置窗口大小
 
 	# 调整视口
-	_adjust_viewport(scale)
+	_adjust_viewport(scale_value)
 	
 
-func _adjust_viewport(scale: float):
+func _adjust_viewport(scale_value: float):
 	# 设置缩放
-	get_viewport().set_size(Vector2(target_width * scale, target_height * scale))  # 将两个值组合成 Vector2
+	get_viewport().set_size(Vector2(target_width * scale_value, target_height * scale_value))  # 将两个值组合成 Vector2
 	# 调整摄像机缩放
 	var camera = get_node("Camera2D")
 	if camera:  # 检查摄像机是否存在

@@ -1,28 +1,28 @@
 [gd_scene load_steps=24 format=3 uid="uid://c34s70owk0min"]
 
 [ext_resource type="Script" path="res://Resource/gdScript/SaveScreen.gd" id="1_vkoh4"]
-[ext_resource type="Texture2D" uid="uid://cuc6qybki5x2k" path="res://Resource/res/UI/tongyong/tanchuang_01.png" id="2_1mvyi"]
-[ext_resource type="Texture2D" uid="uid://cuus6vholt53f" path="res://Resource/res/UI/cundang/cundang_02.png" id="3_25o7k"]
-[ext_resource type="Texture2D" uid="uid://cunjvnl2nulgc" path="res://Resource/res/UI/tongyong/diban_01.png" id="4_j5nxm"]
-[ext_resource type="Texture2D" uid="uid://bjl8gvfjkc03g" path="res://Resource/res/UI/cundang/cundang_01.png" id="4_os0d0"]
-[ext_resource type="Texture2D" uid="uid://vhnpxowcwvbm" path="res://Resource/res/UI/cundang/cundang_04.png" id="5_tok2i"]
-[ext_resource type="Texture2D" uid="uid://d4lfxuykx0nk5" path="res://Resource/res/UI/cundang/cundang_03.png" id="6_3jlq3"]
-[ext_resource type="Texture2D" uid="uid://bmo1xks7gwkpi" path="res://Resource/res/UI/tongyong/diban_02.png" id="6_yv65p"]
-[ext_resource type="Texture2D" uid="uid://620q1uxw21e8" path="res://Resource/res/UI/meishuzi/rili/month_4.png" id="7_80quu"]
-[ext_resource type="Texture2D" uid="uid://gnkkkpmpekrd" path="res://Resource/res/UI/tongyong/diban_00.png" id="7_w5uq0"]
-[ext_resource type="Texture2D" uid="uid://dfoquvvw8rka1" path="res://Resource/res/UI/touxiang/yuan/zhujiao_01.png" id="8_2p22u"]
-[ext_resource type="Texture2D" uid="uid://3omtmvuw20i2" path="res://Resource/res/UI/meishuzi/rili/day_20.png" id="8_xe6ig"]
-[ext_resource type="Texture2D" uid="uid://drmxx7t5y2iun" path="res://Resource/res/UI/tongyong/diban_03.png" id="9_ln5r4"]
-[ext_resource type="Texture2D" uid="uid://c1l86yqxujidv" path="res://Resource/res/UI/tubiao/biaozhi/shux_01.png" id="10_hkktb"]
-[ext_resource type="Texture2D" uid="uid://c11y6j3gn4nmk" path="res://Resource/res/UI/tubiao/biaozhi/shux_02.png" id="11_0ew25"]
-[ext_resource type="Texture2D" uid="uid://crl3km3ix05aj" path="res://Resource/res/UI/tubiao/biaozhi/shux_03.png" id="12_scajt"]
-[ext_resource type="Texture2D" uid="uid://4ppe8q64w2ai" path="res://Resource/res/UI/tongyong/guanbi_01.png" id="14_10ofv"]
-[ext_resource type="Texture2D" uid="uid://4sdre6mo7054" path="res://Resource/res/UI/tongyong/datade-1.png" id="15_lthy1"]
-[ext_resource type="Texture2D" uid="uid://ntu4y3ma2f1e" path="res://Resource/res/UI/tongyong/guanbi_02.png" id="15_xddi2"]
-[ext_resource type="Texture2D" uid="uid://comggu7qkk1et" path="res://Resource/res/UI/tongyong/guanbi_04.png" id="16_ao12k"]
-[ext_resource type="Texture2D" uid="uid://dt5rq7ryu1j7v" path="res://Resource/res/UI/tongyong/datade-2.png" id="16_xmvm5"]
-[ext_resource type="Texture2D" uid="uid://cmbnuwcrjwlxk" path="res://Resource/res/UI/tongyong/datade-3.png" id="17_xian5"]
-[ext_resource type="Texture2D" uid="uid://cmytsv1o7dago" path="res://Resource/res/UI/tongyong/guanbi_03.png" id="17_ymkgo"]
+[ext_resource type="Texture2D" uid="uid://hnrjy8a8oboh" path="res://Resource/res/UI/tongyong/tanchuang_01.png" id="2_1mvyi"]
+[ext_resource type="Texture2D" uid="uid://dh17e2vxl6dsh" path="res://Resource/res/UI/cundang/cundang_02.png" id="3_25o7k"]
+[ext_resource type="Texture2D" uid="uid://bbp00ntyfmrm0" path="res://Resource/res/UI/tongyong/diban_01.png" id="4_j5nxm"]
+[ext_resource type="Texture2D" uid="uid://ddx14rsqsy7yh" path="res://Resource/res/UI/cundang/cundang_01.png" id="4_os0d0"]
+[ext_resource type="Texture2D" uid="uid://c8omlwg84ocvg" path="res://Resource/res/UI/cundang/cundang_04.png" id="5_tok2i"]
+[ext_resource type="Texture2D" uid="uid://cktg6sqwmb35j" path="res://Resource/res/UI/cundang/cundang_03.png" id="6_3jlq3"]
+[ext_resource type="Texture2D" uid="uid://bwyf4pvk8ux1x" path="res://Resource/res/UI/tongyong/diban_02.png" id="6_yv65p"]
+[ext_resource type="Texture2D" uid="uid://buegq30gqmdvv" path="res://Resource/res/UI/meishuzi/rili/month_4.png" id="7_80quu"]
+[ext_resource type="Texture2D" uid="uid://cjgdt55w4c81k" path="res://Resource/res/UI/tongyong/diban_00.png" id="7_w5uq0"]
+[ext_resource type="Texture2D" uid="uid://cl37o63ox1y5i" path="res://Resource/res/UI/touxiang/yuan/zhujiao_01.png" id="8_2p22u"]
+[ext_resource type="Texture2D" uid="uid://i7pw6x5nmdsl" path="res://Resource/res/UI/meishuzi/rili/day_20.png" id="8_xe6ig"]
+[ext_resource type="Texture2D" uid="uid://peydsub36hrw" path="res://Resource/res/UI/tongyong/diban_03.png" id="9_ln5r4"]
+[ext_resource type="Texture2D" uid="uid://dcbfyqbqf5fdw" path="res://Resource/res/UI/tubiao/biaozhi/shux_01.png" id="10_hkktb"]
+[ext_resource type="Texture2D" uid="uid://7cxoy4u1p2ic" path="res://Resource/res/UI/tubiao/biaozhi/shux_02.png" id="11_0ew25"]
+[ext_resource type="Texture2D" uid="uid://bas582w0vkxy5" path="res://Resource/res/UI/tubiao/biaozhi/shux_03.png" id="12_scajt"]
+[ext_resource type="Texture2D" uid="uid://bjvuksxdlpj52" path="res://Resource/res/UI/tongyong/guanbi_01.png" id="14_10ofv"]
+[ext_resource type="Texture2D" uid="uid://dmccg6r5dmih5" path="res://Resource/res/UI/tongyong/datade-1.png" id="15_lthy1"]
+[ext_resource type="Texture2D" uid="uid://cslgx655iax1q" path="res://Resource/res/UI/tongyong/guanbi_02.png" id="15_xddi2"]
+[ext_resource type="Texture2D" uid="uid://tlenwgtvjl8c" path="res://Resource/res/UI/tongyong/guanbi_04.png" id="16_ao12k"]
+[ext_resource type="Texture2D" uid="uid://c4cb1fygqwl3t" path="res://Resource/res/UI/tongyong/datade-2.png" id="16_xmvm5"]
+[ext_resource type="Texture2D" uid="uid://c882sfk0owmra" path="res://Resource/res/UI/tongyong/datade-3.png" id="17_xian5"]
+[ext_resource type="Texture2D" uid="uid://bm2816h46gpjo" path="res://Resource/res/UI/tongyong/guanbi_03.png" id="17_ymkgo"]
 
 [node name="SaveScreen" type="Control"]
 layout_mode = 3
@@ -234,7 +234,6 @@ offset_right = -4.0
 offset_bottom = -37.0
 theme_override_colors/font_color = Color(1, 0.454902, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "尼古拉斯·赵四"
 
 [node name="Cundang04" type="Sprite2D" parent="Sprite2D/savedata/data2/notnull/Diban01"]
 position = Vector2(-270, 0)
@@ -362,7 +361,6 @@ offset_right = -4.0
 offset_bottom = -37.0
 theme_override_colors/font_color = Color(1, 0.454902, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "尼古拉斯·赵四"
 
 [node name="Cundang04" type="Sprite2D" parent="Sprite2D/savedata/data3/notnull/Diban01"]
 position = Vector2(-270, 0)
@@ -490,7 +488,6 @@ offset_right = -4.0
 offset_bottom = -37.0
 theme_override_colors/font_color = Color(1, 0.454902, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "尼古拉斯·赵四"
 
 [node name="Cundang04" type="Sprite2D" parent="Sprite2D/savedata/data4/notnull/Diban01"]
 position = Vector2(-270, 0)

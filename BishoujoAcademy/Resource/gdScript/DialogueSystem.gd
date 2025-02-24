@@ -1,8 +1,5 @@
 extends Control
 
-# 定义信号
-signal dialogue_ended
-
 # 对话数据
 var dialogue_data = {}
 var current_dialogue_id = -1  # 将初始值改为-1，表示没有激活的对话
@@ -326,7 +323,7 @@ func _on_choice_selected(next_id):
 	else:
 		print("DialogueSystem: Invalid next dialogue ID: ", next_id)
 		hide_dialogue_system()
-		emit_signal("dialogue_ended")
+		current_dialogue_id = -1
 
 func hide_dialogue_system():
 	print("DialogueSystem: Hiding dialogue system")
@@ -373,7 +370,6 @@ func _input(event):
 			if current.get("isend", 0) == 1 and not is_typing:
 				print("DialogueSystem: Ending dialogue")
 				hide_dialogue_system()
-				emit_signal("dialogue_ended")
 				current_dialogue_id = -1
 				return
 			
@@ -431,7 +427,7 @@ func mask_change(color_type: int = 1, stay_duration: float = 0.3):
 	# 第二阶段：淡出（1.0 -> 0.0，持续0.2秒）
 	var tween_fade_out = create_tween()
 	tween_fade_out.set_trans(Tween.TRANS_LINEAR)
-	tween_fade_out.tween_property(mask_overlay, "color:a", 0.0, 0.0)
+	tween_fade_out.tween_property(mask_overlay, "color:a", 0.0, 0.2)  # 修正持续时间为0.2秒
 	
 	# 同时显示新的对话内容
 	dialogue_box.show()
