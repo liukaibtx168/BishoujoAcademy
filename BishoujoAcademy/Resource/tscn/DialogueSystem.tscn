@@ -28,7 +28,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rk4wd")
 
-[node name="Background" type="TextureRect" parent="DialogueSystem"]
+[node name="MaskBackground" type="ColorRect" parent="DialogueSystem"]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 1600.0
+color = Color(0, 0, 0, 1)
+
+[node name="ShakeContainer" type="Control" parent="DialogueSystem"]
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1600.0
+
+[node name="Background" type="TextureRect" parent="DialogueSystem/ShakeContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,19 +49,18 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 6
 
-[node name="CharacterSprite" type="TextureRect" parent="DialogueSystem"]
+[node name="CharacterSprite" type="TextureRect" parent="DialogueSystem/ShakeContainer"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -300.0
-offset_right = 150.0
-offset_bottom = 300.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = 544.0
+offset_right = 72.0
+offset_bottom = 544.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 expand_mode = 1
 stretch_mode = 5
 
@@ -60,8 +70,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -200.0
-offset_bottom = -20.0
+offset_top = -284.0
+offset_right = -1.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
@@ -74,10 +85,10 @@ anchor_right = 1.0
 offset_left = 20.0
 offset_top = 10.0
 offset_right = -20.0
-offset_bottom = 40.0
+offset_bottom = 57.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.921569, 0.815686, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 30
 text = "角色名称"
 
 [node name="TextLabel" type="Label" parent="DialogueSystem/DialogueBox"]
@@ -85,14 +96,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 50.0
-offset_right = -20.0
-offset_bottom = -20.0
+offset_left = 42.0
+offset_top = 70.0
+offset_right = -41.0
+offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 24
 text = "这里是对话内容"
 autowrap_mode = 2
 

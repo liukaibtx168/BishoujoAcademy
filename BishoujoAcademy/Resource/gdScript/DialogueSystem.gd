@@ -6,14 +6,17 @@ var current_dialogue_id = -1  # 将初始值改为-1，表示没有激活的对�
 var is_typing = false
 var typing_speed = 0.05  # 打字机效果的速度
 var is_mask_playing = false  # 添加遮罩动画状态标记
+var is_shaking = false  # 添加震动状态标记
 
 # 节点引用
 @onready var dialogue_box = $DialogueBox
 @onready var name_label = $DialogueBox/NameLabel
 @onready var text_label = $DialogueBox/TextLabel
 @onready var choices_container = $ChoicesContainer
-@onready var character_sprite = $CharacterSprite
-@onready var background = $Background
+@onready var shake_container = $ShakeContainer  # 新增震动容器引用
+@onready var character_sprite = $ShakeContainer/CharacterSprite  # 修改路径
+@onready var background = $ShakeContainer/Background  # 修改路径
+@onready var mask_background = $MaskBackground  # 新增遮罩背景引用
 
 # 音频播放器
 @onready var bgm_player = $BGMPlayer
@@ -24,6 +27,11 @@ var is_mask_playing = false  # 添加遮罩动画状态标记
 var normal_style: StyleBoxFlat
 var hover_style: StyleBoxFlat
 var pressed_style: StyleBoxFlat
+
+# 震动效果相关常量
+const STANDARD_UNIT = 100.0  # 标准震动单位
+const SHAKE_DURATION = 1.0   # 单次震荡持续时间
+const SPEED_MULTIPLIER = 5.0  # 速度倍数
 
 func _ready():
 	print("DialogueSystem: Starting initialization...")
@@ -134,52 +142,50 @@ func display_current_dialogue():
 		else:
 			print("DialogueSystem: Invalid maskChange parameters")
 	
+	# 处理震动效果
+	if current.has("Shake"):
+		print("DialogueSystem: 检测到震动效果配置")
+		var shake_value = current.Shake
+		if shake_value == 1:
+			await shake_effect(1.0, 2)  # 轻微震动：1倍强度，2次
+		elif shake_value == 2:
+			await shake_effect(1.5, 4)  # 剧烈震动：1.5倍强度，4次
+	
 	# 更新角色名
 	name_label.text = current.name if current.has("name") else ""
 	print("DialogueSystem: Set name to: ", name_label.text)
 	
 	# 更新角色立绘
 	if current.has("modle") and current.modle != "":
-		print("DialogueSystem: Loading character sprite: ", current.modle)
 		var texture_path = current.modle
 		if ResourceLoader.exists(texture_path):
 			var texture = load(texture_path)
 			if texture:
 				character_sprite.texture = texture
 				character_sprite.show()
-				print("DialogueSystem: Character sprite loaded successfully")
 			else:
-				print("DialogueSystem: Failed to load character sprite!")
 				character_sprite.hide()
 		else:
-			print("DialogueSystem: Character sprite file not found: ", texture_path)
 			character_sprite.hide()
 	else:
 		character_sprite.hide()
-		print("DialogueSystem: No character sprite to display")
 	
 	# 更新背景
 	if current.has("sence") and current.sence != "":
-		print("DialogueSystem: Loading background: ", current.sence)
 		var texture_path = current.sence
 		if ResourceLoader.exists(texture_path):
 			var texture = load(texture_path)
 			if texture:
 				background.texture = texture
-				print("DialogueSystem: Background loaded successfully")
-			else:
-				print("DialogueSystem: Failed to load background!")
 		else:
 			print("DialogueSystem: Background file not found: ", texture_path)
 	
 	# 播放BGM
 	if current.has("bgm") and current.bgm != "":
-		print("DialogueSystem: Loading BGM: ", current.bgm)
 		var audio_path = current.bgm
 		if ResourceLoader.exists(audio_path):
 			var audio = load(audio_path)
 			if audio:
-				# 只有当当前没有播放BGM或者是不同的BGM时才更换
 				if not bgm_player.playing or bgm_player.stream != audio:
 					bgm_player.stream = audio
 					bgm_player.stream.loop = true  # 设置BGM循环播放
@@ -191,36 +197,24 @@ func display_current_dialogue():
 	
 	# 播放音效
 	if current.has("sound") and current.sound != "":
-		print("DialogueSystem: Loading sound effect: ", current.sound)
 		var audio_path = current.sound
 		if ResourceLoader.exists(audio_path):
 			var audio = load(audio_path)
 			if audio:
 				sound_player.stream = audio
 				sound_player.play()
-			else:
-				print("DialogueSystem: Failed to load sound effect!")
-		else:
-			print("DialogueSystem: Sound effect file not found: ", audio_path)
 	
 	# 播放语音
 	if current.has("voice") and current.voice != "":
-		print("DialogueSystem: Loading voice: ", current.voice)
 		var audio_path = current.voice
 		if ResourceLoader.exists(audio_path):
 			var audio = load(audio_path)
 			if audio:
 				voice_player.stream = audio
 				voice_player.play()
-			else:
-				print("DialogueSystem: Failed to load voice!")
-		else:
-			print("DialogueSystem: Voice file not found: ", audio_path)
 	
 	# 显示文本（使用打字机效果）
 	var text = current.text if current.has("text") else ""
-	print("DialogueSystem: Displaying text: ", text)
-	# 隐藏选项（在文字显示完成后才显示）
 	choices_container.hide()
 	display_text_with_typing(text)
 
@@ -331,6 +325,7 @@ func hide_dialogue_system():
 	dialogue_box.hide()
 	choices_container.hide()
 	character_sprite.hide()
+	mask_background.hide()  # 使用节点引用
 	
 	# 停止所有音频
 	bgm_player.stop()
@@ -347,6 +342,9 @@ func show_dialogue_system():
 	show()
 	modulate = Color(1, 1, 1, 1)
 	
+	# 显示遮罩背景
+	mask_background.show()  # 使用节点引用
+	
 	# 显示对话框
 	dialogue_box.show()
 	dialogue_box.modulate = Color(1, 1, 1, 1)
@@ -354,7 +352,7 @@ func show_dialogue_system():
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if is_mask_playing:  # 如果遮罩动画正在播放，不响应点击
+		if is_mask_playing or is_shaking:  # 如果遮罩动画或震动效果正在播放，不响应点击
 			return
 			
 		if is_typing:
@@ -439,3 +437,62 @@ func mask_change(color_type: int = 1, stay_duration: float = 0.3):
 	mask_overlay.queue_free()
 	is_mask_playing = false  # 设置遮罩动画播放结束
 	print("DialogueSystem: Mask change effect completed")
+
+# 计算贝塞尔曲线点
+func bezier(t: float, p0: Vector2, p1: Vector2, p2: Vector2, p3: Vector2) -> Vector2:
+	var one_minus_t = 1.0 - t
+	var one_minus_t_squared = one_minus_t * one_minus_t
+	var one_minus_t_cubed = one_minus_t_squared * one_minus_t
+	var t_squared = t * t
+	var t_cubed = t_squared * t
+	
+	return p0 * one_minus_t_cubed + \
+		   p1 * (3.0 * one_minus_t_squared * t) + \
+		   p2 * (3.0 * one_minus_t * t_squared) + \
+		   p3 * t_cubed
+
+# 单次震荡
+func single_oscillation(intensity: float, tween: Tween):
+	# 固定为垂直方向（正下方到正上方）
+	var direction = Vector2(0, 1)  # 向下的单位向量
+	
+	# 计算震动位移
+	var displacement = direction * STANDARD_UNIT * intensity
+	
+	# 保存原始位置
+	var original_pos = shake_container.position
+	
+	# 设置贝塞尔曲线的控制点
+	var p0 = original_pos  # 起点
+	var p1 = original_pos + displacement  # 第一控制点（向下）
+	var p2 = original_pos - displacement  # 第二控制点（向上）
+	var p3 = original_pos  # 终点
+	
+	# 创建震动关键帧
+	var steps = 20  # 关键帧数量
+	var frame_duration = (SHAKE_DURATION / SPEED_MULTIPLIER) / steps  # 加入速度倍数
+	
+	for i in range(steps + 1):
+		var t = float(i) / steps
+		var pos = bezier(t, p0, p1, p2, p3)
+		tween.tween_property(shake_container, "position", pos, frame_duration)
+
+# 震动效果
+func shake_effect(intensity: float, repeat_count: int):
+	print("DialogueSystem: 震动生效 - 强度系数: ", intensity, " 重复次数: ", repeat_count)
+	is_shaking = true
+	
+	var tween = create_tween()
+	tween.set_parallel(false)  # 串行执行每次震荡
+	
+	# 执行指定次数的震荡
+	for i in range(repeat_count):
+		single_oscillation(intensity, tween)
+	
+	# 确保最后回到原位
+	tween.tween_property(shake_container, "position", shake_container.position, 0.1 / SPEED_MULTIPLIER)
+	
+	# 等待动画完成
+	await tween.finished
+	is_shaking = false
+	print("DialogueSystem: 震动效果完成")
