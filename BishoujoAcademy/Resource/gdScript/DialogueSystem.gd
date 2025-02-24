@@ -30,8 +30,9 @@ var pressed_style: StyleBoxFlat
 
 # 震动效果相关常量
 const STANDARD_UNIT = 100.0  # 标准震动单位
-const SHAKE_DURATION = 1.0   # 单次震荡持续时间
+const SHAKE_DURATION = 0.5   # 单次震荡持续时间（减少一点持续时间使得震动更快）
 const SPEED_MULTIPLIER = 5.0  # 速度倍数
+const MAX_ANGLE = PI/6       # 最大偏移角度（30度）
 
 func _ready():
 	print("DialogueSystem: Starting initialization...")
@@ -453,8 +454,9 @@ func bezier(t: float, p0: Vector2, p1: Vector2, p2: Vector2, p3: Vector2) -> Vec
 
 # 单次震荡
 func single_oscillation(intensity: float, tween: Tween):
-	# 固定为垂直方向（正下方到正上方）
-	var direction = Vector2(0, 1)  # 向下的单位向量
+	# 生成随机角度，但保持主要在垂直方向
+	var random_angle = randf_range(-MAX_ANGLE, MAX_ANGLE)
+	var direction = Vector2(sin(random_angle), cos(random_angle))  # 主要是垂直方向，带有随机水平偏移
 	
 	# 计算震动位移
 	var displacement = direction * STANDARD_UNIT * intensity
@@ -462,32 +464,46 @@ func single_oscillation(intensity: float, tween: Tween):
 	# 保存原始位置
 	var original_pos = shake_container.position
 	
+	# 添加随机性到控制点
+	var random_offset1 = Vector2(
+		randf_range(-20, 20),  # 小范围的水平随机偏移
+		randf_range(-10, 10)   # 小范围的垂直随机偏移
+	)
+	var random_offset2 = Vector2(
+		randf_range(-20, 20),
+		randf_range(-10, 10)
+	)
+	
 	# 设置贝塞尔曲线的控制点
 	var p0 = original_pos  # 起点
-	var p1 = original_pos + displacement  # 第一控制点（向下）
-	var p2 = original_pos - displacement  # 第二控制点（向上）
+	var p1 = original_pos + displacement + random_offset1  # 第一控制点（添加随机偏移）
+	var p2 = original_pos - displacement + random_offset2  # 第二控制点（添加随机偏移）
 	var p3 = original_pos  # 终点
 	
 	# 创建震动关键帧
-	var steps = 20  # 关键帧数量
-	var frame_duration = (SHAKE_DURATION / SPEED_MULTIPLIER) / steps  # 加入速度倍数
+	var steps = 15  # 减少关键帧数量使运动更快
+	var frame_duration = (SHAKE_DURATION / SPEED_MULTIPLIER) / steps
 	
 	for i in range(steps + 1):
 		var t = float(i) / steps
+		# 使用缓动函数使运动更自然
+		t = ease(t, 2.0)  # 使用二次缓动
 		var pos = bezier(t, p0, p1, p2, p3)
 		tween.tween_property(shake_container, "position", pos, frame_duration)
 
 # 震动效果
 func shake_effect(intensity: float, repeat_count: int):
-	print("DialogueSystem: 震动生效 - 强度系数: ", intensity, " 重复次数: ", repeat_count)
 	is_shaking = true
 	
 	var tween = create_tween()
 	tween.set_parallel(false)  # 串行执行每次震荡
 	
-	# 执行指定次数的震荡
+	# 执行指定次数的震荡，每次震荡都有随机性
 	for i in range(repeat_count):
 		single_oscillation(intensity, tween)
+		# 在震荡之间添加很短的暂停
+		if i < repeat_count - 1:  # 如果不是最后一次震荡
+			tween.tween_interval(0.05 / SPEED_MULTIPLIER)  # 添加短暂暂停
 	
 	# 确保最后回到原位
 	tween.tween_property(shake_container, "position", shake_container.position, 0.1 / SPEED_MULTIPLIER)
@@ -495,4 +511,3 @@ func shake_effect(intensity: float, repeat_count: int):
 	# 等待动画完成
 	await tween.finished
 	is_shaking = false
-	print("DialogueSystem: 震动效果完成")
