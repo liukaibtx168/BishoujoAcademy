@@ -13,6 +13,7 @@ export_presets.cfg
 
 # 编辑器缓存（所有用户不同步）
 .user/
+settings.json
 
 # 系统生成文件（macOS/Windows）
 .DS_Store
@@ -20,11 +21,6 @@ Thumbs.db
 
 # 日志文件
 *.log
-
-# deepseek知识库文件
-Resource/deepseek
-Resource/GdToTxt.bat
-Resource/TscnToTxt.bat
 
 # Imported translations (automatically generated from CSV files)
 *.translation
