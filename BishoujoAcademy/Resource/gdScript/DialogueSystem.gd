@@ -383,6 +383,12 @@ func prepare_choices(next_ids):
 		button.text = choice_dialogue.text
 		button.custom_minimum_size = Vector2(200, 40)
 		
+		# 设置字体大小
+		var font_size = 24  # 设置字体大小为20
+		var label_settings = LabelSettings.new()
+		label_settings.font_size = font_size
+		button.add_theme_font_size_override("font_size", font_size)
+		
 		# 设置按钮样式
 		button.add_theme_stylebox_override("normal", normal_style)
 		button.add_theme_stylebox_override("hover", hover_style)

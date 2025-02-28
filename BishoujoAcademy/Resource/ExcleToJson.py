@@ -92,8 +92,10 @@ def batch_convert(input_dir, output_dir):
         process_excel(excel_file, output_dir)
 
 if __name__ == "__main__":
-    input_path = r"E:\Test_project\BishoujoAcademy\Resource\excle"
-    output_path = r"E:\Test_project\BishoujoAcademy\Resource\json"
+    # 使用相对路径
+    script_dir = Path(__file__).parent
+    input_path = script_dir / "excle"
+    output_path = script_dir / "json"
     
     batch_convert(input_path, output_path)
     print("批处理完成！")
