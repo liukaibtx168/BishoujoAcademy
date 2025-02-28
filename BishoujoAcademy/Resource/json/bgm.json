@@ -1,0 +1,27 @@
+{
+  "1": {
+    "ID": 1,
+    "tips": "圣诞音乐改",
+    "path": "res://Resource/sound/bgm/BGM_00.mp3"
+  },
+  "2": {
+    "ID": 2,
+    "tips": "欢快感bgm",
+    "path": "res://Resource/sound/bgm/BGM_01.mp3"
+  },
+  "3": {
+    "ID": 3,
+    "tips": "神秘感bgm",
+    "path": "res://Resource/sound/bgm/BGM_02.mp3"
+  },
+  "4": {
+    "ID": 4,
+    "tips": "轻柔感bgm",
+    "path": "res://Resource/sound/bgm/BGM_03.mp3"
+  },
+  "5": {
+    "ID": 5,
+    "tips": "忧郁感bgm",
+    "path": "res://Resource/sound/bgm/BGM_04.mp3"
+  }
+}

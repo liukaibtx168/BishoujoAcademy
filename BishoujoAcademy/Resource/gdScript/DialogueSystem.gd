@@ -8,6 +8,11 @@ var typing_speed = 0.05  # 打字机效果的速度
 var is_mask_playing = false  # 添加遮罩动画状态标记
 var is_shaking = false  # 添加震动状态标记
 
+# 配置数据
+var role_data = {}    # 角色配置数据
+var scene_data = {}   # 场景配置数据
+var bgm_data = {}     # BGM配置数据
+
 # 节点引用
 @onready var dialogue_box = $DialogueBox
 @onready var name_label = $DialogueBox/NameLabel
@@ -42,10 +47,17 @@ func _ready():
 	
 	# 创建按钮样式
 	create_button_styles()
+	
+	# 加载配置数据
+	if !load_resource_data():
+		print("DialogueSystem: Failed to load resource data!")
+		return
+		
 	# 加载对话数据
 	if !load_dialogue_data():
 		print("DialogueSystem: Failed to load dialogue data!")
 		return
+		
 	# 初始化UI
 	hide_dialogue_system()
 	print("DialogueSystem: Initialization complete!")
@@ -90,6 +102,61 @@ func create_button_styles():
 	pressed_style.corner_radius_bottom_right = 5
 	pressed_style.corner_radius_bottom_left = 5
 
+func load_resource_data() -> bool:
+	# 加载角色数据
+	if !FileAccess.file_exists("res://Resource/json/role.json"):
+		print("DialogueSystem: role.json file not found!")
+		return false
+	
+	var role_file = FileAccess.open("res://Resource/json/role.json", FileAccess.READ)
+	if role_file == null:
+		print("DialogueSystem: Failed to open role.json!")
+		return false
+	
+	var json = JSON.new()
+	var error = json.parse(role_file.get_as_text())
+	if error == OK:
+		role_data = json.get_data()
+	else:
+		print("DialogueSystem: Failed to parse role.json!")
+		return false
+	
+	# 加载场景数据
+	if !FileAccess.file_exists("res://Resource/json/scene.json"):
+		print("DialogueSystem: scene.json file not found!")
+		return false
+	
+	var scene_file = FileAccess.open("res://Resource/json/scene.json", FileAccess.READ)
+	if scene_file == null:
+		print("DialogueSystem: Failed to open scene.json!")
+		return false
+	
+	error = json.parse(scene_file.get_as_text())
+	if error == OK:
+		scene_data = json.get_data()
+	else:
+		print("DialogueSystem: Failed to parse scene.json!")
+		return false
+	
+	# 加载BGM数据
+	if !FileAccess.file_exists("res://Resource/json/bgm.json"):
+		print("DialogueSystem: bgm.json file not found!")
+		return false
+	
+	var bgm_file = FileAccess.open("res://Resource/json/bgm.json", FileAccess.READ)
+	if bgm_file == null:
+		print("DialogueSystem: Failed to open bgm.json!")
+		return false
+	
+	error = json.parse(bgm_file.get_as_text())
+	if error == OK:
+		bgm_data = json.get_data()
+	else:
+		print("DialogueSystem: Failed to parse bgm.json!")
+		return false
+	
+	return true
+
 func load_dialogue_data() -> bool:
 	print("DialogueSystem: Attempting to load dialogue data...")
 	if !FileAccess.file_exists("res://Resource/json/dialogue.json"):
@@ -131,7 +198,6 @@ func display_current_dialogue():
 	print("DialogueSystem: Current dialogue data: ", current)
 	
 	# 处理屏幕特效
-	print("DialogueSystem: Checking for mask change...")
 	if current.has("maskChange"):
 		print("DialogueSystem: Found maskChange field: ", current.maskChange)
 		var mask_params = current.maskChange
@@ -158,43 +224,60 @@ func display_current_dialogue():
 	
 	# 更新角色立绘
 	if current.has("modle") and current.modle != "":
-		var texture_path = current.modle
-		if ResourceLoader.exists(texture_path):
-			var texture = load(texture_path)
-			if texture:
-				character_sprite.texture = texture
-				character_sprite.show()
+		var role_id = str(current.modle)
+		if role_data.has(role_id):
+			var texture_path = role_data[role_id].path
+			if ResourceLoader.exists(texture_path):
+				var texture = load(texture_path)
+				if texture:
+					character_sprite.texture = texture
+					character_sprite.show()
+				else:
+					print("DialogueSystem: Failed to load character sprite!")
+					character_sprite.hide()
 			else:
+				print("DialogueSystem: Character sprite file not found: ", texture_path)
 				character_sprite.hide()
 		else:
+			print("DialogueSystem: Role ID not found: ", role_id)
 			character_sprite.hide()
 	else:
 		character_sprite.hide()
 	
 	# 更新背景
-	if current.has("sence") and current.sence != "":
-		var texture_path = current.sence
-		if ResourceLoader.exists(texture_path):
-			var texture = load(texture_path)
-			if texture:
-				background.texture = texture
+	if current.has("scene") and current.scene != "":
+		var scene_id = str(current.scene)
+		if scene_data.has(scene_id):
+			var texture_path = scene_data[scene_id].path
+			if ResourceLoader.exists(texture_path):
+				var texture = load(texture_path)
+				if texture:
+					background.texture = texture
+				else:
+					print("DialogueSystem: Failed to load background!")
+			else:
+				print("DialogueSystem: Background file not found: ", texture_path)
 		else:
-			print("DialogueSystem: Background file not found: ", texture_path)
+			print("DialogueSystem: Scene ID not found: ", scene_id)
 	
 	# 播放BGM
 	if current.has("bgm") and current.bgm != "":
-		var audio_path = current.bgm
-		if ResourceLoader.exists(audio_path):
-			var audio = load(audio_path)
-			if audio:
-				if not bgm_player.playing or bgm_player.stream != audio:
-					bgm_player.stream = audio
-					bgm_player.stream.loop = true  # 设置BGM循环播放
-					bgm_player.play()
+		var bgm_id = str(current.bgm)
+		if bgm_data.has(bgm_id):
+			var audio_path = bgm_data[bgm_id].path
+			if ResourceLoader.exists(audio_path):
+				var audio = load(audio_path)
+				if audio:
+					if not bgm_player.playing or bgm_player.stream != audio:
+						bgm_player.stream = audio
+						bgm_player.stream.loop = true
+						bgm_player.play()
+				else:
+					print("DialogueSystem: Failed to load BGM!")
 			else:
-				print("DialogueSystem: Failed to load BGM!")
+				print("DialogueSystem: BGM file not found: ", audio_path)
 		else:
-			print("DialogueSystem: BGM file not found: ", audio_path)
+			print("DialogueSystem: BGM ID not found: ", bgm_id)
 	
 	# 播放音效
 	if current.has("sound") and current.sound != "":
