@@ -13,7 +13,9 @@ export_presets.cfg
 
 # 编辑器缓存（所有用户不同步）
 .user/
-settings.json
+.vs/
+**/.vs/
+**/ProjectSettings.json
 
 # 系统生成文件（macOS/Windows）
 .DS_Store
