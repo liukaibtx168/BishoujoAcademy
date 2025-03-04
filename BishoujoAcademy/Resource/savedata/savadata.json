@@ -1,1 +1,38 @@
-[]
+[
+	{
+		"save_id": 1,
+		"name": "尼古拉斯·赵四",
+		"avatar_path": "res://Resource/res/UI/touxiang/yuan/zhujiao_01.png",
+		"stamina": 100,
+		"intelligence": 80,
+		"charisma": 90,
+		"time": {
+			"month": 10,
+			"day": 5
+		}
+	},
+	{
+		"save_id": 2,
+		"name": "尼古拉斯·赵三",
+		"avatar_path": "res://Resource/res/UI/touxiang/yuan/zhujiao_01.png",
+		"stamina": 10,
+		"intelligence": 15,
+		"charisma": 20,
+		"time": {
+			"month": 5,
+			"day": 26
+		}
+	},
+	{
+		"save_id": 3,
+		"name": "尼古拉斯·赵五",
+		"avatar_path": "res://Resource/res/UI/touxiang/yuan/zhujiao_01.png",
+		"stamina": 0,
+		"intelligence": 0,
+		"charisma": 0,
+		"time": {
+			"month": 12,
+			"day": 31
+		}
+	}
+]
