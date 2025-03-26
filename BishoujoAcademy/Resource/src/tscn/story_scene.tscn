@@ -1,14 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://5pti3k2o13jq"]
+[gd_scene load_steps=11 format=3 uid="uid://5pti3k2o13jq"]
 
 [ext_resource type="Texture2D" uid="uid://dcg6y2v1w31um" path="res://Resource/res/scene/test_map_001.png" id="1_a2k8s"]
+[ext_resource type="Script" path="res://Resource/src/script/story_scene.gd" id="1_kwvqt"]
 [ext_resource type="Texture2D" uid="uid://b4ywtrt7drpej" path="res://Resource/res/ui/public/test_label_003.png" id="3_kbpo8"]
 [ext_resource type="Theme" uid="uid://6wrcds78waij" path="res://Resource/res/theme/my_theme_01.tres" id="4_p3lcm"]
 [ext_resource type="Texture2D" uid="uid://nh51tw6m13j2" path="res://Resource/res/ui/public/test_label_004.png" id="4_xgyw8"]
 [ext_resource type="Texture2D" uid="uid://dmvpr1qpqvd3c" path="res://Resource/res/icon/head/hero_head_001.png" id="5_dsqek"]
 [ext_resource type="Texture2D" uid="uid://c6d4q746rr5xd" path="res://Resource/res/ui/public/test_label_005.png" id="5_th2jy"]
 [ext_resource type="Texture2D" uid="uid://cjd1ln8y6vew4" path="res://Resource/res/ui/public/test_label_006.png" id="6_aqwom"]
+[ext_resource type="Texture2D" uid="uid://dbdajv3a2kwj7" path="res://Resource/res/ui/public/test_icon_gold.png" id="7_6vfam"]
+[ext_resource type="Texture2D" uid="uid://d02jp2a7q70vg" path="res://Resource/res/ui/public/test_icon_time.png" id="8_435y2"]
 
-[node name="Node2D" type="Node2D"]
+[node name="story_scene" type="Node2D"]
+script = ExtResource("1_kwvqt")
 
 [node name="map" type="Sprite2D" parent="."]
 position = Vector2(360, 800)
@@ -105,9 +109,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 50.0
+offset_left = 40.0
 offset_top = -111.0
-offset_right = 189.0
+offset_right = 179.0
 offset_bottom = 23.0
 grow_vertical = 2
 texture = ExtResource("5_dsqek")
@@ -162,9 +166,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 58.0
+offset_left = 62.0
 offset_top = 33.5
-offset_right = 185.0
+offset_right = 189.0
 offset_bottom = 42.5
 grow_vertical = 2
 theme = ExtResource("4_p3lcm")
@@ -208,9 +212,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 58.0
+offset_left = 62.0
 offset_top = 62.5
-offset_right = 185.0
+offset_right = 189.0
 offset_bottom = 71.5
 grow_vertical = 2
 theme = ExtResource("4_p3lcm")
@@ -369,14 +373,115 @@ text = "999"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TopArea/hero_data"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -287.0
+offset_top = 7.5
+offset_right = -61.0
+offset_bottom = 66.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="gold" type="TextureRect" parent="CanvasLayer/TopArea/hero_data/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("7_6vfam")
+
+[node name="gold_num" type="Label" parent="CanvasLayer/TopArea/hero_data/HBoxContainer/gold"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -11.5
+offset_right = 15.0
+offset_bottom = 38.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="gold_unit" type="Label" parent="CanvasLayer/TopArea/hero_data/HBoxContainer/gold"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -18.0
+offset_right = 41.0
+offset_bottom = 37.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/TopArea/hero_data/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="time" type="TextureRect" parent="CanvasLayer/TopArea/hero_data/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_435y2")
+
+[node name="time_num" type="Label" parent="CanvasLayer/TopArea/hero_data/HBoxContainer/time"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -11.5
+offset_right = 22.0
+offset_bottom = 38.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="time_unit" type="Label" parent="CanvasLayer/TopArea/hero_data/HBoxContainer/time"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -18.0
+offset_right = 50.0
+offset_bottom = 37.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "H"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="History" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -360.0
-offset_top = 256.0
+offset_top = 258.0
 offset_right = 360.0
-offset_bottom = 586.0
+offset_bottom = 588.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
 
@@ -398,7 +503,12 @@ theme_override_font_sizes/font_size = 24
 text = "1.文字文仔文仔文仔文仔文仔文仔文仔文仔文仔文仔文仔文仔文仔
 2.仔文仔仔文仔仔文仔仔文仔仔文仔仔文仔
 3.仔文仔仔文仔仔文仔仔文仔仔文仔仔文仔
-4.仔文仔仔文仔仔文仔仔文仔仔文仔仔文仔"
+4.仔文仔仔文仔仔文仔仔文仔仔文仔仔文仔
+5.
+6.
+7.
+
+"
 
 [node name="Button_collapse" type="TextureButton" parent="CanvasLayer/History/VBoxContainer"]
 layout_mode = 2
