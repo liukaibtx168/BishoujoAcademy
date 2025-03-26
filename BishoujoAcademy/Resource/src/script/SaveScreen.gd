@@ -95,7 +95,7 @@ func populate_slot_data(slot_node: Control, data: Dictionary):
 	
 	# 设置时间
 	var time_data = data.get("time", {"month":0, "day":0})
-	var base_path = "res://Resource/res/UI/meishuzi/rili/"
+	var base_path = "res://Resource/res/ui/meishuzi/rili/"
 	var time_node = slot_node.get_node("notnull/Diban01/time")
 
 	# 处理月份（month节点）

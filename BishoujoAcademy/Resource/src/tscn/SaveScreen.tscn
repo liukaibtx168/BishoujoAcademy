@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c34s70owk0min"]
+[gd_scene load_steps=23 format=3 uid="uid://c34s70owk0min"]
 
 [ext_resource type="Script" path="res://Resource/src/script/SaveScreen.gd" id="1_fc5el"]
 [ext_resource type="Texture2D" uid="uid://hnrjy8a8oboh" path="res://Resource/res/ui/tongyong/tanchuang_01.png" id="2_dfgoh"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://buegq30gqmdvv" path="res://Resource/res/ui/meishuzi/rili/month_4.png" id="7_jhifh"]
 [ext_resource type="Texture2D" uid="uid://i7pw6x5nmdsl" path="res://Resource/res/ui/meishuzi/rili/day_20.png" id="8_lyiny"]
 [ext_resource type="Texture2D" uid="uid://cjgdt55w4c81k" path="res://Resource/res/ui/tongyong/diban_00.png" id="9_fc8hj"]
-[ext_resource type="Texture2D" uid="uid://cl37o63ox1y5i" path="res://Resource/res/ui/touxiang/yuan/zhujiao_01.png" id="10_fxf8l"]
 [ext_resource type="Texture2D" uid="uid://peydsub36hrw" path="res://Resource/res/ui/tongyong/diban_03.png" id="11_aabwo"]
 [ext_resource type="Texture2D" uid="uid://dcbfyqbqf5fdw" path="res://Resource/res/ui/tubiao/biaozhi/shux_01.png" id="12_ban0t"]
 [ext_resource type="Texture2D" uid="uid://7cxoy4u1p2ic" path="res://Resource/res/ui/tubiao/biaozhi/shux_02.png" id="13_4rcso"]
@@ -115,7 +114,6 @@ texture = ExtResource("9_fc8hj")
 [node name="Zhujiaohead" type="Sprite2D" parent="Sprite2D/savedata/data1/notnull/Diban01/Cundang04"]
 position = Vector2(1, -12)
 scale = Vector2(0.99, 0.99)
-texture = ExtResource("10_fxf8l")
 
 [node name="XiaoDiban01" type="Sprite2D" parent="Sprite2D/savedata/data1/notnull/Diban01"]
 position = Vector2(-85, -20)
@@ -242,7 +240,6 @@ texture = ExtResource("9_fc8hj")
 [node name="Zhujiaohead" type="Sprite2D" parent="Sprite2D/savedata/data2/notnull/Diban01/Cundang04"]
 position = Vector2(1, -12)
 scale = Vector2(0.99, 0.99)
-texture = ExtResource("10_fxf8l")
 
 [node name="XiaoDiban01" type="Sprite2D" parent="Sprite2D/savedata/data2/notnull/Diban01"]
 position = Vector2(-85, -20)
@@ -369,7 +366,6 @@ texture = ExtResource("9_fc8hj")
 [node name="Zhujiaohead" type="Sprite2D" parent="Sprite2D/savedata/data3/notnull/Diban01/Cundang04"]
 position = Vector2(1, -12)
 scale = Vector2(0.99, 0.99)
-texture = ExtResource("10_fxf8l")
 
 [node name="XiaoDiban01" type="Sprite2D" parent="Sprite2D/savedata/data3/notnull/Diban01"]
 position = Vector2(-85, -20)
@@ -496,7 +492,6 @@ texture = ExtResource("9_fc8hj")
 [node name="Zhujiaohead" type="Sprite2D" parent="Sprite2D/savedata/data4/notnull/Diban01/Cundang04"]
 position = Vector2(1, -12)
 scale = Vector2(0.99, 0.99)
-texture = ExtResource("10_fxf8l")
 
 [node name="XiaoDiban01" type="Sprite2D" parent="Sprite2D/savedata/data4/notnull/Diban01"]
 position = Vector2(-85, -20)
