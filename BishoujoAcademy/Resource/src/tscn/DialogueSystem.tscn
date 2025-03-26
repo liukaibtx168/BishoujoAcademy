@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://ctkoyawmm3vpj"]
 
-[ext_resource type="Script" path="res://Resource/gdScript/DialogueSystem.gd" id="1_rk4wd"]
-[ext_resource type="Script" path="res://Resource/gdScript/DialogueSystemRoot.gd" id="1_w4k2d"]
-[ext_resource type="Texture2D" uid="uid://dqyotysu0xgp" path="res://Resource/res/changjing/dialogue_diaoqiao.png" id="3_jnpno"]
-[ext_resource type="Texture2D" uid="uid://deav4i5xw3sw4" path="res://Resource/res/role/xxue_aojiao_001.png" id="4_he8wa"]
+[ext_resource type="Script" path="res://Resource/src/script/DialogueSystem.gd" id="1_rk4wd"]
+[ext_resource type="Script" path="res://Resource/src/script/DialogueSystemRoot.gd" id="1_w4k2d"]
+[ext_resource type="Texture2D" uid="uid://bpmeqykd55vh1" path="res://Resource/res/changjing/dialogue_diaoqiao.png" id="3_jnpno"]
+[ext_resource type="Texture2D" uid="uid://shfl7np6s6w3" path="res://Resource/res/role/xxue_aojiao_001.png" id="4_he8wa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8p2v"]
 bg_color = Color(0.121569, 0.121569, 0.121569, 0.901961)

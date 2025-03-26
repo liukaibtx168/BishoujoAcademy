@@ -1,0 +1,412 @@
+[gd_scene load_steps=8 format=3 uid="uid://5pti3k2o13jq"]
+
+[ext_resource type="Texture2D" uid="uid://dcg6y2v1w31um" path="res://Resource/res/scene/test_map_001.png" id="1_a2k8s"]
+[ext_resource type="Texture2D" uid="uid://b4ywtrt7drpej" path="res://Resource/res/ui/public/test_label_003.png" id="3_kbpo8"]
+[ext_resource type="Theme" uid="uid://6wrcds78waij" path="res://Resource/res/theme/my_theme_01.tres" id="4_p3lcm"]
+[ext_resource type="Texture2D" uid="uid://nh51tw6m13j2" path="res://Resource/res/ui/public/test_label_004.png" id="4_xgyw8"]
+[ext_resource type="Texture2D" uid="uid://dmvpr1qpqvd3c" path="res://Resource/res/icon/head/hero_head_001.png" id="5_dsqek"]
+[ext_resource type="Texture2D" uid="uid://c6d4q746rr5xd" path="res://Resource/res/ui/public/test_label_005.png" id="5_th2jy"]
+[ext_resource type="Texture2D" uid="uid://cjd1ln8y6vew4" path="res://Resource/res/ui/public/test_label_006.png" id="6_aqwom"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="map" type="Sprite2D" parent="."]
+position = Vector2(360, 800)
+texture = ExtResource("1_a2k8s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BottomArea" type="NinePatchRect" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -180.0
+offset_right = 360.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_p3lcm")
+texture = ExtResource("3_kbpo8")
+region_rect = Rect2(0, 0, 40, 35)
+patch_margin_top = 7
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BottomArea"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 710.0
+offset_bottom = 118.0
+size_flags_vertical = 0
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/BottomArea/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BottomArea/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_p3lcm")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BottomArea/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+
+[node name="Button_player" type="Button" parent="CanvasLayer/BottomArea/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+shortcut_feedback = false
+text = "角色"
+
+[node name="Button_team" type="Button" parent="CanvasLayer/BottomArea/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "队伍"
+
+[node name="Button_items" type="Button" parent="CanvasLayer/BottomArea/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "物品"
+
+[node name="Button4" type="Button" parent="CanvasLayer/BottomArea/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "任务"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/BottomArea/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+
+[node name="TopArea" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -359.0
+offset_right = 359.0
+offset_bottom = 255.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="hero_data" type="TextureRect" parent="CanvasLayer/TopArea"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -362.0
+offset_top = 94.0
+offset_right = 360.0
+offset_bottom = 259.0
+grow_horizontal = 2
+texture = ExtResource("4_xgyw8")
+
+[node name="hero_head" type="TextureRect" parent="CanvasLayer/TopArea/hero_data"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -111.0
+offset_right = 189.0
+offset_bottom = 23.0
+grow_vertical = 2
+texture = ExtResource("5_dsqek")
+
+[node name="ProgressBar_exp" type="ProgressBar" parent="CanvasLayer/TopArea/hero_data"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -140.0
+offset_top = 40.0
+offset_right = 56.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme = ExtResource("4_p3lcm")
+value = 20.0
+show_percentage = false
+
+[node name="lv_num" type="Label" parent="CanvasLayer/TopArea/hero_data/ProgressBar_exp"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -44.0
+offset_right = 95.0
+offset_bottom = -2.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Lv:99"
+vertical_alignment = 1
+
+[node name="exp_num" type="Label" parent="CanvasLayer/TopArea/hero_data/ProgressBar_exp"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -34.5
+offset_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "2000/10000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ProgressBar_hp" type="ProgressBar" parent="CanvasLayer/TopArea/hero_data"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 58.0
+offset_top = 33.5
+offset_right = 185.0
+offset_bottom = 42.5
+grow_vertical = 2
+theme = ExtResource("4_p3lcm")
+value = 20.0
+show_percentage = false
+
+[node name="hp" type="Label" parent="CanvasLayer/TopArea/hero_data/ProgressBar_hp"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -32.5
+offset_right = 61.0
+offset_bottom = 14.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "HP"
+vertical_alignment = 1
+
+[node name="hp_num" type="Label" parent="CanvasLayer/TopArea/hero_data/ProgressBar_hp"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -30.5
+offset_right = 1.0
+offset_bottom = 4.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "2000/10000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ProgressBar_mp" type="ProgressBar" parent="CanvasLayer/TopArea/hero_data"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 58.0
+offset_top = 62.5
+offset_right = 185.0
+offset_bottom = 71.5
+grow_vertical = 2
+theme = ExtResource("4_p3lcm")
+value = 20.0
+show_percentage = false
+
+[node name="mp" type="Label" parent="CanvasLayer/TopArea/hero_data/ProgressBar_mp"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -32.5
+offset_right = 58.0
+offset_bottom = 14.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "MP"
+vertical_alignment = 1
+
+[node name="mp_num" type="Label" parent="CanvasLayer/TopArea/hero_data/ProgressBar_mp"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -30.5
+offset_right = 1.0
+offset_bottom = 4.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "2000/10000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/TopArea/hero_data"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -141.0
+offset_top = 58.0
+offset_right = 59.0
+offset_bottom = 168.0
+grow_horizontal = 2
+columns = 2
+
+[node name="Attr_STR" type="HBoxContainer" parent="CanvasLayer/TopArea/hero_data/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/TopArea/hero_data/GridContainer/Attr_STR"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "力量: "
+vertical_alignment = 1
+
+[node name="num_STR" type="Label" parent="CanvasLayer/TopArea/hero_data/GridContainer/Attr_STR"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Attr_PER" type="HBoxContainer" parent="CanvasLayer/TopArea/hero_data/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/TopArea/hero_data/GridContainer/Attr_PER"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "感知: "
+vertical_alignment = 1
+
+[node name="num_PER" type="Label" parent="CanvasLayer/TopArea/hero_data/GridContainer/Attr_PER"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Attr_CON" type="HBoxContainer" parent="CanvasLayer/TopArea/hero_data/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/TopArea/hero_data/GridContainer/Attr_CON"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "体质: "
+vertical_alignment = 1
+
+[node name="num_CON" type="Label" parent="CanvasLayer/TopArea/hero_data/GridContainer/Attr_CON"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Attr_CHA" type="HBoxContainer" parent="CanvasLayer/TopArea/hero_data/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/TopArea/hero_data/GridContainer/Attr_CHA"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "魅力: "
+vertical_alignment = 1
+
+[node name="num_CHA" type="Label" parent="CanvasLayer/TopArea/hero_data/GridContainer/Attr_CHA"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Attr_DEX" type="HBoxContainer" parent="CanvasLayer/TopArea/hero_data/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/TopArea/hero_data/GridContainer/Attr_DEX"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "敏捷: "
+vertical_alignment = 1
+
+[node name="num_DEX" type="Label" parent="CanvasLayer/TopArea/hero_data/GridContainer/Attr_DEX"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Attr_LUK" type="HBoxContainer" parent="CanvasLayer/TopArea/hero_data/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/TopArea/hero_data/GridContainer/Attr_LUK"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "幸运: "
+vertical_alignment = 1
+
+[node name="num_LUK" type="Label" parent="CanvasLayer/TopArea/hero_data/GridContainer/Attr_LUK"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="History" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_top = 256.0
+offset_right = 360.0
+offset_bottom = 586.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/History"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -346.0
+offset_right = 346.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="History_text" type="Label" parent="CanvasLayer/History/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "1.文字文仔文仔文仔文仔文仔文仔文仔文仔文仔文仔文仔文仔文仔
+2.仔文仔仔文仔仔文仔仔文仔仔文仔仔文仔
+3.仔文仔仔文仔仔文仔仔文仔仔文仔仔文仔
+4.仔文仔仔文仔仔文仔仔文仔仔文仔仔文仔"
+
+[node name="Button_collapse" type="TextureButton" parent="CanvasLayer/History/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+toggle_mode = true
+texture_normal = ExtResource("5_th2jy")
+texture_pressed = ExtResource("6_aqwom")
+stretch_mode = 5
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(360, 800)

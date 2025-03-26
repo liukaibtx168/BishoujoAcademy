@@ -1,35 +1,35 @@
 [gd_scene load_steps=24 format=3 uid="uid://c34s70owk0min"]
 
-[ext_resource type="Script" path="res://Resource/gdScript/SaveScreen.gd" id="1_vkoh4"]
-[ext_resource type="Texture2D" uid="uid://hnrjy8a8oboh" path="res://Resource/res/UI/tongyong/tanchuang_01.png" id="2_1mvyi"]
-[ext_resource type="Texture2D" uid="uid://dh17e2vxl6dsh" path="res://Resource/res/UI/cundang/cundang_02.png" id="3_25o7k"]
-[ext_resource type="Texture2D" uid="uid://bbp00ntyfmrm0" path="res://Resource/res/UI/tongyong/diban_01.png" id="4_j5nxm"]
-[ext_resource type="Texture2D" uid="uid://ddx14rsqsy7yh" path="res://Resource/res/UI/cundang/cundang_01.png" id="4_os0d0"]
-[ext_resource type="Texture2D" uid="uid://c8omlwg84ocvg" path="res://Resource/res/UI/cundang/cundang_04.png" id="5_tok2i"]
-[ext_resource type="Texture2D" uid="uid://cktg6sqwmb35j" path="res://Resource/res/UI/cundang/cundang_03.png" id="6_3jlq3"]
-[ext_resource type="Texture2D" uid="uid://bwyf4pvk8ux1x" path="res://Resource/res/UI/tongyong/diban_02.png" id="6_yv65p"]
-[ext_resource type="Texture2D" uid="uid://buegq30gqmdvv" path="res://Resource/res/UI/meishuzi/rili/month_4.png" id="7_80quu"]
-[ext_resource type="Texture2D" uid="uid://cjgdt55w4c81k" path="res://Resource/res/UI/tongyong/diban_00.png" id="7_w5uq0"]
-[ext_resource type="Texture2D" uid="uid://cl37o63ox1y5i" path="res://Resource/res/UI/touxiang/yuan/zhujiao_01.png" id="8_2p22u"]
-[ext_resource type="Texture2D" uid="uid://i7pw6x5nmdsl" path="res://Resource/res/UI/meishuzi/rili/day_20.png" id="8_xe6ig"]
-[ext_resource type="Texture2D" uid="uid://peydsub36hrw" path="res://Resource/res/UI/tongyong/diban_03.png" id="9_ln5r4"]
-[ext_resource type="Texture2D" uid="uid://dcbfyqbqf5fdw" path="res://Resource/res/UI/tubiao/biaozhi/shux_01.png" id="10_hkktb"]
-[ext_resource type="Texture2D" uid="uid://7cxoy4u1p2ic" path="res://Resource/res/UI/tubiao/biaozhi/shux_02.png" id="11_0ew25"]
-[ext_resource type="Texture2D" uid="uid://bas582w0vkxy5" path="res://Resource/res/UI/tubiao/biaozhi/shux_03.png" id="12_scajt"]
-[ext_resource type="Texture2D" uid="uid://bjvuksxdlpj52" path="res://Resource/res/UI/tongyong/guanbi_01.png" id="14_10ofv"]
-[ext_resource type="Texture2D" uid="uid://dmccg6r5dmih5" path="res://Resource/res/UI/tongyong/datade-1.png" id="15_lthy1"]
-[ext_resource type="Texture2D" uid="uid://cslgx655iax1q" path="res://Resource/res/UI/tongyong/guanbi_02.png" id="15_xddi2"]
-[ext_resource type="Texture2D" uid="uid://tlenwgtvjl8c" path="res://Resource/res/UI/tongyong/guanbi_04.png" id="16_ao12k"]
-[ext_resource type="Texture2D" uid="uid://c4cb1fygqwl3t" path="res://Resource/res/UI/tongyong/datade-2.png" id="16_xmvm5"]
-[ext_resource type="Texture2D" uid="uid://c882sfk0owmra" path="res://Resource/res/UI/tongyong/datade-3.png" id="17_xian5"]
-[ext_resource type="Texture2D" uid="uid://bm2816h46gpjo" path="res://Resource/res/UI/tongyong/guanbi_03.png" id="17_ymkgo"]
+[ext_resource type="Script" path="res://Resource/src/script/SaveScreen.gd" id="1_fc5el"]
+[ext_resource type="Texture2D" uid="uid://hnrjy8a8oboh" path="res://Resource/res/ui/tongyong/tanchuang_01.png" id="2_dfgoh"]
+[ext_resource type="Texture2D" uid="uid://dh17e2vxl6dsh" path="res://Resource/res/ui/cundang/cundang_02.png" id="3_uu4u0"]
+[ext_resource type="Texture2D" uid="uid://ddx14rsqsy7yh" path="res://Resource/res/ui/cundang/cundang_01.png" id="4_o0f7o"]
+[ext_resource type="Texture2D" uid="uid://bwyf4pvk8ux1x" path="res://Resource/res/ui/tongyong/diban_02.png" id="5_725x3"]
+[ext_resource type="Texture2D" uid="uid://cktg6sqwmb35j" path="res://Resource/res/ui/cundang/cundang_03.png" id="6_0nwiv"]
+[ext_resource type="Texture2D" uid="uid://buegq30gqmdvv" path="res://Resource/res/ui/meishuzi/rili/month_4.png" id="7_jhifh"]
+[ext_resource type="Texture2D" uid="uid://i7pw6x5nmdsl" path="res://Resource/res/ui/meishuzi/rili/day_20.png" id="8_lyiny"]
+[ext_resource type="Texture2D" uid="uid://cjgdt55w4c81k" path="res://Resource/res/ui/tongyong/diban_00.png" id="9_fc8hj"]
+[ext_resource type="Texture2D" uid="uid://cl37o63ox1y5i" path="res://Resource/res/ui/touxiang/yuan/zhujiao_01.png" id="10_fxf8l"]
+[ext_resource type="Texture2D" uid="uid://peydsub36hrw" path="res://Resource/res/ui/tongyong/diban_03.png" id="11_aabwo"]
+[ext_resource type="Texture2D" uid="uid://dcbfyqbqf5fdw" path="res://Resource/res/ui/tubiao/biaozhi/shux_01.png" id="12_ban0t"]
+[ext_resource type="Texture2D" uid="uid://7cxoy4u1p2ic" path="res://Resource/res/ui/tubiao/biaozhi/shux_02.png" id="13_4rcso"]
+[ext_resource type="Texture2D" uid="uid://bas582w0vkxy5" path="res://Resource/res/ui/tubiao/biaozhi/shux_03.png" id="14_yr34q"]
+[ext_resource type="Texture2D" uid="uid://dmccg6r5dmih5" path="res://Resource/res/ui/tongyong/datade-1.png" id="15_7n1ub"]
+[ext_resource type="Texture2D" uid="uid://c4cb1fygqwl3t" path="res://Resource/res/ui/tongyong/datade-2.png" id="16_b4oux"]
+[ext_resource type="Texture2D" uid="uid://c882sfk0owmra" path="res://Resource/res/ui/tongyong/datade-3.png" id="17_b600f"]
+[ext_resource type="Texture2D" uid="uid://bbp00ntyfmrm0" path="res://Resource/res/ui/tongyong/diban_01.png" id="18_hrh5a"]
+[ext_resource type="Texture2D" uid="uid://c8omlwg84ocvg" path="res://Resource/res/ui/cundang/cundang_04.png" id="19_afr6v"]
+[ext_resource type="Texture2D" uid="uid://bjvuksxdlpj52" path="res://Resource/res/ui/tongyong/guanbi_01.png" id="20_m7bhu"]
+[ext_resource type="Texture2D" uid="uid://cslgx655iax1q" path="res://Resource/res/ui/tongyong/guanbi_02.png" id="21_kupx7"]
+[ext_resource type="Texture2D" uid="uid://tlenwgtvjl8c" path="res://Resource/res/ui/tongyong/guanbi_04.png" id="22_gumft"]
+[ext_resource type="Texture2D" uid="uid://bm2816h46gpjo" path="res://Resource/res/ui/tongyong/guanbi_03.png" id="23_efy22"]
 
 [node name="SaveScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 720.0
 offset_bottom = 1600.0
-script = ExtResource("1_vkoh4")
+script = ExtResource("1_fc5el")
 metadata/_edit_vertical_guides_ = [360.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -40,14 +40,14 @@ color = Color(0, 0, 0, 0.392157)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(359, 783)
-texture = ExtResource("2_1mvyi")
+texture = ExtResource("2_dfgoh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(0, -405)
-texture = ExtResource("3_25o7k")
+texture = ExtResource("3_uu4u0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D"]
-texture = ExtResource("4_os0d0")
+texture = ExtResource("4_o0f7o")
 
 [node name="savedata" type="VBoxContainer" parent="Sprite2D"]
 clip_contents = true
@@ -74,7 +74,7 @@ position = Vector2(325, 88)
 
 [node name="Diban01" type="Sprite2D" parent="Sprite2D/savedata/data1/notnull"]
 position = Vector2(38, -1)
-texture = ExtResource("6_yv65p")
+texture = ExtResource("5_725x3")
 
 [node name="time" type="TextureRect" parent="Sprite2D/savedata/data1/notnull/Diban01"]
 offset_left = -9.0
@@ -82,7 +82,7 @@ offset_top = -68.0
 offset_right = 197.0
 offset_bottom = 106.0
 scale = Vector2(0.901276, 0.901276)
-texture = ExtResource("6_3jlq3")
+texture = ExtResource("6_0nwiv")
 
 [node name="month" type="TextureRect" parent="Sprite2D/savedata/data1/notnull/Diban01/time"]
 layout_mode = 0
@@ -90,7 +90,7 @@ offset_left = 44.3815
 offset_top = 49.9292
 offset_right = 120.382
 offset_bottom = 100.929
-texture = ExtResource("7_80quu")
+texture = ExtResource("7_jhifh")
 
 [node name="day" type="TextureRect" parent="Sprite2D/savedata/data1/notnull/Diban01/time"]
 layout_mode = 0
@@ -98,7 +98,7 @@ offset_left = 93.2012
 offset_top = 80.9963
 offset_right = 175.201
 offset_bottom = 131.996
-texture = ExtResource("8_xe6ig")
+texture = ExtResource("8_lyiny")
 
 [node name="name" type="Label" parent="Sprite2D/savedata/data1/notnull/Diban01"]
 offset_left = -192.0
@@ -110,21 +110,21 @@ theme_override_font_sizes/font_size = 30
 
 [node name="Cundang04" type="Sprite2D" parent="Sprite2D/savedata/data1/notnull/Diban01"]
 position = Vector2(-270, 0)
-texture = ExtResource("7_w5uq0")
+texture = ExtResource("9_fc8hj")
 
 [node name="Zhujiaohead" type="Sprite2D" parent="Sprite2D/savedata/data1/notnull/Diban01/Cundang04"]
 position = Vector2(1, -12)
 scale = Vector2(0.99, 0.99)
-texture = ExtResource("8_2p22u")
+texture = ExtResource("10_fxf8l")
 
 [node name="XiaoDiban01" type="Sprite2D" parent="Sprite2D/savedata/data1/notnull/Diban01"]
 position = Vector2(-85, -20)
-texture = ExtResource("9_ln5r4")
+texture = ExtResource("11_aabwo")
 
 [node name="Shux01" type="Sprite2D" parent="Sprite2D/savedata/data1/notnull/Diban01/XiaoDiban01"]
 position = Vector2(-72, -1)
 scale = Vector2(0.95, 0.95)
-texture = ExtResource("10_hkktb")
+texture = ExtResource("12_ban0t")
 
 [node name="Label" type="Label" parent="Sprite2D/savedata/data1/notnull/Diban01/XiaoDiban01"]
 offset_left = -40.0
@@ -137,11 +137,11 @@ text = "99999"
 
 [node name="XiaoDiban02" type="Sprite2D" parent="Sprite2D/savedata/data1/notnull/Diban01"]
 position = Vector2(-85, 17)
-texture = ExtResource("9_ln5r4")
+texture = ExtResource("11_aabwo")
 
 [node name="Shux02" type="Sprite2D" parent="Sprite2D/savedata/data1/notnull/Diban01/XiaoDiban02"]
 position = Vector2(-72, -1)
-texture = ExtResource("11_0ew25")
+texture = ExtResource("13_4rcso")
 
 [node name="Label" type="Label" parent="Sprite2D/savedata/data1/notnull/Diban01/XiaoDiban02"]
 offset_left = -40.0
@@ -154,11 +154,11 @@ text = "99999"
 
 [node name="XiaoDiban03" type="Sprite2D" parent="Sprite2D/savedata/data1/notnull/Diban01"]
 position = Vector2(-85, 53)
-texture = ExtResource("9_ln5r4")
+texture = ExtResource("11_aabwo")
 
 [node name="Shux03" type="Sprite2D" parent="Sprite2D/savedata/data1/notnull/Diban01/XiaoDiban03"]
 position = Vector2(-76, 1)
-texture = ExtResource("12_scajt")
+texture = ExtResource("14_yr34q")
 
 [node name="Label" type="Label" parent="Sprite2D/savedata/data1/notnull/Diban01/XiaoDiban03"]
 offset_left = -40.0
@@ -174,9 +174,9 @@ offset_left = 190.0
 offset_top = 34.0
 offset_right = 261.0
 offset_bottom = 87.0
-texture_normal = ExtResource("15_lthy1")
-texture_pressed = ExtResource("16_xmvm5")
-texture_hover = ExtResource("17_xian5")
+texture_normal = ExtResource("15_7n1ub")
+texture_pressed = ExtResource("16_b4oux")
+texture_hover = ExtResource("17_b600f")
 
 [node name="null" type="Node2D" parent="Sprite2D/savedata/data1"]
 visible = false
@@ -185,10 +185,10 @@ metadata/color = Color(1, 1, 1, 1)
 
 [node name="Diban01" type="Sprite2D" parent="Sprite2D/savedata/data1/null"]
 modulate = Color(1, 1, 1, 0.478431)
-texture = ExtResource("4_j5nxm")
+texture = ExtResource("18_hrh5a")
 
 [node name="Cundang04" type="Sprite2D" parent="Sprite2D/savedata/data1/null"]
-texture = ExtResource("5_tok2i")
+texture = ExtResource("19_afr6v")
 
 [node name="data2" type="Control" parent="Sprite2D/savedata"]
 custom_minimum_size = Vector2(650, 178)
@@ -201,7 +201,7 @@ position = Vector2(325, 88)
 
 [node name="Diban01" type="Sprite2D" parent="Sprite2D/savedata/data2/notnull"]
 position = Vector2(38, -1)
-texture = ExtResource("6_yv65p")
+texture = ExtResource("5_725x3")
 
 [node name="time" type="TextureRect" parent="Sprite2D/savedata/data2/notnull/Diban01"]
 offset_left = -9.0
@@ -209,7 +209,7 @@ offset_top = -68.0
 offset_right = 197.0
 offset_bottom = 106.0
 scale = Vector2(0.901276, 0.901276)
-texture = ExtResource("6_3jlq3")
+texture = ExtResource("6_0nwiv")
 
 [node name="month" type="TextureRect" parent="Sprite2D/savedata/data2/notnull/Diban01/time"]
 layout_mode = 0
@@ -217,7 +217,7 @@ offset_left = 44.3815
 offset_top = 49.9292
 offset_right = 120.382
 offset_bottom = 100.929
-texture = ExtResource("7_80quu")
+texture = ExtResource("7_jhifh")
 
 [node name="day" type="TextureRect" parent="Sprite2D/savedata/data2/notnull/Diban01/time"]
 layout_mode = 0
@@ -225,7 +225,7 @@ offset_left = 93.2012
 offset_top = 80.9963
 offset_right = 175.201
 offset_bottom = 131.996
-texture = ExtResource("8_xe6ig")
+texture = ExtResource("8_lyiny")
 
 [node name="name" type="Label" parent="Sprite2D/savedata/data2/notnull/Diban01"]
 offset_left = -192.0
@@ -237,21 +237,21 @@ theme_override_font_sizes/font_size = 30
 
 [node name="Cundang04" type="Sprite2D" parent="Sprite2D/savedata/data2/notnull/Diban01"]
 position = Vector2(-270, 0)
-texture = ExtResource("7_w5uq0")
+texture = ExtResource("9_fc8hj")
 
 [node name="Zhujiaohead" type="Sprite2D" parent="Sprite2D/savedata/data2/notnull/Diban01/Cundang04"]
 position = Vector2(1, -12)
 scale = Vector2(0.99, 0.99)
-texture = ExtResource("8_2p22u")
+texture = ExtResource("10_fxf8l")
 
 [node name="XiaoDiban01" type="Sprite2D" parent="Sprite2D/savedata/data2/notnull/Diban01"]
 position = Vector2(-85, -20)
-texture = ExtResource("9_ln5r4")
+texture = ExtResource("11_aabwo")
 
 [node name="Shux01" type="Sprite2D" parent="Sprite2D/savedata/data2/notnull/Diban01/XiaoDiban01"]
 position = Vector2(-72, -1)
 scale = Vector2(0.95, 0.95)
-texture = ExtResource("10_hkktb")
+texture = ExtResource("12_ban0t")
 
 [node name="Label" type="Label" parent="Sprite2D/savedata/data2/notnull/Diban01/XiaoDiban01"]
 offset_left = -40.0
@@ -264,11 +264,11 @@ text = "99999"
 
 [node name="XiaoDiban02" type="Sprite2D" parent="Sprite2D/savedata/data2/notnull/Diban01"]
 position = Vector2(-85, 17)
-texture = ExtResource("9_ln5r4")
+texture = ExtResource("11_aabwo")
 
 [node name="Shux02" type="Sprite2D" parent="Sprite2D/savedata/data2/notnull/Diban01/XiaoDiban02"]
 position = Vector2(-72, -1)
-texture = ExtResource("11_0ew25")
+texture = ExtResource("13_4rcso")
 
 [node name="Label" type="Label" parent="Sprite2D/savedata/data2/notnull/Diban01/XiaoDiban02"]
 offset_left = -40.0
@@ -281,11 +281,11 @@ text = "99999"
 
 [node name="XiaoDiban03" type="Sprite2D" parent="Sprite2D/savedata/data2/notnull/Diban01"]
 position = Vector2(-85, 53)
-texture = ExtResource("9_ln5r4")
+texture = ExtResource("11_aabwo")
 
 [node name="Shux03" type="Sprite2D" parent="Sprite2D/savedata/data2/notnull/Diban01/XiaoDiban03"]
 position = Vector2(-76, 1)
-texture = ExtResource("12_scajt")
+texture = ExtResource("14_yr34q")
 
 [node name="Label" type="Label" parent="Sprite2D/savedata/data2/notnull/Diban01/XiaoDiban03"]
 offset_left = -40.0
@@ -301,9 +301,9 @@ offset_left = 190.0
 offset_top = 34.0
 offset_right = 261.0
 offset_bottom = 87.0
-texture_normal = ExtResource("15_lthy1")
-texture_pressed = ExtResource("16_xmvm5")
-texture_hover = ExtResource("17_xian5")
+texture_normal = ExtResource("15_7n1ub")
+texture_pressed = ExtResource("16_b4oux")
+texture_hover = ExtResource("17_b600f")
 
 [node name="null" type="Node2D" parent="Sprite2D/savedata/data2"]
 visible = false
@@ -312,10 +312,10 @@ metadata/color = Color(1, 1, 1, 1)
 
 [node name="Diban01" type="Sprite2D" parent="Sprite2D/savedata/data2/null"]
 modulate = Color(1, 1, 1, 0.478431)
-texture = ExtResource("4_j5nxm")
+texture = ExtResource("18_hrh5a")
 
 [node name="Cundang04" type="Sprite2D" parent="Sprite2D/savedata/data2/null"]
-texture = ExtResource("5_tok2i")
+texture = ExtResource("19_afr6v")
 
 [node name="data3" type="Control" parent="Sprite2D/savedata"]
 custom_minimum_size = Vector2(650, 178)
@@ -328,7 +328,7 @@ position = Vector2(325, 88)
 
 [node name="Diban01" type="Sprite2D" parent="Sprite2D/savedata/data3/notnull"]
 position = Vector2(38, -1)
-texture = ExtResource("6_yv65p")
+texture = ExtResource("5_725x3")
 
 [node name="time" type="TextureRect" parent="Sprite2D/savedata/data3/notnull/Diban01"]
 offset_left = -9.0
@@ -336,7 +336,7 @@ offset_top = -68.0
 offset_right = 197.0
 offset_bottom = 106.0
 scale = Vector2(0.901276, 0.901276)
-texture = ExtResource("6_3jlq3")
+texture = ExtResource("6_0nwiv")
 
 [node name="month" type="TextureRect" parent="Sprite2D/savedata/data3/notnull/Diban01/time"]
 layout_mode = 0
@@ -344,7 +344,7 @@ offset_left = 44.3815
 offset_top = 49.9292
 offset_right = 120.382
 offset_bottom = 100.929
-texture = ExtResource("7_80quu")
+texture = ExtResource("7_jhifh")
 
 [node name="day" type="TextureRect" parent="Sprite2D/savedata/data3/notnull/Diban01/time"]
 layout_mode = 0
@@ -352,7 +352,7 @@ offset_left = 93.2012
 offset_top = 80.9963
 offset_right = 175.201
 offset_bottom = 131.996
-texture = ExtResource("8_xe6ig")
+texture = ExtResource("8_lyiny")
 
 [node name="name" type="Label" parent="Sprite2D/savedata/data3/notnull/Diban01"]
 offset_left = -192.0
@@ -364,21 +364,21 @@ theme_override_font_sizes/font_size = 30
 
 [node name="Cundang04" type="Sprite2D" parent="Sprite2D/savedata/data3/notnull/Diban01"]
 position = Vector2(-270, 0)
-texture = ExtResource("7_w5uq0")
+texture = ExtResource("9_fc8hj")
 
 [node name="Zhujiaohead" type="Sprite2D" parent="Sprite2D/savedata/data3/notnull/Diban01/Cundang04"]
 position = Vector2(1, -12)
 scale = Vector2(0.99, 0.99)
-texture = ExtResource("8_2p22u")
+texture = ExtResource("10_fxf8l")
 
 [node name="XiaoDiban01" type="Sprite2D" parent="Sprite2D/savedata/data3/notnull/Diban01"]
 position = Vector2(-85, -20)
-texture = ExtResource("9_ln5r4")
+texture = ExtResource("11_aabwo")
 
 [node name="Shux01" type="Sprite2D" parent="Sprite2D/savedata/data3/notnull/Diban01/XiaoDiban01"]
 position = Vector2(-72, -1)
 scale = Vector2(0.95, 0.95)
-texture = ExtResource("10_hkktb")
+texture = ExtResource("12_ban0t")
 
 [node name="Label" type="Label" parent="Sprite2D/savedata/data3/notnull/Diban01/XiaoDiban01"]
 offset_left = -40.0
@@ -391,11 +391,11 @@ text = "99999"
 
 [node name="XiaoDiban02" type="Sprite2D" parent="Sprite2D/savedata/data3/notnull/Diban01"]
 position = Vector2(-85, 17)
-texture = ExtResource("9_ln5r4")
+texture = ExtResource("11_aabwo")
 
 [node name="Shux02" type="Sprite2D" parent="Sprite2D/savedata/data3/notnull/Diban01/XiaoDiban02"]
 position = Vector2(-72, -1)
-texture = ExtResource("11_0ew25")
+texture = ExtResource("13_4rcso")
 
 [node name="Label" type="Label" parent="Sprite2D/savedata/data3/notnull/Diban01/XiaoDiban02"]
 offset_left = -40.0
@@ -408,11 +408,11 @@ text = "99999"
 
 [node name="XiaoDiban03" type="Sprite2D" parent="Sprite2D/savedata/data3/notnull/Diban01"]
 position = Vector2(-85, 53)
-texture = ExtResource("9_ln5r4")
+texture = ExtResource("11_aabwo")
 
 [node name="Shux03" type="Sprite2D" parent="Sprite2D/savedata/data3/notnull/Diban01/XiaoDiban03"]
 position = Vector2(-76, 1)
-texture = ExtResource("12_scajt")
+texture = ExtResource("14_yr34q")
 
 [node name="Label" type="Label" parent="Sprite2D/savedata/data3/notnull/Diban01/XiaoDiban03"]
 offset_left = -40.0
@@ -428,9 +428,9 @@ offset_left = 190.0
 offset_top = 34.0
 offset_right = 261.0
 offset_bottom = 87.0
-texture_normal = ExtResource("15_lthy1")
-texture_pressed = ExtResource("16_xmvm5")
-texture_hover = ExtResource("17_xian5")
+texture_normal = ExtResource("15_7n1ub")
+texture_pressed = ExtResource("16_b4oux")
+texture_hover = ExtResource("17_b600f")
 
 [node name="null" type="Node2D" parent="Sprite2D/savedata/data3"]
 visible = false
@@ -439,10 +439,10 @@ metadata/color = Color(1, 1, 1, 1)
 
 [node name="Diban01" type="Sprite2D" parent="Sprite2D/savedata/data3/null"]
 modulate = Color(1, 1, 1, 0.478431)
-texture = ExtResource("4_j5nxm")
+texture = ExtResource("18_hrh5a")
 
 [node name="Cundang04" type="Sprite2D" parent="Sprite2D/savedata/data3/null"]
-texture = ExtResource("5_tok2i")
+texture = ExtResource("19_afr6v")
 
 [node name="data4" type="Control" parent="Sprite2D/savedata"]
 custom_minimum_size = Vector2(650, 178)
@@ -455,7 +455,7 @@ position = Vector2(325, 88)
 
 [node name="Diban01" type="Sprite2D" parent="Sprite2D/savedata/data4/notnull"]
 position = Vector2(38, -1)
-texture = ExtResource("6_yv65p")
+texture = ExtResource("5_725x3")
 
 [node name="time" type="TextureRect" parent="Sprite2D/savedata/data4/notnull/Diban01"]
 offset_left = -9.0
@@ -463,7 +463,7 @@ offset_top = -68.0
 offset_right = 197.0
 offset_bottom = 106.0
 scale = Vector2(0.901276, 0.901276)
-texture = ExtResource("6_3jlq3")
+texture = ExtResource("6_0nwiv")
 
 [node name="month" type="TextureRect" parent="Sprite2D/savedata/data4/notnull/Diban01/time"]
 layout_mode = 0
@@ -471,7 +471,7 @@ offset_left = 44.3815
 offset_top = 49.9292
 offset_right = 120.382
 offset_bottom = 100.929
-texture = ExtResource("7_80quu")
+texture = ExtResource("7_jhifh")
 
 [node name="day" type="TextureRect" parent="Sprite2D/savedata/data4/notnull/Diban01/time"]
 layout_mode = 0
@@ -479,7 +479,7 @@ offset_left = 93.2012
 offset_top = 80.9963
 offset_right = 175.201
 offset_bottom = 131.996
-texture = ExtResource("8_xe6ig")
+texture = ExtResource("8_lyiny")
 
 [node name="name" type="Label" parent="Sprite2D/savedata/data4/notnull/Diban01"]
 offset_left = -192.0
@@ -491,21 +491,21 @@ theme_override_font_sizes/font_size = 30
 
 [node name="Cundang04" type="Sprite2D" parent="Sprite2D/savedata/data4/notnull/Diban01"]
 position = Vector2(-270, 0)
-texture = ExtResource("7_w5uq0")
+texture = ExtResource("9_fc8hj")
 
 [node name="Zhujiaohead" type="Sprite2D" parent="Sprite2D/savedata/data4/notnull/Diban01/Cundang04"]
 position = Vector2(1, -12)
 scale = Vector2(0.99, 0.99)
-texture = ExtResource("8_2p22u")
+texture = ExtResource("10_fxf8l")
 
 [node name="XiaoDiban01" type="Sprite2D" parent="Sprite2D/savedata/data4/notnull/Diban01"]
 position = Vector2(-85, -20)
-texture = ExtResource("9_ln5r4")
+texture = ExtResource("11_aabwo")
 
 [node name="Shux01" type="Sprite2D" parent="Sprite2D/savedata/data4/notnull/Diban01/XiaoDiban01"]
 position = Vector2(-72, -1)
 scale = Vector2(0.95, 0.95)
-texture = ExtResource("10_hkktb")
+texture = ExtResource("12_ban0t")
 
 [node name="Label" type="Label" parent="Sprite2D/savedata/data4/notnull/Diban01/XiaoDiban01"]
 offset_left = -40.0
@@ -518,11 +518,11 @@ text = "99999"
 
 [node name="XiaoDiban02" type="Sprite2D" parent="Sprite2D/savedata/data4/notnull/Diban01"]
 position = Vector2(-85, 17)
-texture = ExtResource("9_ln5r4")
+texture = ExtResource("11_aabwo")
 
 [node name="Shux02" type="Sprite2D" parent="Sprite2D/savedata/data4/notnull/Diban01/XiaoDiban02"]
 position = Vector2(-72, -1)
-texture = ExtResource("11_0ew25")
+texture = ExtResource("13_4rcso")
 
 [node name="Label" type="Label" parent="Sprite2D/savedata/data4/notnull/Diban01/XiaoDiban02"]
 offset_left = -40.0
@@ -535,11 +535,11 @@ text = "99999"
 
 [node name="XiaoDiban03" type="Sprite2D" parent="Sprite2D/savedata/data4/notnull/Diban01"]
 position = Vector2(-85, 53)
-texture = ExtResource("9_ln5r4")
+texture = ExtResource("11_aabwo")
 
 [node name="Shux03" type="Sprite2D" parent="Sprite2D/savedata/data4/notnull/Diban01/XiaoDiban03"]
 position = Vector2(-76, 1)
-texture = ExtResource("12_scajt")
+texture = ExtResource("14_yr34q")
 
 [node name="Label" type="Label" parent="Sprite2D/savedata/data4/notnull/Diban01/XiaoDiban03"]
 offset_left = -40.0
@@ -555,9 +555,9 @@ offset_left = 190.0
 offset_top = 34.0
 offset_right = 261.0
 offset_bottom = 87.0
-texture_normal = ExtResource("15_lthy1")
-texture_pressed = ExtResource("16_xmvm5")
-texture_hover = ExtResource("17_xian5")
+texture_normal = ExtResource("15_7n1ub")
+texture_pressed = ExtResource("16_b4oux")
+texture_hover = ExtResource("17_b600f")
 
 [node name="null" type="Node2D" parent="Sprite2D/savedata/data4"]
 visible = false
@@ -566,10 +566,10 @@ metadata/color = Color(1, 1, 1, 1)
 
 [node name="Diban01" type="Sprite2D" parent="Sprite2D/savedata/data4/null"]
 modulate = Color(1, 1, 1, 0.478431)
-texture = ExtResource("4_j5nxm")
+texture = ExtResource("18_hrh5a")
 
 [node name="Cundang04" type="Sprite2D" parent="Sprite2D/savedata/data4/null"]
-texture = ExtResource("5_tok2i")
+texture = ExtResource("19_afr6v")
 
 [node name="CloseButton" type="TextureButton" parent="."]
 layout_mode = 0
@@ -578,7 +578,7 @@ offset_top = 1257.0
 offset_right = 361.0
 offset_bottom = 1317.0
 scale = Vector2(1.98786, 1.98786)
-texture_normal = ExtResource("14_10ofv")
-texture_pressed = ExtResource("15_xddi2")
-texture_hover = ExtResource("16_ao12k")
-texture_disabled = ExtResource("17_ymkgo")
+texture_normal = ExtResource("20_m7bhu")
+texture_pressed = ExtResource("21_kupx7")
+texture_hover = ExtResource("22_gumft")
+texture_disabled = ExtResource("23_efy22")
