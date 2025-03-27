@@ -30,6 +30,10 @@ func _ready():
 	# 自动揭示事件区域
 	if current_map_id != "":
 		reveal_event_areas(current_map_id)
+		
+		# 延迟1秒后强制刷新纹理，确保纹理正确加载
+		await get_tree().create_timer(1.0).timeout
+		refresh_fog_textures(current_map_id)
 
 # 初始化场景中已有的地图节点
 func initialize_existing_maps():
@@ -235,6 +239,46 @@ func setup_fog_mask(map_id: String):
 		fog_layer.material = shader_material
 		print("创建新的ShaderMaterial")
 	
+	# 加载迷雾纹理
+	var texture_path_1 = "res://Resource/res/ui/tubiao/biaozhi/shux_02.png"
+	var texture_path_2 = "res://Resource/res/ui/tubiao/biaozhi/shux_03.png"
+	
+	# 加载第一个纹理
+	if ResourceLoader.exists(texture_path_1):
+		var texture_1 = load(texture_path_1)
+		if texture_1:
+			print("成功加载纹理1: ", texture_path_1, " 大小: ", texture_1.get_size())
+			shader_material.set_shader_parameter("fog_texture_1", texture_1)
+			print("成功设置迷雾纹理1参数")
+		else:
+			print("警告: 无法加载迷雾纹理1 ", texture_path_1)
+	else:
+		print("警告: 迷雾纹理1文件不存在: ", texture_path_1)
+	
+	# 加载第二个纹理
+	if ResourceLoader.exists(texture_path_2):
+		var texture_2 = load(texture_path_2)
+		if texture_2:
+			print("成功加载纹理2: ", texture_path_2, " 大小: ", texture_2.get_size())
+			shader_material.set_shader_parameter("fog_texture_2", texture_2)
+			print("成功设置迷雾纹理2参数")
+		else:
+			print("警告: 无法加载迷雾纹理2 ", texture_path_2)
+	else:
+		print("警告: 迷雾纹理2文件不存在: ", texture_path_2)
+	
+	# 检查当前着色器参数
+	var current_texture_1 = shader_material.get_shader_parameter("fog_texture_1")
+	var current_texture_2 = shader_material.get_shader_parameter("fog_texture_2")
+	print("着色器当前纹理1: ", current_texture_1)
+	print("着色器当前纹理2: ", current_texture_2)
+	
+	# 设置纹理尺寸和混合参数
+	shader_material.set_shader_parameter("texture_scale_1", Vector2(1.0, 1.0))
+	shader_material.set_shader_parameter("texture_scale_2", Vector2(1.4, 1.4))
+	shader_material.set_shader_parameter("blend_ratio", 0.4)
+	shader_material.set_shader_parameter("texture_visibility", 0.6)
+	
 	# 收集区域数据
 	var circle_count = 0
 	var rect_count = 0
@@ -301,7 +345,7 @@ func setup_fog_mask(map_id: String):
 		shader_material.set_shader_parameter("rect_data", rect_data)
 	
 	# 设置迷雾颜色 (暗灰色半透明)
-	shader_material.set_shader_parameter("fog_color", Color(0.1, 0.1, 0.1, 0.8))
+	shader_material.set_shader_parameter("fog_color", Color(0.15, 0.15, 0.15, 0.8))
 	
 	print("为 ", map_id, " 设置了迷雾遮罩，共处理了 ", circle_count + rect_count, " 个事件区域")
 
@@ -328,3 +372,106 @@ func toggle_fog(map_id: String, enabled: bool):
 	# 更新地图数据
 	if maps_data.has(map_id):
 		maps_data[map_id].fog_enabled = enabled
+
+# 新增：强制刷新迷雾纹理
+func refresh_fog_textures(map_id: String):
+	var map_node = get_node_or_null(map_id)
+	if not map_node:
+		print("错误: 找不到地图节点 ", map_id)
+		return
+		
+	var map_image = map_node.get_node_or_null("MapImage")
+	if not map_image:
+		print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
+		return
+	
+	var fog_layer = map_image.get_node_or_null("FogLayer")
+	if not fog_layer:
+		print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
+		return
+	
+	if not fog_layer.material is ShaderMaterial:
+		print("错误: FogLayer 没有 ShaderMaterial")
+		return
+		
+	var shader_material = fog_layer.material
+	
+	print("开始强制刷新迷雾纹理...")
+	
+	# 加载迷雾纹理
+	var texture_path_1 = "res://Resource/res/ui/tubiao/biaozhi/shux_02.png"
+	var texture_path_2 = "res://Resource/res/ui/tubiao/biaozhi/shux_03.png"
+	
+	# 确保清除旧的纹理引用
+	shader_material.set_shader_parameter("fog_texture_1", null)
+	shader_material.set_shader_parameter("fog_texture_2", null)
+	
+	# 重新加载纹理1
+	if ResourceLoader.exists(texture_path_1):
+		var texture_1 = load(texture_path_1)
+		if texture_1:
+			print("强制刷新 - 成功加载纹理1: ", texture_path_1, " 大小: ", texture_1.get_size())
+			shader_material.set_shader_parameter("fog_texture_1", texture_1)
+			print("强制刷新 - 成功设置迷雾纹理1参数")
+		else:
+			print("强制刷新 - 警告: 无法加载迷雾纹理1 ", texture_path_1)
+	else:
+		print("强制刷新 - 警告: 迷雾纹理1文件不存在: ", texture_path_1)
+	
+	# 重新加载纹理2
+	if ResourceLoader.exists(texture_path_2):
+		var texture_2 = load(texture_path_2)
+		if texture_2:
+			print("强制刷新 - 成功加载纹理2: ", texture_path_2, " 大小: ", texture_2.get_size())
+			shader_material.set_shader_parameter("fog_texture_2", texture_2)
+			print("强制刷新 - 成功设置迷雾纹理2参数")
+		else:
+			print("强制刷新 - 警告: 无法加载迷雾纹理2 ", texture_path_2)
+	else:
+		print("强制刷新 - 警告: 迷雾纹理2文件不存在: ", texture_path_2)
+	
+	# 检查当前着色器参数
+	var current_texture_1 = shader_material.get_shader_parameter("fog_texture_1")
+	var current_texture_2 = shader_material.get_shader_parameter("fog_texture_2")
+	print("强制刷新 - 着色器当前纹理1: ", current_texture_1)
+	print("强制刷新 - 着色器当前纹理2: ", current_texture_2)
+	
+	# 设置纹理尺寸和混合参数
+	shader_material.set_shader_parameter("texture_scale_1", Vector2(1.0, 1.0))
+	shader_material.set_shader_parameter("texture_scale_2", Vector2(1.4, 1.4))
+	shader_material.set_shader_parameter("blend_ratio", 0.4)
+	shader_material.set_shader_parameter("texture_visibility", 0.6)
+	
+	print("迷雾纹理刷新完成")
+
+# 新增：更新迷雾纹理参数
+func update_fog_texture_params(map_id: String, texture1_scale: Vector2 = Vector2(1.0, 1.0), texture2_scale: Vector2 = Vector2(1.4, 1.4), blend: float = 0.4, visibility: float = 0.6):
+	var map_node = get_node_or_null(map_id)
+	if not map_node:
+		print("错误: 找不到地图节点 ", map_id)
+		return
+		
+	var map_image = map_node.get_node_or_null("MapImage")
+	if not map_image:
+		print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
+		return
+	
+	var fog_layer = map_image.get_node_or_null("FogLayer")
+	if not fog_layer:
+		print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
+		return
+	
+	if not fog_layer.material is ShaderMaterial:
+		print("错误: FogLayer 没有 ShaderMaterial")
+		return
+		
+	var shader_material = fog_layer.material
+	
+	# 更新纹理尺寸和混合参数
+	shader_material.set_shader_parameter("texture_scale_1", texture1_scale)
+	shader_material.set_shader_parameter("texture_scale_2", texture2_scale)
+	shader_material.set_shader_parameter("blend_ratio", blend)
+	shader_material.set_shader_parameter("texture_visibility", visibility)
+	
+	print("更新纹理参数 - 纹理1缩放: ", texture1_scale, " 纹理2缩放: ", texture2_scale, 
+		" 混合比例: ", blend, " 可见度: ", visibility)
