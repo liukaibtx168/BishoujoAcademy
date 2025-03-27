@@ -24,6 +24,10 @@ window/size/window_height_override=1000
 window/stretch/mode="viewport"
 window/fullsize=false
 
+[gui]
+
+theme/custom_font="res://Resource/src/font/XinHuaSongTi-1.ttf"
+
 [rendering]
 
 renderer/rendering_method="mobile"
