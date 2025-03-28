@@ -1,0 +1,9 @@
+编号	描述相关	世界编号	地图图片	战争迷雾开关
+id	comment	worldID	mapImage	FogLayer
+int	string	int	string	int
+10000	世界1-大地图	1001		
+10001	世界1-工厂	1001		
+	世界1-实验室	1001		
+	世界1-医院	1001		
+	世界1-港口	1001		
+	世界1-车站	1001		

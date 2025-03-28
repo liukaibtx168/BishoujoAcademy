@@ -1,0 +1,5 @@
+编号	描述相关	名称文本ID	描述文本ID	道具图标	展示图	道具类型
+id	comment	nameID	desID	icon	paint	type
+int	string	int	int	string	string	int
+10000	描述相关	10000	10001			
+10001	描述相关	10002	10003			
