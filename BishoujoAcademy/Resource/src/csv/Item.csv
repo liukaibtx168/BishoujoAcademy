@@ -1,5 +1,0 @@
-编号	描述相关	名称文本ID	描述文本ID	道具图标	展示图	道具类型	堆叠上限	使用效果	出售价格
-id	comment	nameID	desID	icon	paint	type	stack	use	sell
-int	string	int	int	string	string	int	int	json	int
-10000	描述相关	10000	10001						1000
-10001	描述相关	10002	10003						

@@ -22,7 +22,7 @@ shader_parameter/direction_1 = Vector2(1, 0)
 shader_parameter/direction_2 = Vector2(-1, 0)
 shader_parameter/blend_ratio = 0.5
 shader_parameter/texture_visibility = 0.1
-shader_parameter/edge_softness = 50.0
+shader_parameter/edge_softness = 60.0
 shader_parameter/fog_texture_1 = ExtResource("6_jsk1c")
 shader_parameter/fog_texture_2 = ExtResource("6_w55k6")
 
@@ -34,8 +34,6 @@ position = Vector2(360, 912)
 
 [node name="MapImage" type="Sprite2D" parent="test_map_001"]
 texture = ExtResource("2_qxbak")
-
-[node name="EventLayer" parent="test_map_001/MapImage" instance=ExtResource("3_47idh")]
 
 [node name="FogLayer" type="ColorRect" parent="test_map_001/MapImage"]
 material = SubResource("ShaderMaterial_vv8fq")
@@ -49,3 +47,5 @@ offset_bottom = -685.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="EventLayer" parent="test_map_001/MapImage" instance=ExtResource("3_47idh")]

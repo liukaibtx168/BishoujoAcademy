@@ -1,17 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://nfldtq13g3hx"]
+[gd_scene load_steps=9 format=3 uid="uid://nfldtq13g3hx"]
 
-[ext_resource type="Texture2D" uid="uid://bcxd2mym4j6cm" path="res://Resource/res/icon/build/build_di.png" id="1_2lsk7"]
+[ext_resource type="Theme" uid="uid://cgu852h76a1xi" path="res://Resource/res/theme/button_theme_00.tres" id="1_ahckb"]
+[ext_resource type="Theme" uid="uid://ly1rybipnq4o" path="res://Resource/res/theme/button_theme_01.tres" id="1_v27ve"]
 [ext_resource type="Texture2D" uid="uid://djamjubl6ymkh" path="res://Resource/res/icon/build/build_001.png" id="2_4vquq"]
-[ext_resource type="Texture2D" uid="uid://duqpovm73iaay" path="res://Resource/res/icon/build/monster_001.png" id="3_pc1io"]
+[ext_resource type="Texture2D" uid="uid://4hor3lann30y" path="res://Resource/res/icon/build/monster_002.png" id="3_r8hku"]
+[ext_resource type="Texture2D" uid="uid://duqpovm73iaay" path="res://Resource/res/icon/build/monster_001.png" id="4_0p3fj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m6c52"]
-radius = 66.0984
+radius = 48.2597
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cc8xh"]
-radius = 75.6902
+[sub_resource type="CircleShape2D" id="CircleShape2D_7tfnf"]
+radius = 48.0104
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ktbpy"]
-radius = 91.0879
+[sub_resource type="CircleShape2D" id="CircleShape2D_67517"]
+radius = 64.0703
 
 [node name="EventLayer" type="Node2D"]
 
@@ -20,53 +22,78 @@ position = Vector2(186, -21)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Event_1"]
 shape = SubResource("CircleShape2D_m6c52")
+one_way_collision_margin = 0.0
+debug_color = Color(0.641221, 0.521835, 0.137871, 0.42)
 
-[node name="Node2D" type="Node2D" parent="Event_1"]
-
-[node name="build_di" type="Sprite2D" parent="Event_1/Node2D"]
-texture = ExtResource("1_2lsk7")
-
-[node name="Label" type="Label" parent="Event_1/Node2D/build_di"]
+[node name="build_di" type="Button" parent="Event_1"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -148.5
-offset_top = -46.0
-offset_right = -28.5
-offset_bottom = -15.0
+offset_left = -85.0
+offset_top = -24.0
+offset_right = 80.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 30
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("1_ahckb")
 text = "建筑名称"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="build_icon" type="Sprite2D" parent="Event_1/Node2D"]
-position = Vector2(-80, 0)
-texture = ExtResource("2_4vquq")
+icon = ExtResource("2_4vquq")
 
 [node name="Event_2" type="Area2D" parent="."]
-position = Vector2(38, 235)
+position = Vector2(-147, 97)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Event_2"]
-shape = SubResource("CircleShape2D_cc8xh")
+shape = SubResource("CircleShape2D_7tfnf")
+one_way_collision_margin = 0.0
+debug_color = Color(0.641221, 0.521835, 0.137871, 0.42)
 
-[node name="Node2D" type="Node2D" parent="Event_2"]
-
-[node name="build_di" type="Sprite2D" parent="Event_2/Node2D"]
-texture = ExtResource("1_2lsk7")
-
-[node name="build_icon" type="Sprite2D" parent="Event_2/Node2D"]
-position = Vector2(-80, 0)
-texture = ExtResource("2_4vquq")
+[node name="Button" type="Button" parent="Event_2/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -37.0
+offset_right = 41.5
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("1_v27ve")
+icon = ExtResource("3_r8hku")
+flat = true
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Event_3" type="Area2D" parent="."]
-position = Vector2(-147, 51)
+position = Vector2(97, 210)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Event_3"]
-shape = SubResource("CircleShape2D_ktbpy")
+shape = SubResource("CircleShape2D_67517")
+one_way_collision_margin = 0.0
+debug_color = Color(0.641221, 0.521835, 0.137871, 0.42)
 
-[node name="build_icon" type="Sprite2D" parent="Event_3/CollisionShape2D"]
-texture = ExtResource("3_pc1io")
+[node name="Button" type="Button" parent="Event_3/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.5
+offset_top = -99.5
+offset_right = 99.5
+offset_bottom = 99.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("1_v27ve")
+icon = ExtResource("4_0p3fj")
+flat = true
+icon_alignment = 1
