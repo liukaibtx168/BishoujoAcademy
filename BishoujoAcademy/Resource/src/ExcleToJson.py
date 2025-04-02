@@ -95,7 +95,7 @@ if __name__ == "__main__":
     # 使用相对路径
     script_dir = Path(__file__).parent
     input_path = script_dir / "excle"
-    output_path = script_dir / "json"
+    output_path = script_dir / "excleToJson"
     
     batch_convert(input_path, output_path)
     print("批处理完成！")

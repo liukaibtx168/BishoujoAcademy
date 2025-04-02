@@ -6,8 +6,8 @@ var expanded_height = 1150
 var collapsed_height = 330
 
 # 添加历史记录行数限制
-var max_collapsed_lines = 8
-var max_expanded_lines = 30
+var max_collapsed_lines = 9
+var max_expanded_lines = 300
 var full_history_text = ""  # 存储完整的历史记录
 
 func _ready():

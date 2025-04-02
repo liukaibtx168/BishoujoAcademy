@@ -1,31 +1,39 @@
-[gd_scene load_steps=9 format=3 uid="uid://nfldtq13g3hx"]
+[gd_scene load_steps=13 format=3 uid="uid://nfldtq13g3hx"]
 
 [ext_resource type="Theme" uid="uid://cgu852h76a1xi" path="res://Resource/res/theme/button_theme_00.tres" id="1_ahckb"]
 [ext_resource type="Theme" uid="uid://ly1rybipnq4o" path="res://Resource/res/theme/button_theme_01.tres" id="1_v27ve"]
 [ext_resource type="Texture2D" uid="uid://djamjubl6ymkh" path="res://Resource/res/icon/build/build_001.png" id="2_4vquq"]
 [ext_resource type="Texture2D" uid="uid://4hor3lann30y" path="res://Resource/res/icon/build/monster_002.png" id="3_r8hku"]
+[ext_resource type="Texture2D" uid="uid://rc68bdtuugnr" path="res://Resource/res/icon/build/build_006.png" id="3_w1ufa"]
 [ext_resource type="Texture2D" uid="uid://duqpovm73iaay" path="res://Resource/res/icon/build/monster_001.png" id="4_0p3fj"]
+[ext_resource type="Texture2D" uid="uid://onhj2ll7a4m5" path="res://Resource/res/icon/build/build_007.png" id="5_0oohg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m6c52"]
 radius = 48.2597
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_clskh"]
+radius = 48.0937
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0t46p"]
+radius = 48.0416
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7tfnf"]
 radius = 48.0104
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_67517"]
-radius = 64.0703
+radius = 49.0408
 
 [node name="EventLayer" type="Node2D"]
 
-[node name="Event_1" type="Area2D" parent="."]
-position = Vector2(186, -21)
+[node name="Event_Choice" type="Area2D" parent="."]
+position = Vector2(186, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Event_1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Event_Choice"]
 shape = SubResource("CircleShape2D_m6c52")
 one_way_collision_margin = 0.0
 debug_color = Color(0.641221, 0.521835, 0.137871, 0.42)
 
-[node name="build_di" type="Button" parent="Event_1"]
+[node name="build_di" type="Button" parent="Event_Choice"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -40,27 +48,75 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("1_ahckb")
-text = "建筑名称"
+text = "事件名称"
 icon = ExtResource("2_4vquq")
+metadata/_edit_use_anchors_ = true
 
-[node name="Event_2" type="Area2D" parent="."]
-position = Vector2(-147, 97)
+[node name="Event_Scene" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Event_2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Event_Scene"]
+shape = SubResource("CircleShape2D_clskh")
+one_way_collision_margin = 0.0
+debug_color = Color(0.641221, 0.521835, 0.137871, 0.42)
+
+[node name="build_di" type="Button" parent="Event_Scene"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("1_v27ve")
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 40
+theme_override_font_sizes/font_size = 28
+text = "北街"
+icon = ExtResource("5_0oohg")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Event_Shop" type="Area2D" parent="."]
+position = Vector2(-142, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Event_Shop"]
+shape = SubResource("CircleShape2D_0t46p")
+one_way_collision_margin = 0.0
+debug_color = Color(0.641221, 0.521835, 0.137871, 0.42)
+
+[node name="build_di" type="Button" parent="Event_Shop"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("1_v27ve")
+icon = ExtResource("3_w1ufa")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Event_Battle" type="Area2D" parent="."]
+position = Vector2(-142, 151)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Event_Battle"]
 shape = SubResource("CircleShape2D_7tfnf")
 one_way_collision_margin = 0.0
 debug_color = Color(0.641221, 0.521835, 0.137871, 0.42)
 
-[node name="Button" type="Button" parent="Event_2/CollisionShape2D"]
+[node name="Button" type="Button" parent="Event_Battle"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -41.5
-offset_top = -37.0
-offset_right = 41.5
-offset_bottom = 37.0
+offset_left = -84.5
+offset_top = -84.0
+offset_right = 84.5
+offset_bottom = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
@@ -71,24 +127,24 @@ flat = true
 icon_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Event_3" type="Area2D" parent="."]
-position = Vector2(97, 210)
+[node name="Event_Dungeon" type="Area2D" parent="."]
+position = Vector2(0, 152)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Event_3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Event_Dungeon"]
 shape = SubResource("CircleShape2D_67517")
 one_way_collision_margin = 0.0
 debug_color = Color(0.641221, 0.521835, 0.137871, 0.42)
 
-[node name="Button" type="Button" parent="Event_3/CollisionShape2D"]
+[node name="Button" type="Button" parent="Event_Dungeon"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -99.5
-offset_top = -99.5
-offset_right = 99.5
-offset_bottom = 99.5
+offset_left = -98.5
+offset_top = -97.5
+offset_right = 100.5
+offset_bottom = 101.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6

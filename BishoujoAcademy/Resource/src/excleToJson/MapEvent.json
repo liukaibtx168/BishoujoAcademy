@@ -1,0 +1,74 @@
+{
+  "1010001": {
+    "ID": 1010001,
+    "comment": "测试事件选择",
+    "storyMapID": 10101,
+    "eventType": "Event_Choice",
+    "eventPos": {
+      "[1]": 480,
+      "[2]": 650
+    },
+    "nameID": 10004,
+    "icon": "icon/build/build_001.png"
+  },
+  "1010002": {
+    "ID": 1010002,
+    "comment": "测试事件切场景",
+    "storyMapID": 10101,
+    "eventType": "Event_Scene",
+    "eventPos": {
+      "[1]": 350,
+      "[2]": 900
+    },
+    "nameID": 0,
+    "icon": "icon/build/build_007.png"
+  },
+  "1010003": {
+    "ID": 1010003,
+    "comment": "测试事件单次战斗",
+    "storyMapID": 10101,
+    "eventType": "Event_Battle",
+    "eventPos": {
+      "[1]": 140,
+      "[2]": 1050
+    },
+    "nameID": 0,
+    "icon": "icon/build/monster_002.png"
+  },
+  "1010004": {
+    "ID": 1010004,
+    "comment": "测试事件连续战斗",
+    "storyMapID": 10101,
+    "eventType": "Event_Dungeon",
+    "eventPos": {
+      "[1]": 120,
+      "[2]": 640
+    },
+    "nameID": 0,
+    "icon": "icon/build/monster_001.png"
+  },
+  "1010005": {
+    "ID": 1010005,
+    "comment": "测试事件购物",
+    "storyMapID": 10101,
+    "eventType": "Event_Shop",
+    "eventPos": {
+      "[1]": 120,
+      "[2]": 400
+    },
+    "nameID": 0,
+    "icon": "icon/build/build_006.png"
+  },
+  "1010006": {
+    "ID": 1010006,
+    "comment": "测试事件切场景",
+    "storyMapID": 10101,
+    "eventType": "Event_Scene",
+    "eventPos": {
+      "[1]": 450,
+      "[2]": 50
+    },
+    "nameID": 10005,
+    "icon": "icon/build/build_004.png"
+  }
+}

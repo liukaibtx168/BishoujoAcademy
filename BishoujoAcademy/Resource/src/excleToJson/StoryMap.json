@@ -1,0 +1,50 @@
+{
+  "10101": {
+    "ID": 10101,
+    "comment": "世界1-大地图",
+    "worldID": 101,
+    "mapImage": "scene/test_map_001.png",
+    "startMap": 1,
+    "fogLayer": 1
+  },
+  "10102": {
+    "ID": 10102,
+    "comment": "世界1-工厂",
+    "worldID": 101,
+    "mapImage": "scene/test_map_002.png",
+    "startMap": 0,
+    "fogLayer": 1
+  },
+  "10103": {
+    "ID": 10103,
+    "comment": "世界1-实验室",
+    "worldID": 101,
+    "mapImage": "scene/test_map_003.png",
+    "startMap": 0,
+    "fogLayer": 1
+  },
+  "10104": {
+    "ID": 10104,
+    "comment": "世界1-港口",
+    "worldID": 101,
+    "mapImage": "scene/test_map_004.png",
+    "startMap": 0,
+    "fogLayer": 1
+  },
+  "10105": {
+    "ID": 10105,
+    "comment": "世界1-医院",
+    "worldID": 101,
+    "mapImage": "scene/test_map_005.png",
+    "startMap": 0,
+    "fogLayer": 1
+  },
+  "10106": {
+    "ID": 10106,
+    "comment": "世界1-车站",
+    "worldID": 101,
+    "mapImage": "scene/test_map_006.png",
+    "startMap": 0,
+    "fogLayer": 1
+  }
+}

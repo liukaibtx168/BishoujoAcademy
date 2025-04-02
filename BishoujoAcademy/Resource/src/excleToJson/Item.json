@@ -1,0 +1,26 @@
+{
+  "10000": {
+    "ID": 10000,
+    "comment": "描述相关",
+    "nameID": 10000,
+    "desID": 10001,
+    "icon": "",
+    "paint": "",
+    "type": 0,
+    "stack": 0,
+    "use": {},
+    "sell": 1000
+  },
+  "10001": {
+    "ID": 10001,
+    "comment": "描述相关",
+    "nameID": 10002,
+    "desID": 10003,
+    "icon": "",
+    "paint": "",
+    "type": 0,
+    "stack": 0,
+    "use": {},
+    "sell": 0
+  }
+}
