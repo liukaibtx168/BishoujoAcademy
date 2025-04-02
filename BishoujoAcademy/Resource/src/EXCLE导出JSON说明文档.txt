@@ -1,5 +1,5 @@
-数据输入路径（excle）：E:\Test_project\BishoujoAcademy\Resource\excle
-数据输出路径（json）：E:\Test_project\BishoujoAcademy\Resource\json
+数据输入路径（excle）：Resource\\src\excle
+数据输出路径（json）：Resource\src\excleToJson
 数据类型说明：
 int:
 →示例：25800
