@@ -104,11 +104,11 @@ func create_button_styles():
 
 func load_resource_data() -> bool:
 	# 加载角色数据
-	if !FileAccess.file_exists("res://Resource/json/role.json"):
+	if !FileAccess.file_exists("res://Resource/src/excleToJson/role.json"):
 		print("DialogueSystem: role.json file not found!")
 		return false
 	
-	var role_file = FileAccess.open("res://Resource/json/role.json", FileAccess.READ)
+	var role_file = FileAccess.open("res://Resource/src/excleToJson/role.json", FileAccess.READ)
 	if role_file == null:
 		print("DialogueSystem: Failed to open role.json!")
 		return false
@@ -122,11 +122,11 @@ func load_resource_data() -> bool:
 		return false
 	
 	# 加载场景数据
-	if !FileAccess.file_exists("res://Resource/json/scene.json"):
+	if !FileAccess.file_exists("res://Resource/src/excleToJson/scene.json"):
 		print("DialogueSystem: scene.json file not found!")
 		return false
 	
-	var scene_file = FileAccess.open("res://Resource/json/scene.json", FileAccess.READ)
+	var scene_file = FileAccess.open("res://Resource/src/excleToJson/scene.json", FileAccess.READ)
 	if scene_file == null:
 		print("DialogueSystem: Failed to open scene.json!")
 		return false
@@ -139,11 +139,11 @@ func load_resource_data() -> bool:
 		return false
 	
 	# 加载BGM数据
-	if !FileAccess.file_exists("res://Resource/json/bgm.json"):
+	if !FileAccess.file_exists("res://Resource/src/excleToJson/bgm.json"):
 		print("DialogueSystem: bgm.json file not found!")
 		return false
 	
-	var bgm_file = FileAccess.open("res://Resource/json/bgm.json", FileAccess.READ)
+	var bgm_file = FileAccess.open("res://Resource/src/excleToJson/bgm.json", FileAccess.READ)
 	if bgm_file == null:
 		print("DialogueSystem: Failed to open bgm.json!")
 		return false
@@ -159,11 +159,11 @@ func load_resource_data() -> bool:
 
 func load_dialogue_data() -> bool:
 	print("DialogueSystem: Attempting to load dialogue data...")
-	if !FileAccess.file_exists("res://Resource/json/dialogue.json"):
+	if !FileAccess.file_exists("res://Resource/src/excleToJson/dialogue.json"):
 		print("DialogueSystem: dialogue.json file not found!")
 		return false
 	
-	var file = FileAccess.open("res://Resource/json/dialogue.json", FileAccess.READ)
+	var file = FileAccess.open("res://Resource/src/excleToJson/dialogue.json", FileAccess.READ)
 	if file == null:
 		print("DialogueSystem: Failed to open dialogue.json!")
 		return false

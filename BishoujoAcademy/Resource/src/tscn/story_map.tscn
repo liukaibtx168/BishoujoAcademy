@@ -49,3 +49,4 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="EventLayer" parent="test_map_001/MapImage" instance=ExtResource("3_47idh")]
+position = Vector2(673, -612)
