@@ -399,18 +399,8 @@ func create_map_event(event_data, event_layer):
 	# 设置事件位置 - 直接使用配置中的坐标
 	new_event.position = Vector2(event_pos_x, event_pos_y)
 	
-	# 确保CollisionShape2D正确设置
-	var collision = new_event.get_node_or_null("CollisionShape2D")
-	if collision and collision.shape:
-		# 打印碰撞形状信息，便于调试
-		if collision.shape is RectangleShape2D:
-			print("事件碰撞形状: 矩形, 大小: ", collision.shape.size, " 位置偏移: ", collision.position)
-		elif collision.shape is CircleShape2D:
-			print("事件碰撞形状: 圆形, 半径: ", collision.shape.radius, " 位置偏移: ", collision.position)
-		else:
-			print("事件碰撞形状: 未知类型")
-	else:
-		print("警告: 事件未包含有效的CollisionShape2D节点")
+	# 从配置中读取事件显示信息并应用
+	update_event_display(new_event, event_data)
 	
 	# 标记事件的ID，方便后续引用
 	new_event.set_meta("event_id", str(event_data.ID))
@@ -428,6 +418,58 @@ func create_map_event(event_data, event_layer):
 	
 	print("创建事件: ", event_data.ID, " 类型: ", event_type, " 位置: (", event_pos_x, ",", event_pos_y, ")")
 	return new_event
+
+# 更新事件的显示信息（文本和图标）
+func update_event_display(event_node, event_data):
+	# 查找事件中的build_di节点（通常包含显示元素）
+	var build_di = event_node.get_node_or_null("build_di")
+	if !build_di:
+		print("警告: 事件 ", event_data.ID, " 中没有找到build_di节点")
+		return
+	
+	# 获取事件类型
+	var event_type = event_data.eventType
+	
+	# 处理文本显示 - 按照配置表说明2处理文本
+	# 只有Event_Choice和Event_Scene需要处理文本
+	if event_type == "Event_Choice" || event_type == "Event_Scene":
+		# 直接查找text节点
+		var text_node = build_di.get_node_or_null("text")
+		if text_node:
+			# 按照配置表规则，使用nameID查找string数据
+			if event_data.has("nameID") && event_data.nameID != "" && string_data.has(event_data.nameID):
+				text_node.text = string_data[event_data.nameID]
+			else:
+				# 如果没有nameID或未找到对应的string，使用默认值
+				text_node.text = event_type + "_" + str(event_data.ID)
+	
+	# 处理图标显示 - 按照配置表说明2处理图标
+	# 5种类型事件都需要处理图标
+	var icon_node = build_di.get_node_or_null("Icon")
+	if icon_node:
+		# 按照配置表规则，icon字段指定了图标路径
+		if event_data.has("icon") && event_data.icon != "":
+			var icon_path = "res://Resource/res/" + event_data.icon
+			if ResourceLoader.exists(icon_path):
+				var texture = load(icon_path)
+				if texture:
+					# 设置图标纹理
+					if icon_node is Sprite2D:
+						icon_node.texture = texture
+					elif icon_node is TextureRect:
+						icon_node.texture = texture
+					elif icon_node.has_method("set_texture"):
+						icon_node.set_texture(texture)
+					elif icon_node.has_property("texture"):
+						icon_node.texture = texture
+				else:
+					print("警告: 事件 ", event_data.ID, " 无法加载图标纹理: ", icon_path)
+			else:
+				print("警告: 事件 ", event_data.ID, " 图标文件不存在: ", icon_path)
+		else:
+			print("事件 ", event_data.ID, " 没有配置icon字段，保留默认图标")
+	else:
+		print("警告: 事件 ", event_data.ID, " 的build_di中没有找到图标节点")
 
 # 事件鼠标进入
 func _on_event_mouse_entered(event):

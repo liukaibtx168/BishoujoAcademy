@@ -5,11 +5,11 @@
     "storyMapID": 10101,
     "eventType": "Event_Choice",
     "eventPos": {
-      "[1]": 480,
-      "[2]": 650
+      "[1]": 500,
+      "[2]": 850
     },
     "nameID": 10004,
-    "icon": "icon/build/build_001.png"
+    "icon": "icon/build/build_002.png"
   },
   "1010002": {
     "ID": 1010002,
@@ -17,8 +17,8 @@
     "storyMapID": 10101,
     "eventType": "Event_Scene",
     "eventPos": {
-      "[1]": 350,
-      "[2]": 900
+      "[1]": 540,
+      "[2]": 1300
     },
     "nameID": 0,
     "icon": "icon/build/build_007.png"
@@ -29,8 +29,8 @@
     "storyMapID": 10101,
     "eventType": "Event_Battle",
     "eventPos": {
-      "[1]": 140,
-      "[2]": 1050
+      "[1]": 180,
+      "[2]": 1200
     },
     "nameID": 0,
     "icon": "icon/build/monster_002.png"
@@ -41,8 +41,8 @@
     "storyMapID": 10101,
     "eventType": "Event_Dungeon",
     "eventPos": {
-      "[1]": 0,
-      "[2]": 640
+      "[1]": 160,
+      "[2]": 720
     },
     "nameID": 0,
     "icon": "icon/build/monster_001.png"
@@ -53,8 +53,8 @@
     "storyMapID": 10101,
     "eventType": "Event_Shop",
     "eventPos": {
-      "[1]": 120,
-      "[2]": 400
+      "[1]": 550,
+      "[2]": 700
     },
     "nameID": 0,
     "icon": "icon/build/build_006.png"
@@ -65,8 +65,8 @@
     "storyMapID": 10101,
     "eventType": "Event_Scene",
     "eventPos": {
-      "[1]": 450,
-      "[2]": 50
+      "[1]": 150,
+      "[2]": 930
     },
     "nameID": 10005,
     "icon": "icon/build/build_004.png"

@@ -48,7 +48,7 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("1_ahckb")
-text = "事件名称"
+text = "事件"
 icon = ExtResource("2_4vquq")
 metadata/_edit_use_anchors_ = true
 
