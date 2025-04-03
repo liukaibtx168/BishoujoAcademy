@@ -473,6 +473,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="History" type="ColorRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -575,6 +576,15 @@ toggle_mode = true
 texture_normal = ExtResource("5_th2jy")
 texture_pressed = ExtResource("6_aqwom")
 stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 474.0
+offset_top = 6.0
+offset_right = 716.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 30
+text = "鼠标X坐标：
+鼠标Y坐标："
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(360, 800)

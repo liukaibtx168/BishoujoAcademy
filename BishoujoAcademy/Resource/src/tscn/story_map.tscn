@@ -40,13 +40,13 @@ material = SubResource("ShaderMaterial_vv8fq")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -360.0
+offset_left = -362.0
 offset_top = -685.0
-offset_right = -360.0
+offset_right = -362.0
 offset_bottom = -685.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="EventLayer" parent="test_map_001/MapImage" instance=ExtResource("3_47idh")]
-position = Vector2(673, -612)
+position = Vector2(-360, -912)

@@ -40,9 +40,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -85.0
-offset_top = -24.0
+offset_top = -25.0
 offset_right = 80.0
-offset_bottom = 24.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
@@ -107,7 +107,7 @@ shape = SubResource("CircleShape2D_7tfnf")
 one_way_collision_margin = 0.0
 debug_color = Color(0.641221, 0.521835, 0.137871, 0.42)
 
-[node name="Button" type="Button" parent="Event_Battle"]
+[node name="build_di" type="Button" parent="Event_Battle"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -135,7 +135,7 @@ shape = SubResource("CircleShape2D_67517")
 one_way_collision_margin = 0.0
 debug_color = Color(0.641221, 0.521835, 0.137871, 0.42)
 
-[node name="Button" type="Button" parent="Event_Dungeon"]
+[node name="build_di" type="Button" parent="Event_Dungeon"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

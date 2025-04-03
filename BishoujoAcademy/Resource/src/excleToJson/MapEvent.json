@@ -41,7 +41,7 @@
     "storyMapID": 10101,
     "eventType": "Event_Dungeon",
     "eventPos": {
-      "[1]": 120,
+      "[1]": 0,
       "[2]": 640
     },
     "nameID": 0,
