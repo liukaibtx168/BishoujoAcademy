@@ -127,55 +127,26 @@ func add_event(map_id: String, event_id: String, position: Vector2, size: Vector
 	# 设置位置
 	event.position = position
 	
-	# 添加视觉指示器
-	var indicator = Sprite2D.new()
-	# 根据事件ID加载不同的图标
-	var icon_path = "res://Resource/res/icon/map/" + event_id + ".png"
-	if ResourceLoader.exists(icon_path):
-		indicator.texture = load(icon_path)
-	else:
-		# 使用默认图标
-		print("警告: 找不到事件图标 ", icon_path, "，使用默认图标")
-		var default_icon_path = "res://Resource/res/icon/map/default.png"
-		if ResourceLoader.exists(default_icon_path):
-			indicator.texture = load(default_icon_path)
-	
-	event.add_child(indicator)
-	
-	# 连接信号
-	event.input_event.connect(func(viewport, input_event, shape_idx):
-		if input_event is InputEventMouseButton and input_event.pressed:
-			print("触发事件: ", event_id)
-			callback.call()
-	)
-	
-	# 将事件添加到地图数据
-	if maps_data.has(map_id):
-		maps_data[map_id].events.append(event_id)
-	
-	# 返回事件对象，以便后续操作
-	return event
-
 # 揭示所有事件区域 - 简化版，直接基于场景结构
 func reveal_event_areas(map_id: String):
 	var map_node = get_node_or_null(map_id)
 	if not map_node:
-		print("错误: 找不到地图节点 ", map_id)
+		# print("错误: 找不到地图节点 ", map_id)
 		return
 		
 	var map_image = map_node.get_node_or_null("MapImage")
 	if not map_image:
-		print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
 		return
 		
 	var event_layer = map_image.get_node_or_null("EventLayer")
 	if not event_layer:
-		print("错误: 地图节点 ", map_id, " 没有 EventLayer 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 EventLayer 子节点")
 		return
 		
 	var fog_layer = map_image.get_node_or_null("FogLayer")
 	if not fog_layer:
-		print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
 		return
 	
 	# 创建遮罩材质 - 基本原理是用事件区域作为遮罩来挖孔
@@ -185,22 +156,22 @@ func reveal_event_areas(map_id: String):
 func setup_fog_mask(map_id: String):
 	var map_node = get_node_or_null(map_id)
 	if not map_node:
-		print("错误: 找不到地图节点 ", map_id)
+		# print("错误: 找不到地图节点 ", map_id)
 		return
 		
 	var map_image = map_node.get_node_or_null("MapImage")
 	if not map_image:
-		print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
 		return
 	
 	var fog_layer = map_image.get_node_or_null("FogLayer")
 	if not fog_layer:
-		print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
 		return
 	
 	var event_layer = map_image.get_node_or_null("EventLayer")
 	if not event_layer:
-		print("错误: 地图节点 ", map_id, " 没有 EventLayer 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 EventLayer 子节点")
 		return
 	
 	# 清理旧的调试节点
@@ -210,43 +181,43 @@ func setup_fog_mask(map_id: String):
 	
 	# 确保FogLayer是ColorRect类型
 	if not fog_layer is ColorRect:
-		print("警告: FogLayer不是ColorRect类型，无法应用shader效果")
+		# print("警告: FogLayer不是ColorRect类型，无法应用shader效果")
 		return
 	
 	# 确保FogLayer有合适的大小
 	if map_image.texture:
 		fog_layer.size = map_image.texture.get_size()
-		print("设置迷雾层大小: ", fog_layer.size)
+		# print("设置迷雾层大小: ", fog_layer.size)
 	
 	# 获取或创建shader材质
 	var shader_material
 	if fog_layer.material and fog_layer.material is ShaderMaterial:
 		shader_material = fog_layer.material
-		print("使用现有ShaderMaterial")
+		# print("使用现有ShaderMaterial")
 	else:
 		# 尝试加载fog_mask着色器
 		var shader_path = "res://Resource/src/shader/fog_mask.gdshader"
 		var shader
 		if ResourceLoader.exists(shader_path):
 			shader = load(shader_path)
-			print("加载着色器: ", shader_path)
+			# print("加载着色器: ", shader_path)
 		else:
-			print("错误: 找不到着色器 ", shader_path)
+			# print("错误: 找不到着色器 ", shader_path)
 			return
 		
 		shader_material = ShaderMaterial.new()
 		shader_material.shader = shader
 		fog_layer.material = shader_material
-		print("创建新的ShaderMaterial")
+		# print("创建新的ShaderMaterial")
 	
 	# 获取当前着色器参数 - 记录当前状态
-	print("开始检查当前shader参数状态...")
+	# print("开始检查当前shader参数状态...")
 	
 	# 记录纹理
 	var current_texture_1 = shader_material.get_shader_parameter("fog_texture_1")
 	var current_texture_2 = shader_material.get_shader_parameter("fog_texture_2")
-	print("当前纹理1: ", current_texture_1)
-	print("当前纹理2: ", current_texture_2)
+	# print("当前纹理1: ", current_texture_1)
+	# print("当前纹理2: ", current_texture_2)
 	
 	# 记录其他参数
 	var current_texture_scale_1 = shader_material.get_shader_parameter("texture_scale_1")
@@ -266,7 +237,7 @@ func setup_fog_mask(map_id: String):
 	var circle_data = []
 	var rect_data = []
 	
-	print("开始收集区域数据...")
+	# print("开始收集区域数据...")
 	
 	# 增加支持的最大区域数量，确保能处理所有事件
 	var max_areas = 100  # 从10增加到100，确保足够处理所有事件
@@ -276,7 +247,7 @@ func setup_fog_mask(map_id: String):
 			var collision = event.get_node_or_null("CollisionShape2D")
 			if collision and collision.shape:
 				var global_pos = event.global_position
-				print("处理事件: ", event.name, " 全局位置: ", global_pos, " 可见性: ", event.visible)
+				# print("处理事件: ", event.name, " 全局位置: ", global_pos, " 可见性: ", event.visible)
 				
 				if collision.shape is CircleShape2D and circle_count < max_areas:
 					var radius = collision.shape.radius
@@ -287,7 +258,7 @@ func setup_fog_mask(map_id: String):
 					var data = Vector3(global_pos.x, global_pos.y, screen_radius)
 					circle_data.append(data)
 					circle_count += 1
-					print("添加圆形区域 #", circle_count, ": 位置(", global_pos.x, ",", global_pos.y, ") 半径: ", screen_radius)
+					# print("添加圆形区域 #", circle_count, ": 位置(", global_pos.x, ",", global_pos.y, ") 半径: ", screen_radius)
 					
 				elif collision.shape is RectangleShape2D and rect_count < max_areas:
 					var size = collision.shape.size
@@ -300,14 +271,14 @@ func setup_fog_mask(map_id: String):
 					)
 					rect_data.append(data)
 					rect_count += 1
-					print("添加矩形区域 #", rect_count, ": 位置(", global_pos.x - size.x/2, ",", global_pos.y - size.y/2, ") 尺寸: ", size)
+					# print("添加矩形区域 #", rect_count, ": 位置(", global_pos.x - size.x/2, ",", global_pos.y - size.y/2, ") 尺寸: ", size)
 				
 				if circle_count + rect_count >= max_areas:
-					print("警告: 达到最大支持区域数量限制 (", max_areas, ")")
+					# print("警告: 达到最大支持区域数量限制 (", max_areas, ")")
 					break
 	
 	# 将收集到的区域数据设置为shader参数
-	print("设置shader参数: 圆形区域 ", circle_count, "个, 矩形区域 ", rect_count, "个")
+	# print("设置shader参数: 圆形区域 ", circle_count, "个, 矩形区域 ", rect_count, "个")
 	
 	# 设置圆形数据
 	shader_material.set_shader_parameter("circle_count", circle_count)

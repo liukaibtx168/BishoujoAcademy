@@ -22,7 +22,7 @@
       "[2]": 1300
     },
     "lightRange": 50,
-    "nameID": 0,
+    "nameID": 10005,
     "icon": "icon/build/build_007.png"
   },
   "1010003": {
@@ -74,7 +74,7 @@
       "[2]": 930
     },
     "lightRange": 50,
-    "nameID": 10005,
+    "nameID": 10006,
     "icon": "icon/build/build_004.png"
   },
   "1010007": {

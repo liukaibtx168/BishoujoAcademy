@@ -83,6 +83,10 @@ func load_config_data():
 		string_file.get_line()
 		string_file.get_line()
 		
+		# 清空现有的字符串数据
+		string_data.clear()
+		var loaded_count = 0
+		
 		# 读取数据行
 		while !string_file.eof_reached():
 			var line = string_file.get_line()
@@ -91,11 +95,23 @@ func load_config_data():
 				
 			var parts = line.split("\t")
 			if parts.size() >= 3:
+				# 尝试将ID转换为整数，以便于后续检索
 				var id = parts[0].strip_edges()
+				var id_int = id.to_int()
 				var text = parts[2].strip_edges()
-				string_data[id] = text
+				
+				# 同时以字符串和整数形式存储，增加查找成功率
+				string_data[id] = text  # 字符串形式
+				string_data[id_int] = text  # 整数形式
+				loaded_count += 1
+				
+				# 调试输出
+				if id == "10004" || id_int == 10004:
+					print("DEBUG: 成功加载字符串ID=10004，内容: ", text)
+					print("  - 类型检查: id类型=", typeof(id), ", id_int类型=", typeof(id_int))
 		
-		print("成功加载String_cn配置，共 ", string_data.size(), " 条数据")
+		print("成功加载String_cn配置，共 ", loaded_count, " 条数据，字典大小: ", string_data.size())
+		print("DEBUG: 字符串表中包含ID=10004吗? ", string_data.has("10004") || string_data.has(10004))
 	else:
 		print("无法打开String_cn配置文件: ", string_data_path)
 
@@ -461,43 +477,57 @@ func update_event_display(event_node, event_data):
 	# 处理文本显示 - 按照配置表说明2处理文本
 	# 只有Event_Choice和Event_Scene需要处理文本
 	if event_type == "Event_Choice" || event_type == "Event_Scene":
-		# 直接查找text节点
-		var text_node = build_di.get_node_or_null("text")
-		if text_node:
-			# 按照配置表规则，使用nameID查找string数据
-			if event_data.has("nameID") && event_data.nameID != "" && string_data.has(event_data.nameID):
-				text_node.text = string_data[event_data.nameID]
+		# 按照配置表规则，使用nameID查找string数据
+		if event_data.has("nameID") && event_data.nameID != 0:
+			# 获取nameID，确保我们有多种格式以增加查找成功率
+			var name_id_raw = event_data.nameID  # 原始格式
+			var name_id_int = int(str(name_id_raw))  # 确保是整数
+			var name_id_str = str(name_id_raw)  # 确保是字符串
+			
+			print("DEBUG: 事件 ", event_data.ID, " nameID处理: 原始=", name_id_raw, 
+				" (类型=", typeof(name_id_raw), "), 整数=", name_id_int, 
+				", 字符串=", name_id_str)
+			
+			# 使用多种可能的键格式查找文本
+			var text = null
+			if string_data.has(name_id_raw):
+				text = string_data[name_id_raw]
+				print("DEBUG: 使用原始格式找到文本")
+			elif string_data.has(name_id_int):
+				text = string_data[name_id_int]
+				print("DEBUG: 使用整数格式找到文本")
+			elif string_data.has(name_id_str):
+				text = string_data[name_id_str]
+				print("DEBUG: 使用字符串格式找到文本")
+			
+			if text != null:
+				build_di.set_text(text)
+				print("设置事件 ", event_data.ID, " 文本为: ", text)
 			else:
-				# 如果没有nameID或未找到对应的string，使用默认值
-				text_node.text = event_type + "_" + str(event_data.ID)
+				print("警告: 事件 ", event_data.ID, " 的nameID(", name_id_raw, ")在string表中不存在")
+				print("DEBUG: 字符串表中包含键: ", string_data.keys().slice(0, min(10, string_data.size())), "...")
+		else:
+			# nameID不存在或为0时不进行处理
+			print("信息: 事件 ", event_data.ID, " 没有配置nameID或nameID为0，不设置文本")
 	
 	# 处理图标显示 - 按照配置表说明2处理图标
 	# 5种类型事件都需要处理图标
-	var icon_node = build_di.get_node_or_null("Icon")
-	if icon_node:
+	if event_type == "Event_Choice" || event_type == "Event_Scene" || event_type == "Event_Shop" || event_type == "Event_Battle" || event_type == "Event_Dungeon":
 		# 按照配置表规则，icon字段指定了图标路径
 		if event_data.has("icon") && event_data.icon != "":
 			var icon_path = "res://Resource/res/" + event_data.icon
 			if ResourceLoader.exists(icon_path):
 				var texture = load(icon_path)
 				if texture:
-					# 设置图标纹理
-					if icon_node is Sprite2D:
-						icon_node.texture = texture
-					elif icon_node is TextureRect:
-						icon_node.texture = texture
-					elif icon_node.has_method("set_texture"):
-						icon_node.set_texture(texture)
-					elif icon_node.has_property("texture"):
-						icon_node.texture = texture
+					# 直接设置Button的图标
+					build_di.set_button_icon(texture)
 				else:
 					print("警告: 事件 ", event_data.ID, " 无法加载图标纹理: ", icon_path)
 			else:
 				print("警告: 事件 ", event_data.ID, " 图标文件不存在: ", icon_path)
-		else:
-			print("事件 ", event_data.ID, " 没有配置icon字段，保留默认图标")
+		# 如果没有配置icon字段，保留默认图标，不做任何处理
 	else:
-		print("警告: 事件 ", event_data.ID, " 的build_di中没有找到图标节点")
+		print("警告: 事件 ", event_data.ID, " 的事件类型不支持图标: ", event_type)
 
 # 事件鼠标进入
 func _on_event_mouse_entered(event):
