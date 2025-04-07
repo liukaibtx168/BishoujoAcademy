@@ -399,6 +399,27 @@ func create_map_event(event_data, event_layer):
 	# 设置事件位置 - 直接使用配置中的坐标
 	new_event.position = Vector2(event_pos_x, event_pos_y)
 	
+	# 调整碰撞形状大小 - 使用配置中的lightRange字段
+	var collision_shape = new_event.get_node_or_null("CollisionShape2D")
+	if collision_shape:
+		if event_data.has("lightRange"):
+			# 确保lightRange存在且不为空
+			var light_range_value = str(event_data.lightRange)
+			if light_range_value != "" && light_range_value != "0":
+				# 转换为浮点数
+				var light_range = float(light_range_value)
+				if light_range > 0:
+					# 获取当前形状
+					var shape = collision_shape.shape
+					if shape is CircleShape2D:
+						# 如果是圆形，设置半径
+						shape.radius = light_range
+						print("设置事件 ", event_data.ID, " 的碰撞半径为: ", light_range)
+					elif shape is RectangleShape2D:
+						# 如果是矩形，设置大小为正方形
+						shape.size = Vector2(light_range * 2, light_range * 2)
+						print("设置事件 ", event_data.ID, " 的碰撞大小为: ", shape.size)
+	
 	# 从配置中读取事件显示信息并应用
 	update_event_display(new_event, event_data)
 	

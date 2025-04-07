@@ -8,6 +8,7 @@
       "[1]": 500,
       "[2]": 850
     },
+    "lightRange": 50,
     "nameID": 10004,
     "icon": "icon/build/build_002.png"
   },
@@ -20,6 +21,7 @@
       "[1]": 540,
       "[2]": 1300
     },
+    "lightRange": 50,
     "nameID": 0,
     "icon": "icon/build/build_007.png"
   },
@@ -32,6 +34,7 @@
       "[1]": 180,
       "[2]": 1200
     },
+    "lightRange": 50,
     "nameID": 0,
     "icon": "icon/build/monster_002.png"
   },
@@ -44,6 +47,7 @@
       "[1]": 160,
       "[2]": 720
     },
+    "lightRange": 50,
     "nameID": 0,
     "icon": "icon/build/monster_001.png"
   },
@@ -56,6 +60,7 @@
       "[1]": 550,
       "[2]": 700
     },
+    "lightRange": 50,
     "nameID": 0,
     "icon": "icon/build/build_006.png"
   },
@@ -68,7 +73,21 @@
       "[1]": 150,
       "[2]": 930
     },
+    "lightRange": 50,
     "nameID": 10005,
     "icon": "icon/build/build_004.png"
+  },
+  "1010007": {
+    "ID": 1010007,
+    "comment": "测试事件购物",
+    "storyMapID": 10101,
+    "eventType": "Event_Shop",
+    "eventPos": {
+      "[1]": 450,
+      "[2]": 1050
+    },
+    "lightRange": 50,
+    "nameID": 0,
+    "icon": "icon/build/build_006.png"
   }
 }

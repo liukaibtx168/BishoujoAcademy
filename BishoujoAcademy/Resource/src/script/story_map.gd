@@ -360,70 +360,80 @@ func setup_fog_mask(map_id: String):
 	if current_texture_scale_1 == null:
 		shader_material.set_shader_parameter("texture_scale_1", Vector2(1.0, 1.0))
 	else:
-		print("保留现有纹理1缩放: ", current_texture_scale_1)
-	
+		# print("保留现有纹理1缩放: ", current_texture_scale_1)
+		return
+
 	if current_texture_scale_2 == null:
 		shader_material.set_shader_parameter("texture_scale_2", Vector2(1.4, 1.4))
 	else:
-		print("保留现有纹理2缩放: ", current_texture_scale_2)
-	
+		# print("保留现有纹理2缩放: ", current_texture_scale_2)
+		return
+
 	if current_speed_1 == null:
 		shader_material.set_shader_parameter("speed_1", 0.02)
 	else:
-		print("保留现有速度1: ", current_speed_1)
-	
+		# print("保留现有速度1: ", current_speed_1)
+		return
+
 	if current_speed_2 == null:
 		shader_material.set_shader_parameter("speed_2", 0.03)
 	else:
-		print("保留现有速度2: ", current_speed_2)
-	
+		#print("保留现有速度2: ", current_speed_2)
+		return
+
 	if current_direction_1 == null:
 		shader_material.set_shader_parameter("direction_1", Vector2(1.0, 0.5))
 	else:
-		print("保留现有方向1: ", current_direction_1)
-	
+		# print("保留现有方向1: ", current_direction_1)
+		return
+
 	if current_direction_2 == null:
 		shader_material.set_shader_parameter("direction_2", Vector2(-0.7, 0.3))
 	else:
-		print("保留现有方向2: ", current_direction_2)
-	
+		#print("保留现有方向2: ", current_direction_2)
+		return
+
 	if current_blend_ratio == null:
 		shader_material.set_shader_parameter("blend_ratio", 0.4)
 	else:
-		print("保留现有混合比例: ", current_blend_ratio)
-	
+		# print("保留现有混合比例: ", current_blend_ratio)
+		return
+
 	if current_texture_visibility == null:
 		shader_material.set_shader_parameter("texture_visibility", 0.6)
 	else:
-		print("保留现有纹理可见度: ", current_texture_visibility)
-	
+		# print("保留现有纹理可见度: ", current_texture_visibility)
+		return
+
 	if current_edge_softness == null:
 		shader_material.set_shader_parameter("edge_softness", 20.0)
 	else:
-		print("保留现有边缘柔和度: ", current_edge_softness)
-	
+		# print("保留现有边缘柔和度: ", current_edge_softness)
+		return
+
 	if current_fog_color == null:
 		shader_material.set_shader_parameter("fog_color", Color(0.15, 0.15, 0.15, 0.8))
 	else:
-		print("保留现有迷雾颜色: ", current_fog_color)
-	
-	print("为 ", map_id, " 设置了迷雾遮罩，共处理了 ", circle_count + rect_count, " 个事件区域")
+		# print("保留现有迷雾颜色: ", current_fog_color)
+		return
+
+	# print("为 ", map_id, " 设置了迷雾遮罩，共处理了 ", circle_count + rect_count, " 个事件区域")
 
 # 切换迷雾显示
 func toggle_fog(map_id: String, enabled: bool):
 	var map_node = get_node_or_null(map_id)
 	if not map_node:
-		print("错误: 找不到地图节点 ", map_id)
+		# print("错误: 找不到地图节点 ", map_id)
 		return
 		
 	var map_image = map_node.get_node_or_null("MapImage")
 	if not map_image:
-		print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
 		return
 		
 	var fog_layer = map_image.get_node_or_null("FogLayer")
 	if not fog_layer:
-		print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
 		return
 		
 	# 设置迷雾可见性
@@ -437,26 +447,26 @@ func toggle_fog(map_id: String, enabled: bool):
 func refresh_fog_textures(map_id: String):
 	var map_node = get_node_or_null(map_id)
 	if not map_node:
-		print("错误: 找不到地图节点 ", map_id)
+		# print("错误: 找不到地图节点 ", map_id)
 		return
 		
 	var map_image = map_node.get_node_or_null("MapImage")
 	if not map_image:
-		print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
 		return
 	
 	var fog_layer = map_image.get_node_or_null("FogLayer")
 	if not fog_layer:
-		print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
 		return
 	
 	if not fog_layer.material is ShaderMaterial:
-		print("错误: FogLayer 没有 ShaderMaterial")
+		# print("错误: FogLayer 没有 ShaderMaterial")
 		return
 		
 	var shader_material = fog_layer.material
 	
-	print("开始刷新迷雾纹理参数...")
+	# print("开始刷新迷雾纹理参数...")
 	
 	# 获取当前所有shader参数 - 记录当前状态
 	var current_texture_1 = shader_material.get_shader_parameter("fog_texture_1")
@@ -472,19 +482,19 @@ func refresh_fog_textures(map_id: String):
 	var current_edge_softness = shader_material.get_shader_parameter("edge_softness")
 	var current_fog_color = shader_material.get_shader_parameter("fog_color")
 	
-	print("当前shader参数状态:")
-	print("- 纹理1: ", current_texture_1)
-	print("- 纹理2: ", current_texture_2)
-	print("- 纹理1缩放: ", current_texture_scale_1)
-	print("- 纹理2缩放: ", current_texture_scale_2)
-	print("- 速度1: ", current_speed_1)
-	print("- 速度2: ", current_speed_2)
-	print("- 方向1: ", current_direction_1)
-	print("- 方向2: ", current_direction_2)
-	print("- 混合比例: ", current_blend_ratio)
-	print("- 纹理可见度: ", current_texture_visibility)
-	print("- 边缘柔和度: ", current_edge_softness)
-	print("- 迷雾颜色: ", current_fog_color)
+	# print("当前shader参数状态:")
+	# print("- 纹理1: ", current_texture_1)
+	# print("- 纹理2: ", current_texture_2)
+	# print("- 纹理1缩放: ", current_texture_scale_1)
+	# print("- 纹理2缩放: ", current_texture_scale_2)
+	# print("- 速度1: ", current_speed_1)
+	# print("- 速度2: ", current_speed_2)
+	# print("- 方向1: ", current_direction_1)
+	# print("- 方向2: ", current_direction_2)
+	# print("- 混合比例: ", current_blend_ratio)
+	# print("- 纹理可见度: ", current_texture_visibility)
+	# print("- 边缘柔和度: ", current_edge_softness)
+	# print("- 迷雾颜色: ", current_fog_color)
 	
 	# 只在参数为空时设置默认值，否则保留场景中的设置
 	# 检查纹理1并在需要时设置默认值
@@ -493,117 +503,142 @@ func refresh_fog_textures(map_id: String):
 		if ResourceLoader.exists(texture_path_1):
 			var texture_1 = load(texture_path_1)
 			if texture_1:
-				print("刷新 - 加载默认纹理1: ", texture_path_1)
+				# print("刷新 - 加载默认纹理1: ", texture_path_1)
 				shader_material.set_shader_parameter("fog_texture_1", texture_1)
 			else:
-				print("刷新 - 警告: 无法加载默认迷雾纹理1 ", texture_path_1)
+				# print("刷新 - 警告: 无法加载默认迷雾纹理1 ", texture_path_1)
+				return
 		else:
-			print("刷新 - 警告: 默认迷雾纹理1文件不存在: ", texture_path_1)
+			# print("刷新 - 警告: 默认迷雾纹理1文件不存在: ", texture_path_1)
+			return
 	else:
-		print("刷新 - 保留场景中已设置的纹理1: ", current_texture_1)
-	
+		# print("刷新 - 保留场景中已设置的纹理1: ", current_texture_1)
+		return
 	# 检查纹理2并在需要时设置默认值
 	if current_texture_2 == null:
 		var texture_path_2 = "res://Resource/res/scene/fog_texture2.png"
 		if ResourceLoader.exists(texture_path_2):
 			var texture_2 = load(texture_path_2)
 			if texture_2:
-				print("刷新 - 加载默认纹理2: ", texture_path_2)
+				# print("刷新 - 加载默认纹理2: ", texture_path_2)
 				shader_material.set_shader_parameter("fog_texture_2", texture_2)
 			else:
-				print("刷新 - 警告: 无法加载默认迷雾纹理2 ", texture_path_2)
+				# print("刷新 - 警告: 无法加载默认迷雾纹理2 ", texture_path_2)
+				return
 		else:
-			print("刷新 - 警告: 默认迷雾纹理2文件不存在: ", texture_path_2)
+			# print("刷新 - 警告: 默认迷雾纹理2文件不存在: ", texture_path_2)
+			return
 	else:
-		print("刷新 - 保留场景中已设置的纹理2: ", current_texture_2)
-	
+		# print("刷新 - 保留场景中已设置的纹理2: ", current_texture_2)
+		return
+
 	# 对其他参数也进行同样的检查，只在为null时设置默认值
 	if current_texture_scale_1 == null:
 		shader_material.set_shader_parameter("texture_scale_1", Vector2(1.0, 1.0))
-		print("刷新 - 设置默认纹理1缩放: Vector2(1.0, 1.0)")
+		# print("刷新 - 设置默认纹理1缩放: Vector2(1.0, 1.0)")
+		return
 	else:
-		print("刷新 - 保留现有纹理1缩放: ", current_texture_scale_1)
+		# print("刷新 - 保留现有纹理1缩放: ", current_texture_scale_1)
+		return
 	
 	if current_texture_scale_2 == null:
 		shader_material.set_shader_parameter("texture_scale_2", Vector2(1.4, 1.4))
-		print("刷新 - 设置默认纹理2缩放: Vector2(1.4, 1.4)")
+		# print("刷新 - 设置默认纹理2缩放: Vector2(1.4, 1.4)")
+		return
 	else:
-		print("刷新 - 保留现有纹理2缩放: ", current_texture_scale_2)
+		# print("刷新 - 保留现有纹理2缩放: ", current_texture_scale_2)
+		return
 	
 	if current_speed_1 == null:
 		shader_material.set_shader_parameter("speed_1", 0.02)
-		print("刷新 - 设置默认速度1: 0.02")
+		# print("刷新 - 设置默认速度1: 0.02")
+		return
 	else:
-		print("刷新 - 保留现有速度1: ", current_speed_1)
+		# print("刷新 - 保留现有速度1: ", current_speed_1)
+		return
 	
 	if current_speed_2 == null:
 		shader_material.set_shader_parameter("speed_2", 0.03)
-		print("刷新 - 设置默认速度2: 0.03")
+		# print("刷新 - 设置默认速度2: 0.03")
+		return
 	else:
-		print("刷新 - 保留现有速度2: ", current_speed_2)
+		# print("刷新 - 保留现有速度2: ", current_speed_2)
+		return
 	
 	if current_direction_1 == null:
 		shader_material.set_shader_parameter("direction_1", Vector2(1.0, 0.5))
-		print("刷新 - 设置默认方向1: Vector2(1.0, 0.5)")
+		# print("刷新 - 设置默认方向1: Vector2(1.0, 0.5)")
+		return
 	else:
-		print("刷新 - 保留现有方向1: ", current_direction_1)
+		# print("刷新 - 保留现有方向1: ", current_direction_1)
+		return
 	
 	if current_direction_2 == null:
 		shader_material.set_shader_parameter("direction_2", Vector2(-0.7, 0.3))
-		print("刷新 - 设置默认方向2: Vector2(-0.7, 0.3)")
+		# print("刷新 - 设置默认方向2: Vector2(-0.7, 0.3)")
+		return
 	else:
-		print("刷新 - 保留现有方向2: ", current_direction_2)
+		# print("刷新 - 保留现有方向2: ", current_direction_2)
+		return
 	
 	if current_blend_ratio == null:
 		shader_material.set_shader_parameter("blend_ratio", 0.4)
-		print("刷新 - 设置默认混合比例: 0.4")
+		# print("刷新 - 设置默认混合比例: 0.4")
+		return
 	else:
-		print("刷新 - 保留现有混合比例: ", current_blend_ratio)
+		# print("刷新 - 保留现有混合比例: ", current_blend_ratio)
+		return
 	
 	if current_texture_visibility == null:
 		shader_material.set_shader_parameter("texture_visibility", 0.6)
-		print("刷新 - 设置默认纹理可见度: 0.6")
+		# print("刷新 - 设置默认纹理可见度: 0.6")
+		return
 	else:
-		print("刷新 - 保留现有纹理可见度: ", current_texture_visibility)
+		# print("刷新 - 保留现有纹理可见度: ", current_texture_visibility)
+		return
 	
 	if current_edge_softness == null:
 		shader_material.set_shader_parameter("edge_softness", 20.0)
-		print("刷新 - 设置默认边缘柔和度: 20.0")
+		# print("刷新 - 设置默认边缘柔和度: 20.0")
+		return
 	else:
-		print("刷新 - 保留现有边缘柔和度: ", current_edge_softness)
+		# print("刷新 - 保留现有边缘柔和度: ", current_edge_softness)
+		return
 	
 	if current_fog_color == null:
 		shader_material.set_shader_parameter("fog_color", Color(0.15, 0.15, 0.15, 0.8))
-		print("刷新 - 设置默认迷雾颜色: Color(0.15, 0.15, 0.15, 0.8)")
+		# print("刷新 - 设置默认迷雾颜色: Color(0.15, 0.15, 0.15, 0.8)")
+		return
 	else:
-		print("刷新 - 保留现有迷雾颜色: ", current_fog_color)
+		# print("刷新 - 保留现有迷雾颜色: ", current_fog_color)
+		return
 	
-	print("迷雾纹理刷新完成 - 所有参数已保留或设置为默认值")
+	# print("迷雾纹理刷新完成 - 所有参数已保留或设置为默认值")
 
 # 新增：更新迷雾纹理参数 (不修改纹理引用)
 func update_fog_texture_params(map_id: String, texture1_scale: Vector2 = Vector2(1.0, 1.0), texture2_scale: Vector2 = Vector2(1.4, 1.4), blend: float = 0.4, visibility: float = 0.6, edge_soft: float = 20.0):
 	var map_node = get_node_or_null(map_id)
 	if not map_node:
-		print("错误: 找不到地图节点 ", map_id)
+		# print("错误: 找不到地图节点 ", map_id)
 		return
 		
 	var map_image = map_node.get_node_or_null("MapImage")
 	if not map_image:
-		print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
 		return
 	
 	var fog_layer = map_image.get_node_or_null("FogLayer")
 	if not fog_layer:
-		print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
 		return
 	
 	if not fog_layer.material is ShaderMaterial:
-		print("错误: FogLayer 没有 ShaderMaterial")
+		# print("错误: FogLayer 没有 ShaderMaterial")
 		return
 		
 	var shader_material = fog_layer.material
 	
-	print("开始更新迷雾参数...")
+	# print("开始更新迷雾参数...")
 	
 	# 获取当前纹理引用 (仅用于调试输出)
 	var current_texture_1 = shader_material.get_shader_parameter("fog_texture_1")
@@ -613,66 +648,69 @@ func update_fog_texture_params(map_id: String, texture1_scale: Vector2 = Vector2
 	
 	# 1. 纹理1缩放 - 仅当用户明确提供时才更新
 	if texture1_scale != Vector2(1.0, 1.0) || shader_material.get_shader_parameter("texture_scale_1") == null:
-		print("更新纹理1缩放: ", texture1_scale)
+		# print("更新纹理1缩放: ", texture1_scale)
 		shader_material.set_shader_parameter("texture_scale_1", texture1_scale)
 	else:
-		print("保留当前纹理1缩放: ", shader_material.get_shader_parameter("texture_scale_1"))
+		# print("保留当前纹理1缩放: ", shader_material.get_shader_parameter("texture_scale_1"))
+		return
 	
 	# 2. 纹理2缩放 - 仅当用户明确提供时才更新
 	if texture2_scale != Vector2(1.4, 1.4) || shader_material.get_shader_parameter("texture_scale_2") == null:
-		print("更新纹理2缩放: ", texture2_scale)
+		# print("更新纹理2缩放: ", texture2_scale)
 		shader_material.set_shader_parameter("texture_scale_2", texture2_scale)
 	else:
-		print("保留当前纹理2缩放: ", shader_material.get_shader_parameter("texture_scale_2"))
+		# print("保留当前纹理2缩放: ", shader_material.get_shader_parameter("texture_scale_2"))
+		return
 	
 	# 3. 混合比例 - 仅当用户明确提供时才更新
 	if blend != 0.4 || shader_material.get_shader_parameter("blend_ratio") == null:
-		print("更新混合比例: ", blend)
+		# print("更新混合比例: ", blend)
 		shader_material.set_shader_parameter("blend_ratio", blend)
 	else:
-		print("保留当前混合比例: ", shader_material.get_shader_parameter("blend_ratio"))
-	
+		# print("保留当前混合比例: ", shader_material.get_shader_parameter("blend_ratio"))
+		return
 	# 4. 纹理可见度 - 仅当用户明确提供时才更新
 	if visibility != 0.6 || shader_material.get_shader_parameter("texture_visibility") == null:
-		print("更新纹理可见度: ", visibility)
+		# print("更新纹理可见度: ", visibility)
 		shader_material.set_shader_parameter("texture_visibility", visibility)
 	else:
-		print("保留当前纹理可见度: ", shader_material.get_shader_parameter("texture_visibility"))
-	
+		# print("保留当前纹理可见度: ", shader_material.get_shader_parameter("texture_visibility"))
+		return
 	# 5. 边缘柔和度 - 仅当用户明确提供时才更新
 	if edge_soft != 20.0 || shader_material.get_shader_parameter("edge_softness") == null:
-		print("更新边缘柔和度: ", edge_soft)
+		# print("更新边缘柔和度: ", edge_soft)
 		shader_material.set_shader_parameter("edge_softness", edge_soft)
 	else:
-		print("保留当前边缘柔和度: ", shader_material.get_shader_parameter("edge_softness"))
+		# print("保留当前边缘柔和度: ", shader_material.get_shader_parameter("edge_softness"))
+		return
 	
 	# 打印参数更新摘要
-	print("参数更新完成")
-	print("当前纹理1: ", current_texture_1, " 缩放: ", shader_material.get_shader_parameter("texture_scale_1"))
-	print("当前纹理2: ", current_texture_2, " 缩放: ", shader_material.get_shader_parameter("texture_scale_2"))
-	print("当前混合比例: ", shader_material.get_shader_parameter("blend_ratio"))
-	print("当前纹理可见度: ", shader_material.get_shader_parameter("texture_visibility"))
-	print("当前边缘柔和度: ", shader_material.get_shader_parameter("edge_softness"))
+	# print("参数更新完成")
+	# print("当前纹理1: ", current_texture_1, " 缩放: ", shader_material.get_shader_parameter("texture_scale_1"))
+	# print("当前纹理2: ", current_texture_2, " 缩放: ", shader_material.get_shader_parameter("texture_scale_2"))
+	# print("当前混合比例: ", shader_material.get_shader_parameter("blend_ratio"))
+	# print("当前纹理可见度: ", shader_material.get_shader_parameter("texture_visibility"))
+	# print("当前边缘柔和度: ", shader_material.get_shader_parameter("edge_softness"))
 
 # 设置自定义迷雾纹理 (仅在需要手动替换纹理时使用)
 func set_fog_textures(map_id: String, texture1_path: String = "", texture2_path: String = ""):
 	var map_node = get_node_or_null(map_id)
 	if not map_node:
-		print("错误: 找不到地图节点 ", map_id)
+		# print("错误: 找不到地图节点 ", map_id)
 		return
 		
 	var map_image = map_node.get_node_or_null("MapImage")
 	if not map_image:
-		print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 MapImage 子节点")
 		return
 	
 	var fog_layer = map_image.get_node_or_null("FogLayer")
 	if not fog_layer:
-		print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
+		# print("错误: 地图节点 ", map_id, " 没有 FogLayer 子节点")
 		return
 	
 	if not fog_layer.material is ShaderMaterial:
-		print("错误: FogLayer 没有 ShaderMaterial")
+		# print("错误: FogLayer 没有 ShaderMaterial")
 		return
 		
 	var shader_material = fog_layer.material
@@ -682,27 +720,31 @@ func set_fog_textures(map_id: String, texture1_path: String = "", texture2_path:
 		if ResourceLoader.exists(texture1_path):
 			var texture_1 = load(texture1_path)
 			if texture_1:
-				print("设置自定义纹理1: ", texture1_path)
+				# print("设置自定义纹理1: ", texture1_path)
 				shader_material.set_shader_parameter("fog_texture_1", texture_1)
 			else:
-				print("错误: 无法加载自定义纹理1: ", texture1_path)
+				# print("错误: 无法加载自定义纹理1: ", texture1_path)
+				return
 		else:
-			print("错误: 找不到自定义纹理1文件: ", texture1_path)
+			# print("错误: 找不到自定义纹理1文件: ", texture1_path)
+			return
 	
 	# 设置第二个纹理（如果指定）
 	if texture2_path.length() > 0:
 		if ResourceLoader.exists(texture2_path):
 			var texture_2 = load(texture2_path)
 			if texture_2:
-				print("设置自定义纹理2: ", texture2_path)
+				# print("设置自定义纹理2: ", texture2_path)
 				shader_material.set_shader_parameter("fog_texture_2", texture_2)
 			else:
-				print("错误: 无法加载自定义纹理2: ", texture2_path)
+				# print("错误: 无法加载自定义纹理2: ", texture2_path)
+				return
 		else:
-			print("错误: 找不到自定义纹理2文件: ", texture2_path)
+			# print("错误: 找不到自定义纹理2文件: ", texture2_path)
+			return
 			
 	# 显示当前纹理状态
 	var current_texture_1 = shader_material.get_shader_parameter("fog_texture_1")
 	var current_texture_2 = shader_material.get_shader_parameter("fog_texture_2")
-	print("当前迷雾纹理1: ", current_texture_1)
-	print("当前迷雾纹理2: ", current_texture_2)
+	# print("当前迷雾纹理1: ", current_texture_1)
+	# print("当前迷雾纹理2: ", current_texture_2)
