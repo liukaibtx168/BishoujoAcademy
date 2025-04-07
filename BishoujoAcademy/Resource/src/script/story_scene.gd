@@ -419,6 +419,13 @@ func create_map_event(event_data, event_layer):
 						# 如果是矩形，设置大小为正方形
 						shape.size = Vector2(light_range * 2, light_range * 2)
 						print("设置事件 ", event_data.ID, " 的碰撞大小为: ", shape.size)
+					
+					# 添加调试信息
+					print("事件 ", event_data.ID, " (类型: ", event_type, ") 创建成功")
+					print("- 位置: ", new_event.position)
+					print("- 全局位置: ", new_event.global_position)
+					print("- 碰撞形状: ", "圆形" if shape is CircleShape2D else "矩形")
+					print("- 碰撞大小: ", shape.radius if shape is CircleShape2D else shape.size)
 	
 	# 从配置中读取事件显示信息并应用
 	update_event_display(new_event, event_data)

@@ -1,10 +1,10 @@
 shader_type canvas_item;
 
-// 最多支持10个圆形区域和10个矩形区域
-uniform vec3 circle_data[10]; // x, y, radius (每个圆的数据：x坐标，y坐标，半径)
+// 最多支持100个圆形区域和100个矩形区域
+uniform vec3 circle_data[100]; // x, y, radius (每个圆的数据：x坐标，y坐标，半径)
 uniform int circle_count = 0; // 实际圆形数量
 
-uniform vec4 rect_data[10]; // x, y, width, height (每个矩形的数据：x坐标，y坐标，宽度，高度)
+uniform vec4 rect_data[100]; // x, y, width, height (每个矩形的数据：x坐标，y坐标，宽度，高度)
 uniform int rect_count = 0; // 实际矩形数量
 
 // 迷雾外观
