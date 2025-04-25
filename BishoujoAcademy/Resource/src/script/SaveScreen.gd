@@ -124,7 +124,7 @@ func _set_label(root: Node, path: String, text: String):
 		
 # 扩展输入处理（支持ESC键关闭）
 func _unhandled_input(event: InputEvent):
-	if event.is_action_pressed("ui_cancel") && !_is_closing:
+	if event.is_action_pressed("ui_cancel") and !_is_closing:
 		_on_close_pressed()
 		get_viewport().set_input_as_handled()
 

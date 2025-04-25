@@ -106,12 +106,12 @@ func load_config_data():
 				loaded_count += 1
 				
 				# 调试输出
-				if id == "10004" || id_int == 10004:
+				if id == "10004" or id_int == 10004:
 					print("DEBUG: 成功加载字符串ID=10004，内容: ", text)
 					print("  - 类型检查: id类型=", typeof(id), ", id_int类型=", typeof(id_int))
 		
 		print("成功加载String_cn配置，共 ", loaded_count, " 条数据，字典大小: ", string_data.size())
-		print("DEBUG: 字符串表中包含ID=10004吗? ", string_data.has("10004") || string_data.has(10004))
+		print("DEBUG: 字符串表中包含ID=10004吗? ", string_data.has("10004") or string_data.has(10004))
 	else:
 		print("无法打开String_cn配置文件: ", string_data_path)
 
@@ -231,7 +231,7 @@ func initialize_map_with_world_id(world_id):
 	
 	for map_id in story_map_data:
 		var map_data = story_map_data[map_id]
-		if map_data.worldID == world_id && map_data.startMap == 1:
+		if map_data.worldID == world_id and map_data.startMap == 1:
 			start_map_id = map_id
 			start_map_data = map_data
 			break
@@ -327,7 +327,7 @@ func setup_fog_layer(map_node, map_data):
 	
 	# 更新迷雾遮罩
 	var story_map = get_node_or_null("StoryMap")
-	if story_map && story_map.has_method("reveal_event_areas"):
+	if story_map and story_map.has_method("reveal_event_areas"):
 		story_map.reveal_event_areas(map_node.name)
 		print("已更新迷雾遮罩")
 
@@ -351,7 +351,7 @@ func load_map_events(map_id, map_node):
 	
 	# 清除现有事件 (保留原始模板节点)
 	for child in event_layer.get_children():
-		if child.name.begins_with("Event_") && !is_event_template(child.name):
+		if child.name.begins_with("Event_") and !is_event_template(child.name):
 			child.queue_free()
 	
 	# 根据配置加载事件
@@ -367,7 +367,7 @@ func load_map_events(map_id, map_node):
 	
 	# 事件加载完成后，刷新迷雾遮罩以反映新的事件位置
 	var story_map = get_node_or_null("StoryMap")
-	if story_map && story_map.has_method("reveal_event_areas"):
+	if story_map and story_map.has_method("reveal_event_areas"):
 		# 等待一帧确保所有事件都已完全创建
 		await get_tree().process_frame
 		story_map.reveal_event_areas(map_id)
@@ -421,7 +421,7 @@ func create_map_event(event_data, event_layer):
 		if event_data.has("lightRange"):
 			# 确保lightRange存在且不为空
 			var light_range_value = str(event_data.lightRange)
-			if light_range_value != "" && light_range_value != "0":
+			if light_range_value != "" and light_range_value != "0":
 				# 转换为浮点数
 				var light_range = float(light_range_value)
 				if light_range > 0:
@@ -476,9 +476,9 @@ func update_event_display(event_node, event_data):
 	
 	# 处理文本显示 - 按照配置表说明2处理文本
 	# 只有Event_Choice和Event_Scene需要处理文本
-	if event_type == "Event_Choice" || event_type == "Event_Scene":
+	if event_type == "Event_Choice" or event_type == "Event_Scene":
 		# 按照配置表规则，使用nameID查找string数据
-		if event_data.has("nameID") && event_data.nameID != 0:
+		if event_data.has("nameID") and event_data.nameID != 0:
 			# 获取nameID，确保我们有多种格式以增加查找成功率
 			var name_id_raw = event_data.nameID  # 原始格式
 			var name_id_int = int(str(name_id_raw))  # 确保是整数
@@ -512,9 +512,9 @@ func update_event_display(event_node, event_data):
 	
 	# 处理图标显示 - 按照配置表说明2处理图标
 	# 5种类型事件都需要处理图标
-	if event_type == "Event_Choice" || event_type == "Event_Scene" || event_type == "Event_Shop" || event_type == "Event_Battle" || event_type == "Event_Dungeon":
+	if event_type == "Event_Choice" or event_type == "Event_Scene" or event_type == "Event_Shop" or event_type == "Event_Battle" or event_type == "Event_Dungeon":
 		# 按照配置表规则，icon字段指定了图标路径
-		if event_data.has("icon") && event_data.icon != "":
+		if event_data.has("icon") and event_data.icon != "":
 			var icon_path = "res://Resource/res/" + event_data.icon
 			if ResourceLoader.exists(icon_path):
 				var texture = load(icon_path)
@@ -547,7 +547,7 @@ func _on_event_mouse_exited(event):
 
 # 事件交互处理 
 func _on_event_input(viewport, input_event, shape_idx, event):
-	if input_event is InputEventMouseButton && input_event.pressed && input_event.button_index == MOUSE_BUTTON_LEFT:
+	if input_event is InputEventMouseButton and input_event.pressed and input_event.button_index == MOUSE_BUTTON_LEFT:
 		# 获取事件ID和类型
 		var event_id = event.get_meta("event_id") if event.has_meta("event_id") else "unknown"
 		var event_type = event.get_meta("event_type") if event.has_meta("event_type") else "unknown"
