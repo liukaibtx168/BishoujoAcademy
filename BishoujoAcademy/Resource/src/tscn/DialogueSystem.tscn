@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ctkoyawmm3vpj"]
 
-[ext_resource type="Script" path="res://Resource/src/script/DialogueSystem.gd" id="1_rk4wd"]
-[ext_resource type="Script" path="res://Resource/src/script/DialogueSystemRoot.gd" id="1_w4k2d"]
+[ext_resource type="Script" uid="uid://c5jhugw77jxc8" path="res://Resource/src/script/DialogueSystem.gd" id="1_rk4wd"]
+[ext_resource type="Script" uid="uid://5hj434u8at1f" path="res://Resource/src/script/DialogueSystemRoot.gd" id="1_w4k2d"]
 [ext_resource type="Texture2D" uid="uid://bpmeqykd55vh1" path="res://Resource/res/changjing/dialogue_diaoqiao.png" id="3_jnpno"]
 [ext_resource type="Texture2D" uid="uid://shfl7np6s6w3" path="res://Resource/res/role/xxue_aojiao_001.png" id="4_he8wa"]
 

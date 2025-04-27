@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnla86ni10sxr"]
+
+[ext_resource type="Texture2D" uid="uid://bpmeqykd55vh1" path="res://Resource/res/changjing/dialogue_diaoqiao.png" id="1_7oa5i"]
+[ext_resource type="Theme" uid="uid://ly1rybipnq4o" path="res://Resource/res/theme/button_theme_01.tres" id="2_6v3s7"]
+[ext_resource type="Texture2D" uid="uid://bbp00ntyfmrm0" path="res://Resource/res/ui/tongyong/diban_01.png" id="3_7q304"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -1000.0
+offset_right = 600.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7oa5i")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -306.0
+offset_top = -473.0
+offset_right = 306.0
+offset_bottom = 473.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_6v3s7")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "101"
+icon = ExtResource("3_7q304")
+flat = true
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+icon = ExtResource("3_7q304")
+flat = true
+
+[node name="Button3" type="Button" parent="CanvasLayer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+icon = ExtResource("3_7q304")
+flat = true
+
+[node name="Button4" type="Button" parent="CanvasLayer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+icon = ExtResource("3_7q304")
+flat = true
+
+[node name="Button5" type="Button" parent="CanvasLayer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+icon = ExtResource("3_7q304")
+flat = true
