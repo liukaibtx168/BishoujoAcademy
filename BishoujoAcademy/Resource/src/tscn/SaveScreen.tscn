@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://c34s70owk0min"]
 
-[ext_resource type="Script" uid="uid://bx425yrnwoc18" path="res://Resource/src/script/SaveScreen.gd" id="1_fc5el"]
+[ext_resource type="Script" path="res://Resource/src/script/SaveScreen.gd" id="1_fc5el"]
 [ext_resource type="Texture2D" uid="uid://hnrjy8a8oboh" path="res://Resource/res/ui/tongyong/tanchuang_01.png" id="2_dfgoh"]
 [ext_resource type="Texture2D" uid="uid://dh17e2vxl6dsh" path="res://Resource/res/ui/cundang/cundang_02.png" id="3_uu4u0"]
 [ext_resource type="Texture2D" uid="uid://ddx14rsqsy7yh" path="res://Resource/res/ui/cundang/cundang_01.png" id="4_o0f7o"]

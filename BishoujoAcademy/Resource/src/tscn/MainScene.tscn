@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://cyfpo04sqtgap"]
 
-[ext_resource type="Script" uid="uid://cch1wi42jabg6" path="res://Resource/src/script/MainScene.gd" id="1_7k46g"]
+[ext_resource type="Script" path="res://Resource/src/script/MainScene.gd" id="1_7k46g"]
 [ext_resource type="Texture2D" uid="uid://cgvdjq4k717lx" path="res://Resource/res/changjing/login_3.png" id="2_ht03o"]
-[ext_resource type="Script" uid="uid://sts34hblkw4h" path="res://Resource/src/script/LoginScreen.gd" id="2_skogn"]
+[ext_resource type="Script" path="res://Resource/src/script/LoginScreen.gd" id="2_skogn"]
 [ext_resource type="Texture2D" uid="uid://cprkja7jxsc22" path="res://Resource/res/ui/denglu/login_logo.png" id="3_4isp0"]
 [ext_resource type="Texture2D" uid="uid://c2el3migj0w1s" path="res://Resource/res/ui/denglu/new_0.png" id="4_6n1wu"]
 [ext_resource type="Texture2D" uid="uid://dxahlpre0sxl1" path="res://Resource/res/ui/denglu/new_1.png" id="5_fytgq"]
