@@ -1,0 +1,852 @@
+[gd_scene load_steps=12 format=3 uid="uid://uufbwgeurer6"]
+
+[ext_resource type="Texture2D" uid="uid://dra5sf3xjr7jx" path="res://Resource/res/ui/public/test_label_001.png" id="1_3nx6h"]
+[ext_resource type="Texture2D" uid="uid://cyc7koxjecs6y" path="res://Resource/res/ui/public/test_bagcell_001_normal.png" id="4_5dtiy"]
+[ext_resource type="Texture2D" uid="uid://b8b038ox0plso" path="res://Resource/res/ui/public/test_bagcell_001_pressed.png" id="5_3nx6h"]
+[ext_resource type="Theme" uid="uid://cbbpcti8uvoo0" path="res://Resource/res/theme/button_theme_01.tres" id="5_aopxi"]
+[ext_resource type="Texture2D" uid="uid://dy3u6k0c6wss0" path="res://Resource/res/ui/public/test_icon_go.png" id="6_rmunw"]
+[ext_resource type="Texture2D" uid="uid://cbm236fstjs7j" path="res://Resource/res/ui/public/test_bagcell_001_disabled.png" id="6_x7kyh"]
+[ext_resource type="Texture2D" uid="uid://cluc1wsy86ean" path="res://Resource/res/icon/item/test006.png" id="7_0m334"]
+[ext_resource type="Texture2D" uid="uid://df0k75i5j7yy8" path="res://Resource/res/ui/public/test_label_008.png" id="8_3nx6h"]
+[ext_resource type="Texture2D" uid="uid://csc883lkguqgl" path="res://Resource/res/ui/public/test_icon_del.png" id="9_x7kyh"]
+[ext_resource type="Theme" uid="uid://djxucldcswb88" path="res://Resource/res/theme/button_theme_02.tres" id="10_0m334"]
+[ext_resource type="Texture2D" uid="uid://44h4giln406c" path="res://Resource/res/ui/public/test_botton_002.png" id="11_psuvq"]
+
+[node name="bag_Window" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Window" type="NinePatchRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -323.0
+offset_top = -175.0
+offset_right = 323.0
+offset_bottom = 417.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3nx6h")
+region_rect = Rect2(-0.605194, -0.643707, 664.117, 609.129)
+patch_margin_left = 13
+patch_margin_top = 15
+patch_margin_right = 14
+patch_margin_bottom = 31
+
+[node name="button_exit" type="Button" parent="CanvasLayer/Window"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = 30.0
+offset_right = 14.0
+offset_bottom = 68.3333
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.75, 1.75)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 40
+theme_override_font_sizes/font_size = 28
+icon = ExtResource("6_rmunw")
+flat = true
+icon_alignment = 1
+
+[node name="title" type="Label" parent="CanvasLayer/Window"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 27.0
+offset_right = 40.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "背包"
+
+[node name="item_list" type="GridContainer" parent="CanvasLayer/Window"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -312.0
+offset_top = 91.0
+offset_right = 310.0
+offset_bottom = 393.0
+grow_horizontal = 2
+columns = 6
+
+[node name="item1" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item1"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item2" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item2"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item3" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item3"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item4" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item4"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item4"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item5" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item5"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item5"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item6" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item6"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item6"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item7" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item7"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item7"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item8" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item8"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item8"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item9" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item9"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item9"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item10" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item10"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item10"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item11" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item11"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item11"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item12" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item12"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item12"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item13" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item13"]
+visible = false
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item13"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item14" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item14"]
+visible = false
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item14"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item15" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item15"]
+visible = false
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item15"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item16" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item16"]
+visible = false
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item16"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item17" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item17"]
+visible = false
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item17"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item18" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("4_5dtiy")
+texture_pressed = ExtResource("5_3nx6h")
+texture_disabled = ExtResource("6_x7kyh")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item18"]
+visible = false
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_0m334")
+
+[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item18"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2
+
+[node name="item_tips" type="TextureRect" parent="CanvasLayer/Window"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -309.0
+offset_top = -194.0
+offset_right = 310.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_3nx6h")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="item_name" type="Label" parent="CanvasLayer/Window/item_tips"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 13.0
+offset_right = 64.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "道具名称"
+
+[node name="item_tag" type="HBoxContainer" parent="CanvasLayer/Window/item_tips"]
+layout_mode = 2
+offset_left = 132.0
+offset_top = 15.0
+offset_right = 248.0
+offset_bottom = 55.0
+
+[node name="tag1" type="Label" parent="CanvasLayer/Window/item_tips/item_tag"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.144529, 0.671632, 0.878622, 1)
+theme_override_font_sizes/font_size = 20
+text = "消耗品"
+
+[node name="tag2" type="Label" parent="CanvasLayer/Window/item_tips/item_tag"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.964706, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "任务物品"
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/item_tips"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 51.0
+offset_right = 460.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "常见于灌木丛的果实，虽然味道苦涩，但是在这末日下显得弥足珍贵，食用后可以HP+30，MP+20。
+占位占位
+占位占位
+占位占位"
+autowrap_mode = 2
+text_overrun_behavior = 4
+
+[node name="button_del" type="Button" parent="CanvasLayer/Window/item_tips"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -65.5
+offset_right = -23.0
+offset_bottom = -22.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("5_aopxi")
+icon = ExtResource("9_x7kyh")
+flat = true
+icon_alignment = 1
+
+[node name="button_use" type="Button" parent="CanvasLayer/Window/item_tips"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -151.0
+offset_top = -73.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("10_0m334")
+text = "使用"
+icon = ExtResource("11_psuvq")
+flat = true
+icon_alignment = 1

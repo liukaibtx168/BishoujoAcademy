@@ -1,36 +1,20 @@
 [gd_scene load_steps=12 format=3 uid="uid://dl6dwu877ale3"]
 
 [ext_resource type="Texture2D" uid="uid://dra5sf3xjr7jx" path="res://Resource/res/ui/public/test_label_001.png" id="2_62mx0"]
-[ext_resource type="Theme" uid="uid://ly1rybipnq4o" path="res://Resource/res/theme/button_theme_01.tres" id="3_7d15q"]
+[ext_resource type="Theme" uid="uid://cbbpcti8uvoo0" path="res://Resource/res/theme/button_theme_01.tres" id="3_7d15q"]
 [ext_resource type="Texture2D" uid="uid://dfm7rhekcqvi5" path="res://Resource/res/ui/public/test_label_007.png" id="3_b1qvt"]
 [ext_resource type="Texture2D" uid="uid://dy3u6k0c6wss0" path="res://Resource/res/ui/public/test_icon_go.png" id="4_b1qvt"]
 [ext_resource type="Texture2D" uid="uid://bb73f1vckpq40" path="res://Resource/res/ui/public/test_jiantou_002.png" id="4_g7hdr"]
-[ext_resource type="Texture2D" uid="uid://55353853tu72" path="res://Resource/res/image/npc/npc_pic_003.png" id="4_yfcm8"]
+[ext_resource type="Texture2D" uid="uid://ceo5o81wkyj6w" path="res://Resource/res/image/npc/npc_pic_001.png" id="4_yfcm8"]
 [ext_resource type="Theme" uid="uid://6wrcds78waij" path="res://Resource/res/theme/my_theme_01.tres" id="8_g7hdr"]
 [ext_resource type="Texture2D" uid="uid://5hpgjj2aijcp" path="res://Resource/res/ui/public/test_icon_gold2.png" id="9_yfcm8"]
-
-[sub_resource type="Animation" id="Animation_q4f77"]
-resource_name = "next_word"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EventWindow/EventWorld/AnimationPlayer/Conrorl/next_word:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -5), Vector2(0, 5), Vector2(0, -5)]
-}
 
 [sub_resource type="Animation" id="Animation_g7hdr"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EventWindow/EventWorld/AnimationPlayer/Conrorl/next_word:position")
+tracks/0/path = NodePath("EventWindow/EventWorld/AnimationPlayer/Conrorl/next_tips:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,6 +22,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q4f77"]
+resource_name = "next_word"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EventWindow/EventWorld/AnimationPlayer/Conrorl/next_tips:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, 5), Vector2(0, -5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yfcm8"]
@@ -117,7 +117,8 @@ offset_top = 947.0
 offset_right = 572.0
 offset_bottom = 947.0
 
-[node name="next_word" type="TextureRect" parent="CanvasLayer/EventWindow/EventWorld/AnimationPlayer/Conrorl"]
+[node name="next_tips" type="TextureRect" parent="CanvasLayer/EventWindow/EventWorld/AnimationPlayer/Conrorl"]
+layout_mode = 0
 offset_right = 70.0
 offset_bottom = 50.0
 texture = ExtResource("4_g7hdr")
