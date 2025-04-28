@@ -354,11 +354,19 @@ func load_map_events(map_id, map_node):
 		if child.name.begins_with("Event_") and !is_event_template(child.name):
 			child.queue_free()
 	
+	# 将当前map_id转为整数，用于比较
+	var map_id_int = int(map_id)
+	print("加载地图ID: ", map_id, " (整数值: ", map_id_int, ")")
+	
 	# 根据配置加载事件
 	var event_count = 0
 	for event_id in map_events_data:
 		var event_data = map_events_data[event_id]
-		if str(event_data.storyMapID) == str(map_id):
+		# 将storyMapID转为整数，确保类型匹配
+		var story_map_id_int = int(float(event_data.storyMapID))
+		
+		# 使用整数比较
+		if story_map_id_int == map_id_int:
 			var new_event = create_map_event(event_data, event_layer)
 			if new_event:
 				event_count += 1
@@ -546,8 +554,8 @@ func _on_event_mouse_exited(event):
 	print("鼠标离开事件: ID=", event_id, " 类型=", event_type)
 
 # 事件交互处理 
-func _on_event_input(viewport, input_event, shape_idx, event):
-	if input_event is InputEventMouseButton and input_event.pressed and input_event.button_index == MOUSE_BUTTON_LEFT:
+func _on_event_input(_viewport, _input_event, _shape_idx, event):
+	if _input_event is InputEventMouseButton and _input_event.pressed and _input_event.button_index == MOUSE_BUTTON_LEFT:
 		# 获取事件ID和类型
 		var event_id = event.get_meta("event_id") if event.has_meta("event_id") else "unknown"
 		var event_type = event.get_meta("event_type") if event.has_meta("event_type") else "unknown"
@@ -725,7 +733,7 @@ func refresh_fog_after_event_change(map_id):
 	setup_fog_layer(map_node, map_data)
 
 # 重写_process函数以更新鼠标位置
-func _process(delta):
+func _process(_delta):
 	# 获取鼠标在视窗中的位置（这将直接使用以左上角为原点的坐标系）
 	var viewport_mouse_position = get_viewport().get_mouse_position()
 	

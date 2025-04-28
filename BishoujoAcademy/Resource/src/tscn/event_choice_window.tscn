@@ -1,0 +1,350 @@
+[gd_scene load_steps=12 format=3 uid="uid://dl6dwu877ale3"]
+
+[ext_resource type="Texture2D" uid="uid://dra5sf3xjr7jx" path="res://Resource/res/ui/public/test_label_001.png" id="2_62mx0"]
+[ext_resource type="Theme" uid="uid://ly1rybipnq4o" path="res://Resource/res/theme/button_theme_01.tres" id="3_7d15q"]
+[ext_resource type="Texture2D" uid="uid://dfm7rhekcqvi5" path="res://Resource/res/ui/public/test_label_007.png" id="3_b1qvt"]
+[ext_resource type="Texture2D" uid="uid://dy3u6k0c6wss0" path="res://Resource/res/ui/public/test_icon_go.png" id="4_b1qvt"]
+[ext_resource type="Texture2D" uid="uid://bb73f1vckpq40" path="res://Resource/res/ui/public/test_jiantou_002.png" id="4_g7hdr"]
+[ext_resource type="Texture2D" uid="uid://55353853tu72" path="res://Resource/res/image/npc/npc_pic_003.png" id="4_yfcm8"]
+[ext_resource type="Theme" uid="uid://6wrcds78waij" path="res://Resource/res/theme/my_theme_01.tres" id="8_g7hdr"]
+[ext_resource type="Texture2D" uid="uid://5hpgjj2aijcp" path="res://Resource/res/ui/public/test_icon_gold2.png" id="9_yfcm8"]
+
+[sub_resource type="Animation" id="Animation_q4f77"]
+resource_name = "next_word"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EventWindow/EventWorld/AnimationPlayer/Conrorl/next_word:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, 5), Vector2(0, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_g7hdr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EventWindow/EventWorld/AnimationPlayer/Conrorl/next_word:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yfcm8"]
+_data = {
+&"RESET": SubResource("Animation_g7hdr"),
+&"next_word": SubResource("Animation_q4f77")
+}
+
+[node name="Event_Choice_Window" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EventWindow" type="NinePatchRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -323.0
+offset_top = -175.0
+offset_right = 323.0
+offset_bottom = 417.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_62mx0")
+region_rect = Rect2(-0.605194, -0.643707, 664.117, 609.129)
+patch_margin_left = 13
+patch_margin_top = 15
+patch_margin_right = 14
+patch_margin_bottom = 31
+
+[node name="EventWorld" type="NinePatchRect" parent="CanvasLayer/EventWindow"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -299.0
+offset_top = 93.0
+offset_right = 297.0
+offset_bottom = 364.0
+grow_horizontal = 2
+texture = ExtResource("3_b1qvt")
+region_rect = Rect2(1.3853, 0.696236, 591.065, 292.5)
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 90
+patch_margin_bottom = 15
+
+[node name="words" type="Label" parent="CanvasLayer/EventWindow/EventWorld"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_top = 13.0
+offset_right = 293.0
+offset_bottom = 228.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 22
+text = "你走进了酒吧，酒吧里十分喧哗，扑鼻而来一股淫靡的味道；所有人都在这里醉生梦死，在这末日之下，活着已经是顶级的奢侈，黑人保安警惕的打量着你，你轻蔑一笑，已不是初入江湖的菜鸟。"
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/EventWindow/EventWorld"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_yfcm8")
+}
+autoplay = "next_word"
+
+[node name="Conrorl" type="Control" parent="CanvasLayer/EventWindow/EventWorld/AnimationPlayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 572.0
+offset_top = 947.0
+offset_right = 572.0
+offset_bottom = 947.0
+
+[node name="next_word" type="TextureRect" parent="CanvasLayer/EventWindow/EventWorld/AnimationPlayer/Conrorl"]
+offset_right = 70.0
+offset_bottom = 50.0
+texture = ExtResource("4_g7hdr")
+
+[node name="npc_image" type="TextureRect" parent="CanvasLayer/EventWindow/EventWorld"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -461.0
+offset_right = 214.0
+offset_bottom = -8.0
+grow_vertical = 0
+texture = ExtResource("4_yfcm8")
+expand_mode = 4
+stretch_mode = 1
+
+[node name="button_exit" type="Button" parent="CanvasLayer/EventWindow"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = 30.0
+offset_right = 14.0
+offset_bottom = 68.3333
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.75, 1.75)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("3_7d15q")
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 40
+theme_override_font_sizes/font_size = 28
+icon = ExtResource("4_b1qvt")
+flat = true
+icon_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/EventWindow"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -298.5
+offset_top = -189.0
+offset_right = 298.5
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 2
+
+[node name="Button_1" type="Button" parent="CanvasLayer/EventWindow/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_g7hdr")
+theme_override_font_sizes/font_size = 24
+shortcut_feedback = false
+text = "剧情选项1"
+alignment = 0
+icon_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EventWindow/GridContainer/Button_1"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -18.5
+offset_right = -11.0
+offset_bottom = 19.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("9_yfcm8")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/EventWindow/GridContainer/Button_1/TextureRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -8.5
+offset_bottom = 8.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "20000"
+
+[node name="Button_2" type="Button" parent="CanvasLayer/EventWindow/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_g7hdr")
+theme_override_font_sizes/font_size = 24
+shortcut_feedback = false
+text = "剧情选项1"
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EventWindow/GridContainer/Button_2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -18.5
+offset_right = -11.0
+offset_bottom = 19.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("9_yfcm8")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/EventWindow/GridContainer/Button_2/TextureRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -8.5
+offset_bottom = 8.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "20000"
+
+[node name="Button_3" type="Button" parent="CanvasLayer/EventWindow/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_g7hdr")
+theme_override_font_sizes/font_size = 24
+shortcut_feedback = false
+text = "剧情选项1"
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EventWindow/GridContainer/Button_3"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -18.5
+offset_right = -11.0
+offset_bottom = 19.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("9_yfcm8")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/EventWindow/GridContainer/Button_3/TextureRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -8.5
+offset_bottom = 8.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "20000"
+
+[node name="Button_4" type="Button" parent="CanvasLayer/EventWindow/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_g7hdr")
+theme_override_font_sizes/font_size = 24
+shortcut_feedback = false
+text = "剧情选项1"
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EventWindow/GridContainer/Button_4"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -18.5
+offset_right = -11.0
+offset_bottom = 19.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("9_yfcm8")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/EventWindow/GridContainer/Button_4/TextureRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -8.5
+offset_bottom = 8.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "20000"
+
+[node name="title" type="Label" parent="CanvasLayer/EventWindow"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 27.0
+offset_right = 40.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "酒吧"
