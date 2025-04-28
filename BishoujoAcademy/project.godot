@@ -15,6 +15,10 @@ run/main_scene="res://Resource/src/tscn/story_scene.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CoreSystem="*res://addons/godot_core_system/source/core_system.gd"
+
 [display]
 
 window/size/viewport_width=720
@@ -23,6 +27,10 @@ window/size/window_width_override=450
 window/size/window_height_override=1000
 window/stretch/mode="viewport"
 window/fullsize=false
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_core_system/plugin.cfg")
 
 [gui]
 
