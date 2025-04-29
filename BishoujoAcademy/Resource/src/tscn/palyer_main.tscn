@@ -1,0 +1,956 @@
+[gd_scene load_steps=20 format=3 uid="uid://c0vqimfcgig3u"]
+
+[ext_resource type="Texture2D" uid="uid://blqs4nd2yy8o4" path="res://Resource/res/ui/public/test_label_009.png" id="1_htyw0"]
+[ext_resource type="Theme" uid="uid://cbbpcti8uvoo0" path="res://Resource/res/theme/button_theme_01.tres" id="3_2qycl"]
+[ext_resource type="Texture2D" uid="uid://dy3u6k0c6wss0" path="res://Resource/res/ui/public/test_icon_go.png" id="4_h7idn"]
+[ext_resource type="Texture2D" uid="uid://dyh260x11lfsg" path="res://Resource/res/art/test100.png" id="10_2qycl"]
+[ext_resource type="Texture2D" uid="uid://l07nnn76esxr" path="res://Resource/res/ui/public/test_equip2_normal.png" id="11_6cvsg"]
+[ext_resource type="Texture2D" uid="uid://cfajqc6n8p230" path="res://Resource/res/ui/public/test_equip2_pressed.png" id="12_56q2p"]
+[ext_resource type="Texture2D" uid="uid://68vdwhviba5t" path="res://Resource/res/icon/equip/test_weapon_001b.png" id="13_h44b7"]
+[ext_resource type="PackedScene" uid="uid://bsx7j8c4rn57g" path="res://Resource/src/tscn/player_aura.tscn" id="14_56q2p"]
+[ext_resource type="Texture2D" uid="uid://beg3s8142l0fy" path="res://Resource/res/ui/public/test_equip_normal.png" id="14_h44b7"]
+[ext_resource type="Texture2D" uid="uid://bwom63vtwbp58" path="res://Resource/res/ui/public/test_button_003_normal.png" id="15_3umin"]
+[ext_resource type="Texture2D" uid="uid://dx7a7xfrslbsw" path="res://Resource/res/ui/public/test_equip_pressed.png" id="15_htyw0"]
+[ext_resource type="Texture2D" uid="uid://cy7v0u6iablvm" path="res://Resource/res/ui/public/test_button_003_pressed.png" id="16_7olfb"]
+[ext_resource type="Texture2D" uid="uid://d3y37lwkij0ya" path="res://Resource/res/icon/equip/test_equip_001s.png" id="16_htyw0"]
+[ext_resource type="Texture2D" uid="uid://li3napblleo3" path="res://Resource/res/icon/equip/test_equip_003s.png" id="17_3umin"]
+[ext_resource type="Texture2D" uid="uid://d2vg4p5h0m083" path="res://Resource/res/ui/public/test_ui_002.png" id="17_7olfb"]
+[ext_resource type="Texture2D" uid="uid://dwu5o65v7wy11" path="res://Resource/res/icon/equip/test_equip_002s.png" id="18_7olfb"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_2qycl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h44b7"]
+font_color = Color(0.490196, 0.490196, 0.490196, 0.784314)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_htyw0"]
+
+[node name="palyer_main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Window" type="NinePatchRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -323.0
+offset_top = -478.0
+offset_right = 323.0
+offset_bottom = 417.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_htyw0")
+region_rect = Rect2(-0.605194, 0.496765, 664.117, 902.623)
+patch_margin_left = 13
+patch_margin_top = 15
+patch_margin_right = 14
+patch_margin_bottom = 38
+
+[node name="button_exit" type="Button" parent="CanvasLayer/Window"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = 30.0
+offset_right = 14.0
+offset_bottom = 68.3333
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.75, 1.75)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("3_2qycl")
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 40
+theme_override_font_sizes/font_size = 28
+icon = ExtResource("4_h7idn")
+flat = true
+icon_alignment = 1
+
+[node name="title_module" type="Control" parent="CanvasLayer/Window"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -321.0
+offset_top = 7.0
+offset_right = 321.0
+offset_bottom = 65.0
+grow_horizontal = 2
+
+[node name="title" type="Label" parent="CanvasLayer/Window/title_module"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 5.0
+offset_right = 46.0
+offset_bottom = 52.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 46
+text = "信息"
+
+[node name="player_module" type="Control" parent="CanvasLayer/Window"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 70.0
+offset_right = 185.0
+offset_bottom = 636.0
+
+[node name="image" type="TextureRect" parent="CanvasLayer/Window/player_module"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.5
+offset_top = -213.0
+offset_right = 89.5
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_2qycl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="name" type="Label" parent="CanvasLayer/Window/player_module"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 117.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "姓名：郑吒"
+
+[node name="job" type="Label" parent="CanvasLayer/Window/player_module"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 36.0
+offset_right = 161.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "身份：普通白领"
+
+[node name="level" type="Label" parent="CanvasLayer/Window/player_module"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -82.0
+offset_right = 70.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "基因锁：Lv.1"
+
+[node name="cost" type="Label" parent="CanvasLayer/Window/player_module"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -54.0
+offset_right = 70.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "负重：100/100"
+
+[node name="Status" type="Label" parent="CanvasLayer/Window/player_module"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -27.0
+offset_right = 70.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "状态：轻伤"
+
+[node name="equip_module" type="Control" parent="CanvasLayer/Window"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -318.0
+offset_top = -257.0
+offset_right = 318.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Window/equip_module"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 35.0
+offset_bottom = 69.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/equip_module/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -26.5
+offset_right = 15.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "武器"
+autowrap_mode = 2
+
+[node name="equip_weapon" type="TextureButton" parent="CanvasLayer/Window/equip_module"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0669488
+anchor_top = 0.0567686
+anchor_right = 0.221037
+anchor_bottom = 0.943231
+offset_left = -1.0
+offset_right = -1.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("3_2qycl")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_2qycl")
+texture_normal = ExtResource("11_6cvsg")
+texture_pressed = ExtResource("12_56q2p")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/equip_module/equip_weapon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -8.5
+offset_right = 16.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "武器"
+label_settings = SubResource("LabelSettings_h44b7")
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/equip_module/equip_weapon"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_h44b7")
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Window/equip_module"]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 10.0
+offset_right = 174.0
+offset_bottom = 69.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/equip_module/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -26.5
+offset_right = 15.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "防具"
+autowrap_mode = 2
+
+[node name="equip_head" type="TextureButton" parent="CanvasLayer/Window/equip_module"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.299065
+anchor_top = 0.0567686
+anchor_right = 0.451713
+anchor_bottom = 0.484716
+offset_left = -9.0
+offset_right = -9.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("3_2qycl")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_2qycl")
+texture_normal = ExtResource("14_h44b7")
+texture_pressed = ExtResource("15_htyw0")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/equip_module/equip_head"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -8.5
+offset_right = 16.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "头盔"
+label_settings = SubResource("LabelSettings_h44b7")
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/equip_module/equip_head"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -46.0
+offset_right = 155.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("16_htyw0")
+
+[node name="equip_clothes" type="TextureButton" parent="CanvasLayer/Window/equip_module"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.464174
+anchor_top = 0.0567686
+anchor_right = 0.616822
+anchor_bottom = 0.484716
+offset_left = -9.0
+offset_right = -9.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("3_2qycl")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_2qycl")
+texture_normal = ExtResource("14_h44b7")
+texture_pressed = ExtResource("15_htyw0")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/equip_module/equip_clothes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -8.5
+offset_right = 16.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "上衣"
+label_settings = SubResource("LabelSettings_h44b7")
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/equip_module/equip_clothes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -46.0
+offset_right = 155.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("17_3umin")
+
+[node name="equip_pants" type="TextureButton" parent="CanvasLayer/Window/equip_module"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.299065
+anchor_top = 0.515284
+anchor_right = 0.451713
+anchor_bottom = 0.943231
+offset_left = -9.0
+offset_right = -9.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("3_2qycl")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_2qycl")
+texture_normal = ExtResource("14_h44b7")
+texture_pressed = ExtResource("15_htyw0")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/equip_module/equip_pants"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -8.5
+offset_right = 16.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "裤子"
+label_settings = SubResource("LabelSettings_h44b7")
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/equip_module/equip_pants"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -46.0
+offset_right = 155.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.45, 0.45)
+
+[node name="equip_shoes" type="TextureButton" parent="CanvasLayer/Window/equip_module"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.464174
+anchor_top = 0.515284
+anchor_right = 0.616822
+anchor_bottom = 0.943231
+offset_left = -9.0
+offset_right = -9.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("3_2qycl")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_2qycl")
+texture_normal = ExtResource("14_h44b7")
+texture_pressed = ExtResource("15_htyw0")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/equip_module/equip_shoes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -8.5
+offset_right = 16.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "鞋子"
+label_settings = SubResource("LabelSettings_h44b7")
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/equip_module/equip_shoes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -46.0
+offset_right = 155.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.45, 0.45)
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/Window/equip_module"]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 10.0
+offset_right = 419.0
+offset_bottom = 69.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/equip_module/ColorRect3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -26.5
+offset_right = 15.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "饰品"
+autowrap_mode = 2
+
+[node name="equip_belt" type="TextureButton" parent="CanvasLayer/Window/equip_module"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.671369
+anchor_top = 0.0567686
+anchor_right = 0.825457
+anchor_bottom = 0.484716
+offset_left = -1.0
+offset_right = -1.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("3_2qycl")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_2qycl")
+texture_normal = ExtResource("14_h44b7")
+texture_pressed = ExtResource("15_htyw0")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/equip_module/equip_belt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -8.5
+offset_right = 16.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "腰带"
+label_settings = SubResource("LabelSettings_h44b7")
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/equip_module/equip_belt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -46.0
+offset_right = 155.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("18_7olfb")
+
+[node name="equip_necklace" type="TextureButton" parent="CanvasLayer/Window/equip_module"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.836478
+anchor_top = 0.0567686
+anchor_right = 0.990566
+anchor_bottom = 0.484716
+offset_left = -1.0
+offset_right = -1.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("3_2qycl")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_2qycl")
+texture_normal = ExtResource("14_h44b7")
+texture_pressed = ExtResource("15_htyw0")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/equip_module/equip_necklace"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -8.5
+offset_right = 16.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "项链"
+label_settings = SubResource("LabelSettings_h44b7")
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/equip_module/equip_necklace"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -46.0
+offset_right = 155.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.45, 0.45)
+
+[node name="equip_ring" type="TextureButton" parent="CanvasLayer/Window/equip_module"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.671369
+anchor_top = 0.515284
+anchor_right = 0.825457
+anchor_bottom = 0.943231
+offset_left = -1.0
+offset_right = -1.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("3_2qycl")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_2qycl")
+texture_normal = ExtResource("14_h44b7")
+texture_pressed = ExtResource("15_htyw0")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/equip_module/equip_ring"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -8.5
+offset_right = 16.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "戒指"
+label_settings = SubResource("LabelSettings_h44b7")
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/equip_module/equip_ring"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -46.0
+offset_right = 155.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.45, 0.45)
+
+[node name="equip_accessory" type="TextureButton" parent="CanvasLayer/Window/equip_module"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.836478
+anchor_top = 0.515284
+anchor_right = 0.990566
+anchor_bottom = 0.943231
+offset_left = -1.0
+offset_right = -1.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("3_2qycl")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_2qycl")
+texture_normal = ExtResource("14_h44b7")
+texture_pressed = ExtResource("15_htyw0")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/equip_module/equip_accessory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -8.5
+offset_right = 16.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "饰品"
+label_settings = SubResource("LabelSettings_h44b7")
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Window/equip_module/equip_accessory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -46.0
+offset_right = 155.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.45, 0.45)
+
+[node name="attr_module" type="Control" parent="CanvasLayer/Window"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -452.0
+offset_top = -373.5
+offset_right = -6.0
+offset_bottom = 187.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="palyer_aura" type="Control" parent="CanvasLayer/Window/attr_module"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 443.0
+offset_bottom = 170.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/attr_module/palyer_aura"]
+layout_mode = 1
+offset_left = -3.0
+offset_top = 1.0
+offset_right = 177.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "·主角光环"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Window/attr_module/palyer_aura"]
+layout_mode = 1
+offset_left = 6.0
+offset_top = 40.0
+offset_right = 436.0
+offset_bottom = 43.0
+texture = ExtResource("17_7olfb")
+expand_mode = 1
+
+[node name="aura_list" type="GridContainer" parent="CanvasLayer/Window/attr_module/palyer_aura"]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 45.0
+offset_right = 435.0
+offset_bottom = 130.0
+columns = 3
+
+[node name="aura" parent="CanvasLayer/Window/attr_module/palyer_aura/aura_list" instance=ExtResource("14_56q2p")]
+layout_mode = 2
+
+[node name="aura2" parent="CanvasLayer/Window/attr_module/palyer_aura/aura_list" instance=ExtResource("14_56q2p")]
+layout_mode = 2
+
+[node name="aura3" parent="CanvasLayer/Window/attr_module/palyer_aura/aura_list" instance=ExtResource("14_56q2p")]
+layout_mode = 2
+
+[node name="palyer_attr" type="Control" parent="CanvasLayer/Window/attr_module"]
+layout_mode = 1
+anchors_preset = 0
+offset_top = 133.0
+offset_right = 444.0
+offset_bottom = 560.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/attr_module/palyer_attr"]
+layout_mode = 1
+offset_left = -3.0
+offset_top = 1.0
+offset_right = 177.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "·战斗属性"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Window/attr_module/palyer_attr"]
+layout_mode = 1
+offset_left = 6.0
+offset_top = 40.0
+offset_right = 436.0
+offset_bottom = 43.0
+texture = ExtResource("17_7olfb")
+expand_mode = 1
+
+[node name="attr" type="ColorRect" parent="CanvasLayer/Window/attr_module/palyer_attr"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -165.5
+offset_right = 345.0
+offset_bottom = 211.5
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Window/attr_module/palyer_attr/attr"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 342.0
+offset_bottom = 371.0
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="attr_num" type="Label" parent="CanvasLayer/Window/attr_module/palyer_attr/attr/ScrollContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.470076, 0.470076, 0.470076, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 10
+theme_override_font_sizes/font_size = 26
+text = "最大生命·····100000
+最大生命·····100000
+最大生命·····100000
+最大生命·····100000
+最大生命·····100000
+最大生命·····100000
+最大生命·····100000
+最大生命·····100000
+最大生命·····100000
+最大生命·····100000
+最大生命·····100000
+最大生命·····100000
+最大生命·····100000"
+
+[node name="attr_type" type="GridContainer" parent="CanvasLayer/Window/attr_module/palyer_attr"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -162.5
+offset_right = -11.0
+offset_bottom = 203.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="base" type="TextureButton" parent="CanvasLayer/Window/attr_module/palyer_attr/attr_type"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_htyw0")
+texture_normal = ExtResource("15_3umin")
+texture_pressed = ExtResource("16_7olfb")
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/attr_module/palyer_attr/attr_type/base"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.5
+offset_right = 20.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "基础
+属性"
+
+[node name="element" type="TextureButton" parent="CanvasLayer/Window/attr_module/palyer_attr/attr_type"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_htyw0")
+texture_normal = ExtResource("15_3umin")
+texture_pressed = ExtResource("16_7olfb")
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/attr_module/palyer_attr/attr_type/element"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -30.5
+offset_right = 28.0
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "元素
+属性"
+
+[node name="means" type="TextureButton" parent="CanvasLayer/Window/attr_module/palyer_attr/attr_type"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_htyw0")
+texture_normal = ExtResource("15_3umin")
+texture_pressed = ExtResource("16_7olfb")
+
+[node name="Label" type="Label" parent="CanvasLayer/Window/attr_module/palyer_attr/attr_type/means"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -30.5
+offset_right = 28.0
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "技巧
+属性"

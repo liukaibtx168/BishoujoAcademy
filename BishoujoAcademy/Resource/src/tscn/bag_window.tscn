@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://uufbwgeurer6"]
+[gd_scene load_steps=13 format=3 uid="uid://uufbwgeurer6"]
 
 [ext_resource type="Texture2D" uid="uid://dra5sf3xjr7jx" path="res://Resource/res/ui/public/test_label_001.png" id="1_3nx6h"]
 [ext_resource type="Texture2D" uid="uid://cyc7koxjecs6y" path="res://Resource/res/ui/public/test_bagcell_001_normal.png" id="4_5dtiy"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://csc883lkguqgl" path="res://Resource/res/ui/public/test_icon_del.png" id="9_x7kyh"]
 [ext_resource type="Theme" uid="uid://djxucldcswb88" path="res://Resource/res/theme/button_theme_02.tres" id="10_0m334"]
 [ext_resource type="Texture2D" uid="uid://44h4giln406c" path="res://Resource/res/ui/public/test_botton_002.png" id="11_psuvq"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_psuvq"]
 
 [node name="bag_Window" type="Control"]
 layout_mode = 3
@@ -66,12 +68,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -40.0
-offset_top = 27.0
-offset_right = 40.0
-offset_bottom = 68.0
+offset_left = -46.0
+offset_top = 22.0
+offset_right = 46.0
+offset_bottom = 69.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 46
 text = "背包"
 
 [node name="item_list" type="GridContainer" parent="CanvasLayer/Window"]
@@ -87,11 +91,13 @@ grow_horizontal = 2
 columns = 6
 
 [node name="item1" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+z_index = 2
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -128,6 +134,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -164,6 +171,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -200,6 +208,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -236,6 +245,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -272,6 +282,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -308,6 +319,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -344,6 +356,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -380,6 +393,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -416,6 +430,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -452,6 +467,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -488,6 +504,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -525,6 +542,7 @@ size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 disabled = true
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -564,6 +582,7 @@ size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 disabled = true
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -603,6 +622,7 @@ size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 disabled = true
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -642,6 +662,7 @@ size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 disabled = true
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -681,6 +702,7 @@ size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 disabled = true
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -720,6 +742,7 @@ size_flags_vertical = 6
 theme = ExtResource("5_aopxi")
 disabled = true
 toggle_mode = true
+button_group = SubResource("ButtonGroup_psuvq")
 texture_normal = ExtResource("4_5dtiy")
 texture_pressed = ExtResource("5_3nx6h")
 texture_disabled = ExtResource("6_x7kyh")
@@ -784,27 +807,27 @@ text = "道具名称"
 layout_mode = 2
 offset_left = 132.0
 offset_top = 15.0
-offset_right = 248.0
+offset_right = 443.0
 offset_bottom = 55.0
 
 [node name="tag1" type="Label" parent="CanvasLayer/Window/item_tips/item_tag"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.144529, 0.671632, 0.878622, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 text = "消耗品"
 
 [node name="tag2" type="Label" parent="CanvasLayer/Window/item_tips/item_tag"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.964706, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 text = "任务物品"
 
 [node name="Label" type="Label" parent="CanvasLayer/Window/item_tips"]
 layout_mode = 0
 offset_left = 10.0
-offset_top = 51.0
-offset_right = 460.0
-offset_bottom = 150.0
+offset_top = 54.0
+offset_right = 456.0
+offset_bottom = 149.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "常见于灌木丛的果实，虽然味道苦涩，但是在这末日下显得弥足珍贵，食用后可以HP+30，MP+20。

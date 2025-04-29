@@ -588,6 +588,3 @@ offset_bottom = 71.0
 theme_override_font_sizes/font_size = 30
 text = "鼠标X坐标：
 鼠标Y坐标："
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(360, 800)
