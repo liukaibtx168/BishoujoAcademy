@@ -489,8 +489,9 @@ func update_event_display(event_node, event_data):
 		if event_data.has("nameID") and event_data.nameID != 0:
 			# 获取nameID，确保我们有多种格式以增加查找成功率
 			var name_id_raw = event_data.nameID  # 原始格式
-			var name_id_int = int(str(name_id_raw))  # 确保是整数
 			var name_id_str = str(name_id_raw)  # 确保是字符串
+			var name_id_int = int(name_id_str)  # 确保是整数
+
 			
 			print("DEBUG: 事件 ", event_data.ID, " nameID处理: 原始=", name_id_raw, 
 				" (类型=", typeof(name_id_raw), "), 整数=", name_id_int, 

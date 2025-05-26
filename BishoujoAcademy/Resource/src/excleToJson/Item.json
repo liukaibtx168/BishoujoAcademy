@@ -1,26 +1,178 @@
 {
-  "10000": {
-    "ID": 10000,
-    "comment": "描述相关",
+  "5000001": {
+    "ID": 5000001,
+    "comment": "钞票",
     "nameID": 10000,
     "desID": 10001,
-    "icon": "",
+    "icon": "icon/item/test001.png",
     "paint": "",
-    "type": 0,
-    "stack": 0,
-    "use": {},
-    "sell": 1000
+    "mainType": "物品",
+    "subType": "货币",
+    "quality": "白",
+    "stack": 999,
+    "space": 1,
+    "isOnly": 0,
+    "attr": {},
+    "tag": {}
   },
-  "10001": {
-    "ID": 10001,
-    "comment": "描述相关",
+  "5000002": {
+    "ID": 5000002,
+    "comment": "面包",
     "nameID": 10002,
     "desID": 10003,
     "icon": "",
     "paint": "",
-    "type": 0,
-    "stack": 0,
-    "use": {},
-    "sell": 0
+    "mainType": "物品",
+    "subType": "消耗品",
+    "quality": "绿",
+    "stack": 99,
+    "space": 10,
+    "isOnly": 0,
+    "attr": {},
+    "tag": {
+      "消耗品": 1
+    }
+  },
+  "5000003": {
+    "ID": 5000003,
+    "comment": "稀释血清",
+    "nameID": 10004,
+    "desID": 10005,
+    "icon": "",
+    "paint": "",
+    "mainType": "物品",
+    "subType": "消耗品",
+    "quality": "蓝",
+    "stack": 99,
+    "space": 10,
+    "isOnly": 0,
+    "attr": {},
+    "tag": {}
+  },
+  "5000004": {
+    "ID": 5000004,
+    "comment": "备用电瓶",
+    "nameID": 10006,
+    "desID": 10007,
+    "icon": "",
+    "paint": "",
+    "mainType": "物品",
+    "subType": "消耗品",
+    "quality": "紫",
+    "stack": 10,
+    "space": 50,
+    "isOnly": 0,
+    "attr": {},
+    "tag": {}
+  },
+  "5000005": {
+    "ID": 5000005,
+    "comment": "T病毒母体",
+    "nameID": 10008,
+    "desID": 10009,
+    "icon": "",
+    "paint": "",
+    "mainType": "物品",
+    "subType": "材料",
+    "quality": "紫",
+    "stack": 1,
+    "space": 20,
+    "isOnly": 1,
+    "attr": {},
+    "tag": {
+      "重要物品": 1
+    }
+  },
+  "5000006": {
+    "ID": 5000006,
+    "comment": "T病毒血清",
+    "nameID": 10010,
+    "desID": 10011,
+    "icon": "",
+    "paint": "",
+    "mainType": "物品",
+    "subType": "材料",
+    "quality": "紫",
+    "stack": 1,
+    "space": 20,
+    "isOnly": 1,
+    "attr": {},
+    "tag": {
+      "重要物品": 1
+    }
+  },
+  "5000007": {
+    "ID": 5000007,
+    "comment": "T病毒培养基",
+    "nameID": 10012,
+    "desID": 10013,
+    "icon": "",
+    "paint": "",
+    "mainType": "物品",
+    "subType": "材料",
+    "quality": "紫",
+    "stack": 1,
+    "space": 50,
+    "isOnly": 1,
+    "attr": {},
+    "tag": {
+      "重要物品": 1
+    }
+  },
+  "5000008": {
+    "ID": 5000008,
+    "comment": "T病毒强化剂",
+    "nameID": 10014,
+    "desID": 10015,
+    "icon": "",
+    "paint": "",
+    "mainType": "物品",
+    "subType": "消耗品",
+    "quality": "橙",
+    "stack": 1,
+    "space": 5,
+    "isOnly": 1,
+    "attr": {
+      "力量": 2,
+      "敏捷": 1,
+      "体质": 3,
+      "感知": 1,
+      "魅力": -3
+    },
+    "tag": {
+      "重要物品": 1
+    }
+  },
+  "5000009": {
+    "ID": 5000009,
+    "comment": "实验室钥匙",
+    "nameID": 10016,
+    "desID": 10017,
+    "icon": "",
+    "paint": "",
+    "mainType": "物品",
+    "subType": "任务道具",
+    "quality": "白",
+    "stack": 99,
+    "space": 1,
+    "isOnly": 1,
+    "attr": {},
+    "tag": {}
+  },
+  "5000010": {
+    "ID": 5000010,
+    "comment": "实验记录",
+    "nameID": 10018,
+    "desID": 10019,
+    "icon": "",
+    "paint": "",
+    "mainType": "物品",
+    "subType": "任务道具",
+    "quality": "蓝",
+    "stack": 1,
+    "space": 20,
+    "isOnly": 1,
+    "attr": {},
+    "tag": {}
   }
 }

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://l07nnn76esxr" path="res://Resource/res/ui/public/test_equip2_normal.png" id="11_6cvsg"]
 [ext_resource type="Texture2D" uid="uid://cfajqc6n8p230" path="res://Resource/res/ui/public/test_equip2_pressed.png" id="12_56q2p"]
 [ext_resource type="Texture2D" uid="uid://68vdwhviba5t" path="res://Resource/res/icon/equip/test_weapon_001b.png" id="13_h44b7"]
-[ext_resource type="PackedScene" uid="uid://bsx7j8c4rn57g" path="res://Resource/src/tscn/player_aura.tscn" id="14_56q2p"]
+[ext_resource type="PackedScene" uid="uid://bsx7j8c4rn57g" path="res://Resource/src/tscn/emplate_aura.tscn" id="14_56q2p"]
 [ext_resource type="Texture2D" uid="uid://beg3s8142l0fy" path="res://Resource/res/ui/public/test_equip_normal.png" id="14_h44b7"]
 [ext_resource type="Texture2D" uid="uid://bwom63vtwbp58" path="res://Resource/res/ui/public/test_button_003_normal.png" id="15_3umin"]
 [ext_resource type="Texture2D" uid="uid://dx7a7xfrslbsw" path="res://Resource/res/ui/public/test_equip_pressed.png" id="15_htyw0"]
@@ -779,7 +779,7 @@ expand_mode = 1
 layout_mode = 1
 offset_left = 7.0
 offset_top = 45.0
-offset_right = 435.0
+offset_right = 436.0
 offset_bottom = 130.0
 columns = 3
 
@@ -847,9 +847,6 @@ theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 10
 theme_override_font_sizes/font_size = 26
 text = "最大生命·····100000
-最大生命·····100000
-最大生命·····100000
-最大生命·····100000
 最大生命·····100000
 最大生命·····100000
 最大生命·····100000
