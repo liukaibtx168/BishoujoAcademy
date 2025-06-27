@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://ffe2kto0b3o5"]
+
+[ext_resource type="Theme" uid="uid://cbbpcti8uvoo0" path="res://Resource/res/theme/button_theme_01.tres" id="3_pix63"]
+[ext_resource type="Texture2D" uid="uid://cyc7koxjecs6y" path="res://Resource/res/ui/public/test_bagcell_001_normal.png" id="4_y62ts"]
+[ext_resource type="Texture2D" uid="uid://b8b038ox0plso" path="res://Resource/res/ui/public/test_bagcell_001_pressed.png" id="5_koome"]
+[ext_resource type="Texture2D" uid="uid://cbm236fstjs7j" path="res://Resource/res/ui/public/test_bagcell_001_disabled.png" id="6_0b07m"]
+[ext_resource type="Texture2D" uid="uid://cluc1wsy86ean" path="res://Resource/res/icon/item/test006.png" id="7_mrre6"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_m585d"]
+
+[node name="item" type="TextureButton"]
+z_index = 2
+offset_right = 98.0
+offset_bottom = 98.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("3_pix63")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_m585d")
+texture_normal = ExtResource("4_y62ts")
+texture_pressed = ExtResource("5_koome")
+texture_disabled = ExtResource("6_0b07m")
+stretch_mode = 4
+
+[node name="icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 52.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_mrre6")
+
+[node name="num" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -19.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "999"
+horizontal_alignment = 2

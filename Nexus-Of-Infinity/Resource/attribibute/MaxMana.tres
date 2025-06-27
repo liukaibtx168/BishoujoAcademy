@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://d83vm22qq1bt"]
+
+[ext_resource type="Script" uid="uid://dycgcpfdalv82" path="res://Resource/src/script/attribute.gd" id="1_huf8d"]
+
+[resource]
+script = ExtResource("1_huf8d")
+Attribute_name = &"MaxMana"
+Attribute_dispaly_name = "最大魔力值"
+Attribute_description = ""
+base_value = 100.0
+min_value = 1.0
+max_value = inf
+can_be_negative = false
+metadata/_custom_type_script = "uid://dycgcpfdalv82"

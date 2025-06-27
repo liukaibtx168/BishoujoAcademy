@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dyf6pdyfr67bc"]
+
+[node name="attrH1" type="HBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="attrName" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 26
+text = "属性名称"
+
+[node name="Label2" type="Label" parent="."]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "···········"
+
+[node name="attrNum" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 26
+text = "99999"

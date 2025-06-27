@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://bce1cmyvrvrey"]
+
+[ext_resource type="Script" uid="uid://dycgcpfdalv82" path="res://Resource/src/script/attribute.gd" id="1_3hy3i"]
+
+[resource]
+script = ExtResource("1_3hy3i")
+Attribute_name = &"CurrentHp"
+Attribute_dispaly_name = "当前生命值"
+Attribute_description = null
+min_value = 0.0
+max_value = null
+can_be_negative = null
+base_value = 100.0
+metadata/_custom_type_script = "uid://dycgcpfdalv82"

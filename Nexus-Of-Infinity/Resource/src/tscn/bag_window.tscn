@@ -1,18 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://uufbwgeurer6"]
+[gd_scene load_steps=10 format=3 uid="uid://uufbwgeurer6"]
 
 [ext_resource type="Texture2D" uid="uid://dra5sf3xjr7jx" path="res://Resource/res/ui/public/test_label_001.png" id="1_3nx6h"]
-[ext_resource type="Texture2D" uid="uid://cyc7koxjecs6y" path="res://Resource/res/ui/public/test_bagcell_001_normal.png" id="4_5dtiy"]
-[ext_resource type="Texture2D" uid="uid://b8b038ox0plso" path="res://Resource/res/ui/public/test_bagcell_001_pressed.png" id="5_3nx6h"]
+[ext_resource type="PackedScene" uid="uid://ffe2kto0b3o5" path="res://Resource/src/tscn/template_item.tscn" id="4_3nx6h"]
 [ext_resource type="Theme" uid="uid://cbbpcti8uvoo0" path="res://Resource/res/theme/button_theme_01.tres" id="5_aopxi"]
 [ext_resource type="Texture2D" uid="uid://dy3u6k0c6wss0" path="res://Resource/res/ui/public/test_icon_go.png" id="6_rmunw"]
-[ext_resource type="Texture2D" uid="uid://cbm236fstjs7j" path="res://Resource/res/ui/public/test_bagcell_001_disabled.png" id="6_x7kyh"]
-[ext_resource type="Texture2D" uid="uid://cluc1wsy86ean" path="res://Resource/res/icon/item/test006.png" id="7_0m334"]
 [ext_resource type="Texture2D" uid="uid://df0k75i5j7yy8" path="res://Resource/res/ui/public/test_label_008.png" id="8_3nx6h"]
 [ext_resource type="Texture2D" uid="uid://csc883lkguqgl" path="res://Resource/res/ui/public/test_icon_del.png" id="9_x7kyh"]
 [ext_resource type="Theme" uid="uid://djxucldcswb88" path="res://Resource/res/theme/button_theme_02.tres" id="10_0m334"]
 [ext_resource type="Texture2D" uid="uid://44h4giln406c" path="res://Resource/res/ui/public/test_botton_002.png" id="11_psuvq"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_psuvq"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_x7kyh"]
 
 [node name="bag_Window" type="Control"]
 layout_mode = 3
@@ -90,690 +87,113 @@ offset_bottom = 393.0
 grow_horizontal = 2
 columns = 6
 
-[node name="item1" type="TextureButton" parent="CanvasLayer/Window/item_list"]
-z_index = 2
+[node name="item" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item1"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item1"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item2" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item2" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item2"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item2"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item3" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item3" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item3"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item3"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item4" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item4" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item4"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item4"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item5" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item5" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item5"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item5"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item6" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item6" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item6"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item6"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item7" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item7" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item7"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item7"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item8" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item8" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item8"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item8"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item9" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item9" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item9"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item9"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item10" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item10" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item10"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item10"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item11" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item11" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item11"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item11"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item12" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item12" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item12"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item12"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item13" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item13" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-disabled = true
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item13"]
-visible = false
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item13"]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item14" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item14" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-disabled = true
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item14"]
-visible = false
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item14"]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item15" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item15" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-disabled = true
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item15"]
-visible = false
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item15"]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item16" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item16" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-disabled = true
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item16"]
-visible = false
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item16"]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item17" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item17" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-disabled = true
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item17"]
-visible = false
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item17"]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
-
-[node name="item18" type="TextureButton" parent="CanvasLayer/Window/item_list"]
+[node name="item18" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme = ExtResource("5_aopxi")
-disabled = true
-toggle_mode = true
-button_group = SubResource("ButtonGroup_psuvq")
-texture_normal = ExtResource("4_5dtiy")
-texture_pressed = ExtResource("5_3nx6h")
-texture_disabled = ExtResource("6_x7kyh")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
-
-[node name="icon" type="TextureRect" parent="CanvasLayer/Window/item_list/item18"]
-visible = false
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_0m334")
-
-[node name="num" type="Label" parent="CanvasLayer/Window/item_list/item18"]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "999"
-horizontal_alignment = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+button_group = SubResource("ButtonGroup_x7kyh")
 
 [node name="item_tips" type="TextureRect" parent="CanvasLayer/Window"]
 layout_mode = 1
