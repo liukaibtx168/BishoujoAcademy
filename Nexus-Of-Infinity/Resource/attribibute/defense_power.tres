@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://bnerqhcikpna1"]
+
+[ext_resource type="Script" uid="uid://dycgcpfdalv82" path="res://Resource/src/script/attribute.gd" id="1_da074"]
+
+[resource]
+script = ExtResource("1_da074")
+attribute_name = &"DefensePower"
+attribute_dispaly_name = ""
+attribute_description = "防御力"
+min_value = 0.0
+max_value = null
+can_be_negative = null
+base_value = 100.0
+metadata/_custom_type_script = "uid://dycgcpfdalv82"

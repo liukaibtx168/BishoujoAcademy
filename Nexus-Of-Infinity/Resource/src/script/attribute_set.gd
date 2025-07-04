@@ -16,7 +16,7 @@ signal current_value_changed(attribute_instance:Attribute,old_current_value:floa
 
 #初始化AttributeSet，创建所有属性实例
 #通常在角色_ready()中，获得AttributeSet实例后调用
-func _initialize_set() -> void:
+func initialize_set() -> void:
 	if _is_initialized:
 		print("属性集合已经初始化")
 		return
@@ -52,18 +52,18 @@ func get_attribute(attribute_name:StringName) -> Attribute:
 
 #获取属性的当前计算值
 func get_current_value(attribute_name:StringName) ->float:
-	var attr:= get_attribute(attribute_name)
+	var attr := get_attribute(attribute_name)
 	return attr.get_current_value() if attr else 0.0
 	
 #获取属性的基础计算值
 func get_base_value(attribute_name:StringName) ->float:
-	var attr:= get_attribute(attribute_name)
+	var attr := get_attribute(attribute_name)
 	return attr.get_base_value() if attr else 0.0
 
 #设置属性的基础值
 func set_base_value(attribute_name:StringName,new_base_value:float,source:Variant = null) -> bool:
-	var attr:Attribute = get_attribute(attribute_name)
-	if not attr:return false
+	var attr : Attribute = get_attribute(attribute_name)
+	if not attr: return false
 	
 	var old_base = attr.get_base_value()
 	if old_base == new_base_value:
@@ -72,7 +72,7 @@ func set_base_value(attribute_name:StringName,new_base_value:float,source:Varian
 	#钩子：基础值变化前
 	var proposed_value = _pre_base_value_change(attr,old_base,new_base_value,source)
 	var final_new_base_value = new_base_value
-	if typeof(proposed_value) ==TYPE_FLOAT:
+	if typeof(proposed_value) == TYPE_FLOAT:
 		final_new_base_value = proposed_value
 	elif typeof(proposed_value) == TYPE_BOOL and not proposed_value:
 		return false #变化被阻止
@@ -92,7 +92,7 @@ func modify_base_value(attribute_name:StringName,modify_value:float,source:Varia
 	
 #像指定属性应用一个modifier
 func apply_modifier(modifier:AttributeModifiers,source_ID:int) -> void:
-	var attr:Attribute =get_attribute(modifier.attribute_ID)
+	var attr:Attribute = get_attribute(modifier.attribute_ID)
 	if not attr or not modifier:
 		return
 	if attr.get_active_modifier().has(modifier):
@@ -123,13 +123,13 @@ func remove_modifier_by_source_ID(source_ID:int) ->void:
 #在属性基础值要被修改前调用
 #返回值：float - 修改后的新基础属性；或bool（false表示阻止修改）
 func _pre_base_value_change(attribute_intance:Attribute,old_base_value:float,proposed_new_base_value:float,_source:Variant) -> Variant:
-	var final_value =proposed_new_base_value
+	var final_value = proposed_new_base_value
 	#钳制当前生命值不会超过最大生命值
 	if attribute_intance.attribute_name == &"CurrentHp":
 		var max_hp_attr = get_attribute(&"MaxHp")
 		if max_hp_attr:
 			final_value = clamp(final_value,attribute_intance.min_value,max_hp_attr.get_current_value())
-	return proposed_new_base_value
+	return final_value
 		
 #在属性基础值已经被修改后调用
 func _post_base_value_change(_attribute_instance:Attribute,_old_base_value:float,_new_base_value:float,_source:Variant) ->void:
@@ -161,8 +161,8 @@ func _on_resolve_inital_value_dependencies() ->void:
 	if current_hp_attr and max_hp_attr:
 		current_hp_attr.set_base_value_internal(max_hp_attr.get_base_value())
 	
-	var current_mp_attr:Attribute = get_attribute(&'CurrentMana')
-	var max_mp_attr:Attribute = get_attribute(&'MaxMana')
+	var current_mp_attr:Attribute = get_attribute(&'CurrentMp')
+	var max_mp_attr:Attribute = get_attribute(&'MaxMp')
 	
 	if current_mp_attr and max_mp_attr:
 		current_mp_attr.set_base_value_internal(max_mp_attr.get_base_value())

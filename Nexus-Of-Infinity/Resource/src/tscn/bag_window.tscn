@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://uufbwgeurer6"]
+[gd_scene load_steps=27 format=3 uid="uid://uufbwgeurer6"]
 
 [ext_resource type="Texture2D" uid="uid://dra5sf3xjr7jx" path="res://Resource/res/ui/public/test_label_001.png" id="1_3nx6h"]
 [ext_resource type="PackedScene" uid="uid://ffe2kto0b3o5" path="res://Resource/src/tscn/template_item.tscn" id="4_3nx6h"]
@@ -10,6 +10,40 @@
 [ext_resource type="Texture2D" uid="uid://44h4giln406c" path="res://Resource/res/ui/public/test_botton_002.png" id="11_psuvq"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_x7kyh"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_3nx6h"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_0m334"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_psuvq"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_aopxi"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_rmunw"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_au5ud"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_pju6p"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_thhc3"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_t18hk"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_7tf5g"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_kc0al"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_wj1v7"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_15r3u"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_bo8wb"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_fvpn6"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_cnp2b"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_0r428"]
 
 [node name="bag_Window" type="Control"]
 layout_mode = 3
@@ -97,103 +131,103 @@ button_group = SubResource("ButtonGroup_x7kyh")
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_3nx6h")
 
 [node name="item3" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_0m334")
 
 [node name="item4" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_psuvq")
 
 [node name="item5" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_aopxi")
 
 [node name="item6" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_rmunw")
 
 [node name="item7" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_au5ud")
 
 [node name="item8" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_pju6p")
 
 [node name="item9" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_thhc3")
 
 [node name="item10" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_t18hk")
 
 [node name="item11" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_7tf5g")
 
 [node name="item12" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_kc0al")
 
 [node name="item13" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_wj1v7")
 
 [node name="item14" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_15r3u")
 
 [node name="item15" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_bo8wb")
 
 [node name="item16" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_fvpn6")
 
 [node name="item17" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_cnp2b")
 
 [node name="item18" parent="CanvasLayer/Window/item_list" instance=ExtResource("4_3nx6h")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-button_group = SubResource("ButtonGroup_x7kyh")
+button_group = SubResource("ButtonGroup_0r428")
 
 [node name="item_tips" type="TextureRect" parent="CanvasLayer/Window"]
 layout_mode = 1
